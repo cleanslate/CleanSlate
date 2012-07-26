@@ -10,19 +10,40 @@
 
 @implementation CSView
 
-- (id)initWithFrame:(NSRect)frame
+-(id) initWithFrame:(NSRect)frame
 {
-    self = [super initWithFrame:frame];
-    if (self) {
+    if ((self = [super initWithFrame:frame]))
+    {
         // Initialization code here.
+        image = [[NSImage imageNamed:@"rgba8"] retain];
+        [[self window] setHasShadow:NO];
+        [[self window] setHasShadow:YES];
+        
+        // resize window
+        NSSize size = image.size;
+        [[self window] frameRectForContentRect:NSMakeRect(100, 100, size.width, size.height)];
     }
     
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
+-(void) dealloc
+{
+    [image release];
+    [super dealloc];
+}
+
+-(void) drawRect:(NSRect)dirtyRect
 {
     // Drawing code here.
+    [[NSColor grayColor] set];
+    NSRectFill([self frame]);
+    
+    //[image compositeToPoint:NSZeroPoint operation:NSCompositeCopy];
+    
+    //[[self window] display];
+    //[[self window] setHasShadow:NO];
+    //[[self window] setHasShadow:YES];
 }
 
 @end

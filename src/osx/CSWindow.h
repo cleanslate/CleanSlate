@@ -6,9 +6,21 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#ifndef CleanSlate_CSWindow_h
-#define CleanSlate_CSWindow_h
+#ifndef __CSWINDOW_H__
+#define __CSWINDOW_H__
 
-
+class CSWindow
+{
+public:
+    CSWindow();
+    ~CSWindow();
+    
+    void *winHandle();
+    void Show(bool show);
+    
+private:
+    void *mWindow;
+    
+};
 
 #endif

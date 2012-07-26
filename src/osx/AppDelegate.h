@@ -10,7 +10,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 {
-    NSWindow			*window;
+    //NSWindow			*window;
 	//RootViewController	*viewController;
 }
 

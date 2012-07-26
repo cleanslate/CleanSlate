@@ -9,5 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface CSView : NSView
-
+{
+    NSImage *image;
+}
 @end

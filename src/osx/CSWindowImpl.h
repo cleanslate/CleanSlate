@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface CSWindow : NSWindow
+@interface CSWindowImpl : NSWindow
+{
+    NSPoint initialLocation;
+}
+
 
 @end

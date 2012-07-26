@@ -7,27 +7,32 @@
 //
 #import "AppDelegate.h"
 
+#include "CSWindow.h"
+
 @implementation AppDelegate
 
 -(id) init
 {
     if (self = [super init])
     {
-        // allocate and initialize window and stuff here ..
-        window = [[[NSWindow alloc] init] autorelease];
+
     }
     return self;
 }
 
 -(void) dealloc
 {
-    [window release];
+    //[window release];
     [super dealloc];
 }
 
 -(void) applicationWillFinishLaunching:(NSNotification *)notification
 {
-    [window makeKeyAndOrderFront:self];
+    CSWindow *window = new CSWindow();
+    window->Show(true);
+    //NSWindow *win = [[NSWindow alloc] init];
+    //[win makeKeyWindow];
+    //[win orderFront:self];
 }
 
 @end
