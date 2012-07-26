@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<TITLE>
+cef_storage.h
+</TITLE>
+</HEAD>
+<BODY>
+<PRE>
+<font color="green">// Copyright (c) 2011 Marshall A. Greenblatt. All rights reserved.</font>
+<font color="green">//</font>
+<font color="green">// Redistribution and use in source and binary forms, with or without</font>
+<font color="green">// modification, are permitted provided that the following conditions are</font>
+<font color="green">// met:</font>
+<font color="green">//</font>
+<font color="green">//    * Redistributions of source code must retain the above copyright</font>
+<font color="green">// notice, this list of conditions and the following disclaimer.</font>
+<font color="green">//    * Redistributions in binary form must reproduce the above</font>
+<font color="green">// copyright notice, this list of conditions and the following disclaimer</font>
+<font color="green">// in the documentation and/or other materials provided with the</font>
+<font color="green">// distribution.</font>
+<font color="green">//    * Neither the name of Google Inc. nor the name Chromium Embedded</font>
+<font color="green">// Framework nor the names of its contributors may be used to endorse</font>
+<font color="green">// or promote products derived from this software without specific prior</font>
+<font color="green">// written permission.</font>
+<font color="green">//</font>
+<font color="green">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</font>
+<font color="green">// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</font>
+<font color="green">// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</font>
+<font color="green">// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</font>
+<font color="green">// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</font>
+<font color="green">// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</font>
+<font color="green">// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</font>
+<font color="green">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</font>
+<font color="green">// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</font>
+<font color="green">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</font>
+<font color="green">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</font>
+<font color="green">//</font>
+<font color="green">// ---------------------------------------------------------------------------</font>
+<font color="green">//</font>
+<font color="green">// The contents of this file must follow a specific format in order to</font>
+<font color="green">// support the CEF translator tool. See the translator.README.txt file in the</font>
+<font color="green">// tools directory for more information.</font>
+<font color="green">//</font>
+
+<font color="blue">#ifndef</font> CEF_INCLUDE_CEF_STORAGE_H_
+<font color="blue">#define</font> CEF_INCLUDE_CEF_STORAGE_H_
+<font color="blue">#pragma</font> once
+
+<font color="blue">#include</font> <font color="maroon">"include/cef_base.h"</font>
+
+<font color="blue">class</font> CefStorageVisitor;
+
+<font color="blue">typedef</font> cef_storage_type_t CefStorageType;
+
+<font color="green">///</font>
+<font color="green">// Visit storage of the specified type. If |origin| is non-empty only data</font>
+<font color="green">// matching that origin will be visited. If |key| is non-empty only data</font>
+<font color="green">// matching that key will be visited. Otherwise, all data for the storage</font>
+<font color="green">// type will be visited. Origin should be of the form scheme://domain. If no</font>
+<font color="green">// origin is specified only data currently in memory will be returned. Returns</font>
+<font color="green">// false if the storage cannot be accessed.</font>
+<font color="green">///</font>
+<font color="green">/*--cef(optional_param=origin,optional_param=key)--*/</font>
+<font color="blue">bool</font> CefVisitStorage<font color="black">(</font>CefStorageType type, <font color="blue">const</font> CefString<font color="black">&</font> origin,
+                     <font color="blue">const</font> CefString<font color="black">&</font> key,
+                     CefRefPtr<font color="black">&#60;</font>CefStorageVisitor<font color="black">&#62;</font> visitor<font color="black">)</font>;
+
+<font color="green">///</font>
+<font color="green">// Sets storage of the specified type, origin, key and value. Returns false if</font>
+<font color="green">// storage cannot be accessed. This method must be called on the UI thread.</font>
+<font color="green">///</font>
+<font color="green">/*--cef()--*/</font>
+<font color="blue">bool</font> CefSetStorage<font color="black">(</font>CefStorageType type, <font color="blue">const</font> CefString<font color="black">&</font> origin,
+                   <font color="blue">const</font> CefString<font color="black">&</font> key, <font color="blue">const</font> CefString<font color="black">&</font> value<font color="black">)</font>;
+
+<font color="green">///</font>
+<font color="green">// Deletes all storage of the specified type. If |origin| is non-empty only data</font>
+<font color="green">// matching that origin will be cleared. If |key| is non-empty only data</font>
+<font color="green">// matching that key will be cleared. Otherwise, all data for the storage type</font>
+<font color="green">// will be cleared. Returns false if storage cannot be accessed. This method</font>
+<font color="green">// must be called on the UI thread.</font>
+<font color="green">///</font>
+<font color="green">/*--cef(optional_param=origin,optional_param=key)--*/</font>
+<font color="blue">bool</font> CefDeleteStorage<font color="black">(</font>CefStorageType type, <font color="blue">const</font> CefString<font color="black">&</font> origin,
+                      <font color="blue">const</font> CefString<font color="black">&</font> key<font color="black">)</font>;
+
+<font color="green">///</font>
+<font color="green">// Sets the directory path that will be used for storing data of the specified</font>
+<font color="green">// type. Currently only the ST_LOCALSTORAGE type is supported by this method.</font>
+<font color="green">// If |path| is empty data will be stored in memory only. By default the storage</font>
+<font color="green">// path is the same as the cache path. Returns false if the storage cannot be</font>
+<font color="green">// accessed.</font>
+<font color="green">///</font>
+<font color="green">/*--cef(optional_param=path)--*/</font>
+<font color="blue">bool</font> CefSetStoragePath<font color="black">(</font>CefStorageType type, <font color="blue">const</font> CefString<font color="black">&</font> path<font color="black">)</font>;
+
+
+<font color="green">///</font>
+<font color="green">// Interface to implement for visiting storage. The methods of this class will</font>
+<font color="green">// always be called on the UI thread.</font>
+<font color="green">///</font>
+<font color="green">/*--cef(source=client)--*/</font>
+<font color="blue">class</font> CefStorageVisitor <font color="black">:</font> <font color="blue">public</font> virtual CefBase <font color="black">{</font>
+ <font color="blue">public</font><font color="black">:</font>
+  <font color="green">///</font>
+  <font color="green">// Method that will be called once for each key/value data pair in storage.</font>
+  <font color="green">// |count| is the 0-based index for the current pair. |total| is the total</font>
+  <font color="green">// number of pairs. Set |deleteData| to true to delete the pair currently</font>
+  <font color="green">// being visited. Return false to stop visiting pairs. This method may never</font>
+  <font color="green">// be called if no data is found.</font>
+  <font color="green">///</font>
+  <font color="green">/*--cef()--*/</font>
+  virtual <font color="blue">bool</font> Visit<font color="black">(</font>CefStorageType type, <font color="blue">const</font> CefString<font color="black">&</font> origin,
+                     <font color="blue">const</font> CefString<font color="black">&</font> key, <font color="blue">const</font> CefString<font color="black">&</font> value, <font color="blue">int</font> count,
+                     <font color="blue">int</font> total, <font color="blue">bool</font><font color="black">&</font> deleteData<font color="black">)</font> <font color="black">=</font><font color="maroon">0</font>;
+<font color="black">}</font>;
+
+<font color="blue">#endif</font>  <font color="green">// CEF_INCLUDE_CEF_STORAGE_H_</font>
+
+</PRE>
+</BODY>
+</HTML>
