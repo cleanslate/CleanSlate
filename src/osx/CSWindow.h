@@ -2,12 +2,13 @@
 //  CSWindow.h
 //  CleanSlate
 //
-//  Created by Yulius Tjahjadi on 7/20/12.
+//  Created by Yulius Tjahjadi on 7/21/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#ifndef CleanSlate_CSWindow_h
+#define CleanSlate_CSWindow_h
 
-@interface CSWindow : NSWindow
 
-@end
+
+#endif
