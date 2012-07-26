@@ -9,6 +9,8 @@
 #ifndef __CSWINDOW_H__
 #define __CSWINDOW_H__
 
+class CSBrowserClient;
+
 class CSWindow
 {
 public:
@@ -17,10 +19,12 @@ public:
     
     void *winHandle();
     void Show(bool show);
+    void GetSize(int &width, int &height);
+    void InvalidateRect(const CSRect &rect);
     
 private:
     void *mWindow;
-    
+    CSBrowserClient *mBrowserClient;
 };
 
 #endif

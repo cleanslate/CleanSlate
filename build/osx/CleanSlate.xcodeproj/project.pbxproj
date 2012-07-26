@@ -68,6 +68,8 @@
 		D78C9DD315BCB7F500DCF697 /* cef_zip_archive.cc in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D9715BCB7F500DCF697 /* cef_zip_archive.cc */; };
 		D78C9DD415BCB7F500DCF697 /* libcef_dll_wrapper.cc in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D9815BCB7F500DCF697 /* libcef_dll_wrapper.cc */; };
 		D78C9DD515BCB7F500DCF697 /* libcef_dll_wrapper2.cc in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D9915BCB7F500DCF697 /* libcef_dll_wrapper2.cc */; };
+		D7C00FC315C10D99004CD6D9 /* CSBrowserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */; };
+		D7C00FCA15C11CA1004CD6D9 /* CSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */; };
 		D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7DE834C15C0128900D7B5D8 /* libcef.dylib */; };
 		D7DE835015C0138D00D7B5D8 /* libcef.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7DE834C15C0128900D7B5D8 /* libcef.dylib */; };
 		D7DE835315C013A000D7B5D8 /* ffmpegsumo.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7DE835115C0139A00D7B5D8 /* ffmpegsumo.so */; };
@@ -269,6 +271,10 @@
 		D78C9D9715BCB7F500DCF697 /* cef_zip_archive.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cef_zip_archive.cc; sourceTree = "<group>"; };
 		D78C9D9815BCB7F500DCF697 /* libcef_dll_wrapper.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libcef_dll_wrapper.cc; sourceTree = "<group>"; };
 		D78C9D9915BCB7F500DCF697 /* libcef_dll_wrapper2.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libcef_dll_wrapper2.cc; sourceTree = "<group>"; };
+		D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSBrowserClient.cpp; sourceTree = "<group>"; };
+		D7C00FC815C11C40004CD6D9 /* CSLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSLog.h; sourceTree = "<group>"; };
+		D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSLog.cpp; sourceTree = "<group>"; };
+		D7C00FCB15C12C13004CD6D9 /* CSRect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSRect.h; sourceTree = "<group>"; };
 		D7DE834C15C0128900D7B5D8 /* libcef.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcef.dylib; path = "../../third-party/cef/osx/Release/libcef.dylib"; sourceTree = "<group>"; };
 		D7DE835115C0139A00D7B5D8 /* ffmpegsumo.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = ffmpegsumo.so; path = "../../third-party/cef/osx/Release/ffmpegsumo.so"; sourceTree = "<group>"; };
 		D7DE83BC15C0172E00D7B5D8 /* chrome.pak */ = {isa = PBXFileReference; lastKnownFileType = file; name = chrome.pak; path = "../../third-party/cef/osx/Resources/chrome.pak"; sourceTree = "<group>"; };
@@ -325,6 +331,8 @@
 		D7DE841315C017C600D7B5D8 /* vi.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = vi.lproj; path = "../../third-party/cef/osx/Resources/vi.lproj"; sourceTree = "<group>"; };
 		D7DE841415C017C600D7B5D8 /* zh_CN.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = zh_CN.lproj; path = "../../third-party/cef/osx/Resources/zh_CN.lproj"; sourceTree = "<group>"; };
 		D7DE841515C017C600D7B5D8 /* zh_TW.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = zh_TW.lproj; path = "../../third-party/cef/osx/Resources/zh_TW.lproj"; sourceTree = "<group>"; };
+		D7DE843715C1069E00D7B5D8 /* CSBrowserClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSBrowserClient.h; sourceTree = "<group>"; };
+		D7DE843915C106F100D7B5D8 /* CleanSlate-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CleanSlate-Prefix.pch"; sourceTree = "<group>"; };
 		D7E8B48F15BA73FD00475680 /* CleanSlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E8B49315BA73FD00475680 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D7E8B49615BA73FD00475680 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -566,11 +574,20 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		D7DE843815C106D100D7B5D8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7DE843915C106F100D7B5D8 /* CleanSlate-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		D7E8B48415BA73FD00475680 = {
 			isa = PBXGroup;
 			children = (
+				D7E8B4D215BA75DD00475680 /* Classes */,
+				D7DE843815C106D100D7B5D8 /* Supporting Files */,
 				D7DE835815C0154200D7B5D8 /* Resources */,
-				D7E8B4D215BA75DD00475680 /* src */,
 				D7E8B49215BA73FD00475680 /* Frameworks */,
 				D7E8B49015BA73FD00475680 /* Products */,
 			);
@@ -606,12 +623,15 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		D7E8B4D215BA75DD00475680 /* src */ = {
+		D7E8B4D215BA75DD00475680 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				D7E8B4D315BA75DD00475680 /* osx */,
+				D7DE843715C1069E00D7B5D8 /* CSBrowserClient.h */,
+				D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */,
+				D7C00FCB15C12C13004CD6D9 /* CSRect.h */,
 			);
-			name = src;
+			name = Classes;
 			path = ../../src;
 			sourceTree = "<group>";
 		};
@@ -621,6 +641,8 @@
 				D78C9D1E15BCB7F500DCF697 /* libcef_dll */,
 				D7E8B4E715BA89F600475680 /* AppDelegate.m */,
 				D7E8B4E515BA82F700475680 /* AppDelegate.h */,
+				D7C00FC815C11C40004CD6D9 /* CSLog.h */,
+				D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */,
 				D78C9D1315BC678000DCF697 /* CSView.h */,
 				D78C9D1415BC678000DCF697 /* CSView.m */,
 				D7E8B4FF15BAA6A900475680 /* CSWindow.h */,
@@ -812,6 +834,8 @@
 				D78C9DD315BCB7F500DCF697 /* cef_zip_archive.cc in Sources */,
 				D78C9DD415BCB7F500DCF697 /* libcef_dll_wrapper.cc in Sources */,
 				D78C9DD515BCB7F500DCF697 /* libcef_dll_wrapper2.cc in Sources */,
+				D7C00FC315C10D99004CD6D9 /* CSBrowserClient.cpp in Sources */,
+				D7C00FCA15C11CA1004CD6D9 /* CSLog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,7 +863,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -860,7 +884,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -898,6 +922,7 @@
 					"\"USING_CEF_SHARED\"",
 					"\"__STD_FORMAT_MACROS\"",
 					"\"DYNAMIC_ANNOTATIONS_ENABLED=1\"",
+					DEBUG,
 				);
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
@@ -908,13 +933,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../third-party/cef/osx/Release\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				OTHER_CFLAGS = (
 					"-fno-strict-aliasing",
 					"-fstack-protector-all",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -964,10 +989,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../third-party/cef/osx/Release\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				OTHER_CFLAGS = "-fno-strict-aliasing";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};

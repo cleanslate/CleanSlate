@@ -25,11 +25,10 @@ int main(int argc, char *argv[])
     // Initialize CEF.
     CefInitialize(settings, app);
     
-
-    
-    
     [application setDelegate:appDelegate];
-    [application run];
+
+    // Run the application message loop.
+    CefRunMessageLoop();    
     
     [pool drain];
     

@@ -8,8 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+class CSBrowserClient;
+
 @interface CSView : NSView
 {
-    NSImage *image;
+    CSBrowserClient *mBrowserClient;
 }
+
+-(void) setBrowserClient:(CSBrowserClient *)client;
 @end
