@@ -74,7 +74,6 @@ void CSWindow::InvalidateRect(const CSRect &rect)
     float y = nsRect.size.height - rect.height - rect.y;
     
     [view setNeedsDisplayInRect:NSMakeRect(rect.x, y, rect.width, rect.height)];
-    //[view setNeedsDisplay:YES];
 }
 
 void CSWindow::GetViewRect(CSRect &rect)
@@ -102,5 +101,10 @@ void CSWindow::GetScreenPoint(int viewX, int viewY, int& screenX, int& screenY)
     NSPoint screen_pt = [[view window] convertBaseToScreen:window_pt];
     screenX = screen_pt.x;
     screenY = screen_pt.y;
+}
+
+void CSWindow::SetCursor(CefCursorHandle cursor)
+{
+    [cursor set];
 }
 

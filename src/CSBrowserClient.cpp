@@ -14,7 +14,7 @@
 #include "CSWindow.h"
 
 // Convert from BGRA to RGBA format
-static void CopyRGBA(std::vector<unsigned char> &image, const unsigned char *buffer, int width, int height, const CefRect &rect)
+static void CopyRGBA(CSBrowserClient::Image &image, const unsigned char *buffer, int width, int height, const CefRect &rect)
 {
     if (image.size() != width*height*4)
         image.resize(width*height*4);
@@ -76,21 +76,23 @@ void CSBrowserClient::OnLoadStart(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFr
 
 void CSBrowserClient::OnLoadEnd(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, int httpStatusCode)
 {
-    
+    CSLogDebug("OnLoadEnd"); 
 }
 
 bool CSBrowserClient::OnLoadError(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefLoadHandler::ErrorCode errorCode, const CefString& failedUrl, CefString& errorText)
 {
+    CSLogError("code:%d url:%s error:%s", errorCode, failedUrl.c_str(), errorText.c_str());
     return true;
 }
 
 void CSBrowserClient::OnTitleChange(CefRefPtr<CefBrowser> browser, const CefString& title)
 {
-    
+    CSLogInfo("OnTitleChange() - %s", title.c_str());
 }
 
 bool CSBrowserClient::OnConsoleMessage(CefRefPtr<CefBrowser> browser, const CefString& message, const CefString& source, int line)
 {
+    CSLogInfo("%s:%d - %s", source.c_str(), line, message.c_str());
     return true;
 }
 
@@ -154,7 +156,7 @@ void CSBrowserClient::OnPaint(CefRefPtr<CefBrowser> browser, CefBrowser::PaintEl
 
 void CSBrowserClient::OnCursorChange(CefRefPtr<CefBrowser> browser, CefCursorHandle cursor)
 {
-    
+    mWindow->SetCursor(cursor);
 }
 
 CSBrowserClient::Image &CSBrowserClient::GetBrowserImage()
