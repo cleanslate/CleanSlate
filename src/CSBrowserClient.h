@@ -56,6 +56,8 @@ public:
     typedef std::vector<unsigned char> Image;    
     Image& GetBrowserImage();
     void GetBrowserSize(int &width, int &height);
+    void SetBrowserSize(int width, int height);
+    CefRefPtr<CefBrowser> GetBrowser() { return mBrowser; }
 
 private:
     CefRefPtr<CefBrowser> mBrowser;
