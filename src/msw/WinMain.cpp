@@ -1,6 +1,4 @@
-#include <Windows.h>
-
-#include "include/cef_app.h"
+#include "CSPrecomp.h"
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {

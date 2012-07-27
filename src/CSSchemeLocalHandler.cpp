@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#include "CSPrecomp.h"
 #include "CSSchemeLocalHandler.h"
 
 CSSchemeLocalHandler::CSSchemeLocalHandler() :

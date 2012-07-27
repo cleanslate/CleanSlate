@@ -26,6 +26,15 @@
     <ClInclude Include="..\..\src\msw\CSLog.h">
       <Filter>Source Files\msw</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\CSSchemeFactory.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\CSSchemeLocalHandler.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\CSPrecomp.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp">
@@ -39,6 +48,15 @@
     </ClCompile>
     <ClCompile Include="..\..\src\msw\CSLog.cpp">
       <Filter>Source Files\msw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CSSchemeLocalHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CSSchemeFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CSPrecomp.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -9,8 +9,6 @@
 #ifndef __CSBROWSERCLIENT_H__
 #define __CSBROWSERCLIENT_H__
 
-#include "include/cef_client.h"
-
 class CSWindow;
 
 class CSBrowserClient : public CefClient,

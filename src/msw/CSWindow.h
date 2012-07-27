@@ -1,8 +1,6 @@
 #ifndef __CSWINDOW_H__
 #define __CSWINDOW_H__
 
-#include "include/cef_render_handler.h"
-
 class CSBrowserClient;
 struct CSRect;
 

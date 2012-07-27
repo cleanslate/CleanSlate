@@ -39,19 +39,21 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../../third-party/cef/msw;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeaderFile>CSPrecomp.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -60,25 +62,34 @@
       <AdditionalDependencies>libcef.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>echo "Copying CEF files..."
-copy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\chrome.pak $(OutDir)
-xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\*.dll $(OutDir) /y
-xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir)\locales /i /s /y
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\chrome*.pak $(OutDir) /y /d
+xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\*.dll $(OutDir) /y /d
+xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir)\locales /i /s /y /d
 
 </Command>
-    </PostBuildEvent>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>Copying CEF Files...</Message>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>chrome.pak;%(Outputs)</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../../third-party/cef/msw;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeaderFile>CSPrecomp.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -89,21 +100,34 @@ xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir
       <AdditionalDependencies>libcef.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>echo "Copying CEF files..."
-copy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\chrome.pak $(OutDir)
-xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\*.dll $(OutDir) /y
-xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir)\locales /i /s /y
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\chrome*.pak $(OutDir) /y /d</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>Copying CEF Files...</Message>
+      <Outputs>chrome.pak</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\CSBrowserClient.h" />
+    <ClInclude Include="..\..\src\CSPrecomp.h" />
     <ClInclude Include="..\..\src\CSRect.h" />
+    <ClInclude Include="..\..\src\CSSchemeFactory.h" />
+    <ClInclude Include="..\..\src\CSSchemeLocalHandler.h" />
     <ClInclude Include="..\..\src\msw\CSLog.h" />
     <ClInclude Include="..\..\src\msw\CSWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp" />
+    <ClCompile Include="..\..\src\CSPrecomp.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CSSchemeFactory.cpp" />
+    <ClCompile Include="..\..\src\CSSchemeLocalHandler.cpp" />
     <ClCompile Include="..\..\src\msw\CSLog.cpp" />
     <ClCompile Include="..\..\src\msw\CSWindow.cpp" />
     <ClCompile Include="..\..\src\msw\WinMain.cpp" />

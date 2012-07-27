@@ -5,8 +5,7 @@
 //  Created by Yulius Tjahjadi on 7/25/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-
-#include <iostream>
+#include "CSPrecomp.h"
 
 #include "include/cef_app.h"
 #include "include/cef_client.h"
