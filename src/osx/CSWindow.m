@@ -70,10 +70,41 @@ void CSWindow::InvalidateRect(const CSRect &rect)
     NSWindow *window = (NSWindow *)mWindow;
     NSView *view = [window contentView];
     
-    NSRect nsRect;
-    nsRect.origin.x = rect.x;
-    nsRect.origin.y = rect.y;
-    nsRect.size.width = rect.width;
-    nsRect.size.height = rect.height;
-    [view setNeedsDisplayInRect:nsRect];
+    NSRect nsRect = [(id)mWindow frame];
+    float y = nsRect.size.height - rect.height - rect.y;
+    
+    [view setNeedsDisplayInRect:NSMakeRect(rect.x, y, rect.width, rect.height)];
 }
+
+void CSWindow::GetViewRect(CSRect &rect)
+{
+    NSWindow *window = (NSWindow *)mWindow;
+    NSView *view = [window contentView];
+    
+    // The simulated screen and view rectangle are the same. This is necessary
+    // for popup menus to be located and sized inside the view.
+    const NSRect bounds = [view bounds];
+    rect.x = rect.y = 0;
+    rect.width = bounds.size.width;
+    rect.height = bounds.size.height;
+}
+
+void CSWindow::GetScreenPoint(int viewX, int viewY, int& screenX, int& screenY)
+{
+    NSWindow *window = (NSWindow *)mWindow;
+    NSView *view = [window contentView];
+
+    // Convert the point from view coordinates to actual screen coordinates.
+    NSRect bounds = [view bounds];
+    NSPoint view_pt = {viewX, bounds.size.height - viewY};
+    NSPoint window_pt = [view convertPoint:view_pt toView:nil];
+    NSPoint screen_pt = [[view window] convertBaseToScreen:window_pt];
+    screenX = screen_pt.x;
+    screenY = screen_pt.y;
+}
+
+void CSWindow::SetCursor(CefCursorHandle cursor)
+{
+    [cursor set];
+}
+

@@ -16,21 +16,23 @@
 #include "CSLog.h"
 #include "CSRect.h"
 
-static void CopyRGBA(std::vector<unsigned char> &image, const unsigned char *buffer, int width, int height, const CefRect &rect)
+// Convert from BGRA to RGBA format
+static void CopyRGBA(CSBrowserClient::Image &image, const unsigned char *buffer, int width, int height, const CefRect &rect)
 {
     if (image.size() != width*height*4)
         image.resize(width*height*4);
     
-    for (int y = 0; y < height; y++)
+    for (int y = rect.y; y < rect.y + rect.height; y++)
     {
-        unsigned char *dst = &image[y*width*4];
-        const unsigned char *src = &buffer[y*width*4];
-        for (int x = 0; x < width; x++)
+        int offset = (y*width + rect.x) * 4;
+        unsigned char *dst = &image[offset];
+        const unsigned char *src = &buffer[offset];
+        for (int x = rect.x; x < rect.x + rect.width; x++)
         {
-            dst[0] = src[0];
-            dst[1] = src[1];
-            dst[2] = src[2];
-            dst[3] = src[3];
+            dst[0] = src[2]; // R
+            dst[1] = src[1]; // G
+            dst[2] = src[0]; // B
+            dst[3] = src[3]; // A
             
             dst += 4;
             src += 4;
@@ -77,37 +79,48 @@ void CSBrowserClient::OnLoadStart(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFr
 
 void CSBrowserClient::OnLoadEnd(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, int httpStatusCode)
 {
-    
+    CSLogDebug("OnLoadEnd"); 
 }
 
 bool CSBrowserClient::OnLoadError(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefLoadHandler::ErrorCode errorCode, const CefString& failedUrl, CefString& errorText)
 {
+    CSLogError("code:%d url:%s error:%s", errorCode, failedUrl.c_str(), errorText.c_str());
     return true;
 }
 
 void CSBrowserClient::OnTitleChange(CefRefPtr<CefBrowser> browser, const CefString& title)
 {
-    
+    CSLogInfo("OnTitleChange() - %s", title.c_str());
 }
 
 bool CSBrowserClient::OnConsoleMessage(CefRefPtr<CefBrowser> browser, const CefString& message, const CefString& source, int line)
 {
+    CSLogInfo("%s:%d - %s", source.c_str(), line, message.c_str());
     return true;
 }
 
 // CefRenderHandler
 bool CSBrowserClient::GetViewRect(CefRefPtr<CefBrowser> browser, CefRect& rect)
 {
+    CSRect csRect;
+    mWindow->GetViewRect(csRect);
+    
+    rect.x = csRect.x;
+    rect.y = csRect.y;
+    rect.width = csRect.width;
+    rect.height = csRect.height;
+    
     return true;
 }
 
 bool CSBrowserClient::GetScreenRect(CefRefPtr<CefBrowser> browser, CefRect& rect)
 {
-    return true;
+    return GetViewRect(browser, rect);
 }
 
 bool CSBrowserClient::GetScreenPoint(CefRefPtr<CefBrowser> browser, int viewX, int viewY, int& screenX, int& screenY)
 {
+    mWindow->GetScreenPoint(viewX, viewY, screenX, screenY);
     return true;
 }
 
@@ -146,7 +159,7 @@ void CSBrowserClient::OnPaint(CefRefPtr<CefBrowser> browser, CefBrowser::PaintEl
 
 void CSBrowserClient::OnCursorChange(CefRefPtr<CefBrowser> browser, CefCursorHandle cursor)
 {
-    
+    mWindow->SetCursor(cursor);
 }
 
 CSBrowserClient::Image &CSBrowserClient::GetBrowserImage()
@@ -159,5 +172,11 @@ void CSBrowserClient::GetBrowserSize(int &width, int &height)
     width = height = 0;
     if (mBrowser.get())
         mBrowser->GetSize(PET_VIEW, width, height);
+}
+
+void CSBrowserClient::SetBrowserSize(int width, int height)
+{
+    if (mBrowser.get())
+        mBrowser->SetSize(PET_VIEW, width, height);    
 }
 
