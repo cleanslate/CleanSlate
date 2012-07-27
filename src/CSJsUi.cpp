@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#include "CSPrecomp.h"
+
 #include "CSJsUi.h"
 
 #include "CSWindow.h"

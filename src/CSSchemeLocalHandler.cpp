@@ -28,8 +28,9 @@ bool CSSchemeLocalHandler::ProcessRequest(CefRefPtr<CefRequest> request, CefRefP
 	// scheme is local://
     std::string scheme = std::string(LOCAL_SCHEME).append("://");
     std::string path = url.substr(scheme.size());
-    path = CSUtil::GetLocalDir().append("/").append(path);
+    path = CSUtil::GetLocalDir().append(OS_PATH_SEP).append(path);
     
+	CSLogDebug("Loading file: %s", path.c_str());
     mFile = fopen(path.c_str(), "r");
 	if (!mFile)
 		return false;
@@ -74,7 +75,7 @@ bool CSSchemeLocalHandler::ReadResponse(void* data_out, int bytes_to_read, int& 
 		return false;
     
 	bytes_read = fread(data_out, 1, bytes_to_read, mFile);
-	return bytes_read == bytes_to_read;
+	return bytes_read > 0;
 }
 
 void CSSchemeLocalHandler::Cancel()

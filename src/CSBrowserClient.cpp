@@ -164,6 +164,10 @@ void CSBrowserClient::GetBrowserSize(int &width, int &height)
 void CSBrowserClient::SetBrowserSize(int width, int height)
 {
     if (mBrowser.get())
-        mBrowser->SetSize(PET_VIEW, width, height);    
+	{
+        mBrowser->SetSize(PET_VIEW, width, height);
+		//CefRect dirtyRect(0, 0, width, height);
+		//mBrowser->Invalidate(dirtyRect);
+	}
 }
 

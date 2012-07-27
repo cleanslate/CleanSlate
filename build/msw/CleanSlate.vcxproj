@@ -67,10 +67,9 @@
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\chrome*.pak $(OutDir) /y /d
-xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\*.dll $(OutDir) /y /d
-xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir)\locales /i /s /y /d
-
-</Command>
+xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\*.dll $(OutDir) /y /d
+xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir)\locales /i /s /y /d
+xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Message>Copying CEF Files...</Message>
@@ -104,7 +103,10 @@ xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\chrome*.pak $(OutDir) /y /d</Command>
+      <Command>xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\chrome*.pak $(OutDir) /y /d
+xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\*.dll $(OutDir) /y /d
+xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir)\locales /i /s /y /d
+xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Message>Copying CEF Files...</Message>
@@ -113,16 +115,19 @@ xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\CSBrowserClient.h" />
+    <ClInclude Include="..\..\src\CSJsUi.h" />
     <ClInclude Include="..\..\src\CSPrecomp.h" />
     <ClInclude Include="..\..\src\CSRect.h" />
     <ClInclude Include="..\..\src\CSSchemeFactory.h" />
     <ClInclude Include="..\..\src\CSSchemeLocalHandler.h" />
     <ClInclude Include="..\..\src\msw\CSApp.h" />
     <ClInclude Include="..\..\src\msw\CSLog.h" />
+    <ClInclude Include="..\..\src\msw\CSUtil.h" />
     <ClInclude Include="..\..\src\msw\CSWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp" />
+    <ClCompile Include="..\..\src\CSJsUi.cpp" />
     <ClCompile Include="..\..\src\CSPrecomp.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -131,6 +136,7 @@ xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir
     <ClCompile Include="..\..\src\CSSchemeLocalHandler.cpp" />
     <ClCompile Include="..\..\src\msw\CSApp.cpp" />
     <ClCompile Include="..\..\src\msw\CSLog.cpp" />
+    <ClCompile Include="..\..\src\msw\CSUtil.cpp" />
     <ClCompile Include="..\..\src\msw\CSWindow.cpp" />
     <ClCompile Include="..\..\src\msw\WinMain.cpp" />
   </ItemGroup>

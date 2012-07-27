@@ -17,6 +17,14 @@ public:
     void GetViewRect(CSRect &rect);
     void GetScreenPoint(int viewX, int viewY, int& screenX, int& screenY);
     void SetCursor(CefCursorHandle cursor);
+    void Close();
+    void Destroy();
+
+    // javascript functions
+    void StartMove();
+    void StopMove();
+    void StartResize();
+    void StopResize();
 
 	// windows specific
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
@@ -26,7 +34,14 @@ private:
     CSBrowserClient *mBrowserClient;
 	HDC mMemDC;
 	HBITMAP mBitmap;
+	SIZE mBitmapSize;
 	unsigned char *mBitmapBits;
+
+	// mouse move
+	POINT mMouseStartPos;
+	RECT mMouseStartRect;
+	bool mMoving;
+	bool mResizing;
 
 	void OnPaint(WPARAM wParam, LPARAM lParam);
 	void OnSize(WPARAM wParam, LPARAM lParam);
@@ -38,6 +53,8 @@ private:
 	void OnMouseMiddleUp(WPARAM wParam, LPARAM lParam);
 	void OnMouseMove(WPARAM wParam, LPARAM lParam);
 	void OnMouseWheel(WPARAM wParam, LPARAM lParam);
+
+	void CreateBitmap(int width, int height);
 };
 
 #endif

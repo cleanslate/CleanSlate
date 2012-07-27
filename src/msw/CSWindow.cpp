@@ -2,12 +2,20 @@
 #include "CSWindow.h"
 #include "CSBrowserClient.h"
 
-CSWindow::CSWindow()
+CSWindow::CSWindow() :
+	mWindow(NULL),
+	mResizing(false),
+	mMoving(false),
+	mBitmap(NULL),
+	mMemDC(NULL)
 {
 	HINSTANCE hInstance = GetModuleHandle(NULL);
 
+	int width = 640;
+	int height = 480;
+
 	HWND window = CreateWindowEx(WS_EX_LAYERED, L"CSWindowClass", L"",
-        WS_POPUP, 0, 0, 640, 480, NULL, NULL,
+        WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, width, height, NULL, NULL,
         hInstance, NULL);
 
 	DWORD err = GetLastError();
@@ -21,21 +29,11 @@ CSWindow::CSWindow()
     CefBrowserSettings settings;
     windowInfo.SetAsOffScreen(window);
     windowInfo.SetTransparentPainting(TRUE);
-    CefBrowser::CreateBrowser(windowInfo, mBrowserClient, "http://www.google.com", settings);
+    CefBrowser::CreateBrowser(windowInfo, mBrowserClient, "local://index.html", settings);
 
 	// create bitmap
-	BITMAPINFO bmi = {0};
-	bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-	bmi.bmiHeader.biWidth = 640;
-	bmi.bmiHeader.biHeight = -480; // top-down
-	bmi.bmiHeader.biPlanes = 1;
-	bmi.bmiHeader.biBitCount = 32;
-	bmi.bmiHeader.biCompression = BI_RGB;
+	CreateBitmap(width, height);
 
-	mMemDC = CreateCompatibleDC(NULL);
-	mBitmap = CreateDIBSection(mMemDC, &bmi, DIB_RGB_COLORS, (void **)&mBitmapBits, NULL, NULL);
-	SelectObject(mMemDC, mBitmap);
-	
 	mWindow = window;
 }
 
@@ -65,6 +63,13 @@ void CSWindow::GetSize(int &width, int &height)
 
 void CSWindow::UpdateRect(unsigned char *buffer, int width, int height, const CSRect &rect)
 {
+	// update bitmap if size changes
+	if (mBitmapSize.cx != width || mBitmapSize.cy != height)
+	{
+		CreateBitmap(width, height);
+	}
+
+	// copy rects
     for (int y = rect.y; y < rect.y + rect.height; y++)
     {
         int offset = (y*width + rect.x) * 4;
@@ -81,6 +86,14 @@ void CSWindow::UpdateRect(unsigned char *buffer, int width, int height, const CS
             src += 4;
         }
     }
+
+	// resize window if needed
+	RECT r;
+	GetWindowRect(mWindow, &r);
+	if (width != r.right - r.left || height != r.bottom - r.top)
+	{
+		MoveWindow(mWindow, r.left, r.top, width, height, TRUE);
+	}
 }
 
 void CSWindow::InvalidateRect(const CSRect &rect)
@@ -119,6 +132,47 @@ void CSWindow::SetCursor(CefCursorHandle cursor)
     ::SetCursor(cursor);
 }
 
+void CSWindow::Close()
+{
+	SendMessage(mWindow, WM_CLOSE, 0, 0);
+}
+
+void CSWindow::Destroy()
+{
+	DestroyWindow(mWindow);
+	delete this;
+}
+
+void CSWindow::StartMove()
+{
+	SetCapture(mWindow);
+
+    GetCursorPos(&mMouseStartPos);
+	GetWindowRect(mWindow, &mMouseStartRect);
+	mMoving = true;
+}
+
+void CSWindow::StopMove()
+{
+	ReleaseCapture();
+	mMoving = false;
+}
+
+void CSWindow::StartResize()
+{
+	SetCapture(mWindow);
+
+    GetCursorPos(&mMouseStartPos);
+	GetWindowRect(mWindow, &mMouseStartRect);
+	mResizing = true;
+}
+
+void CSWindow::StopResize()
+{
+	ReleaseCapture();
+	mResizing = false;
+}
+
 void CSWindow::OnPaint(WPARAM wParam, LPARAM lParam)
 {
 	if (mBrowserClient)
@@ -127,8 +181,6 @@ void CSWindow::OnPaint(WPARAM wParam, LPARAM lParam)
         mBrowserClient->GetBrowserSize(width, height);
         if (width > 0 && height > 0)
         {
-			CSLogDebug("OnPaint()...");
-
 			static POINT ptZero = { 0 };
 			SIZE szSize = { width, height };
 
@@ -143,22 +195,16 @@ void CSWindow::OnPaint(WPARAM wParam, LPARAM lParam)
 				mMemDC, &ptZero, RGB(0, 0, 0), &blend, ULW_ALPHA);
 
 			ReleaseDC(HWND_DESKTOP, desktopDC);
-
-			/*
-			HDC hdc = GetDC(mWindow);
-			BitBlt(hdc, 0, 0, width, height, mMemDC, 0, 0, SRCCOPY);
-			ReleaseDC(mWindow, hdc);
-			*/
         }
     }
 }
 
 void CSWindow::OnSize(WPARAM wParam, LPARAM lParam)
 {
-	int width  = LOWORD(lParam);
-    int height = HIWORD(lParam);
-    if (width > 0 && height > 0 && mBrowserClient && mBrowserClient->GetBrowser().get())
-		mBrowserClient->GetBrowser()->SetSize(PET_VIEW, width, height);
+	//int width  = LOWORD(lParam);
+    //int height = HIWORD(lParam);
+    //if (width > 0 && height > 0 && mBrowserClient && mBrowserClient->GetBrowser().get())
+	//	mBrowserClient->GetBrowser()->SetSize(PET_VIEW, width, height);
 }
 
 void CSWindow::OnMouseLeftDown(WPARAM wParam, LPARAM lParam)
@@ -169,6 +215,8 @@ void CSWindow::OnMouseLeftDown(WPARAM wParam, LPARAM lParam)
 
 void CSWindow::OnMouseLeftUp(WPARAM wParam, LPARAM lParam)
 {
+	mResizing = mMoving = FALSE;
+
 	if (mBrowserClient && mBrowserClient->GetBrowser().get())
 		mBrowserClient->GetBrowser()->SendMouseClickEvent(LOWORD(lParam), HIWORD(lParam), MBT_LEFT, true, 1);
 }
@@ -199,6 +247,33 @@ void CSWindow::OnMouseMiddleUp(WPARAM wParam, LPARAM lParam)
 
 void CSWindow::OnMouseMove(WPARAM wParam, LPARAM lParam)
 {
+	if (mMoving)
+	{
+		POINT pt;
+		GetCursorPos(&pt);
+		
+		POINT diff = { pt.x - mMouseStartPos.x, pt.y - mMouseStartPos.y };
+		MoveWindow(mWindow, mMouseStartRect.left + diff.x, mMouseStartRect.top + diff.y,
+			mMouseStartRect.right - mMouseStartRect.left, mMouseStartRect.bottom - mMouseStartRect.top, FALSE);
+		
+		return;
+	}
+
+	if (mResizing)
+	{
+		POINT pt;
+		GetCursorPos(&pt);
+
+		POINT diff = { pt.x - mMouseStartPos.x, pt.y - mMouseStartPos.y };
+		SIZE size = { mMouseStartRect.right - mMouseStartRect.left + diff.x, mMouseStartRect.bottom - mMouseStartRect.top + diff.y };
+
+		CSLogDebug("Resize %dx%d", size.cx, size.cy);
+		if (mBrowserClient)
+            mBrowserClient->SetBrowserSize(size.cx, size.cy);
+
+		return;
+	}
+
 	if (mBrowserClient && mBrowserClient->GetBrowser().get())
 		mBrowserClient->GetBrowser()->SendMouseMoveEvent(LOWORD(lParam), HIWORD(lParam), false);
 }
@@ -209,6 +284,30 @@ void CSWindow::OnMouseWheel(WPARAM wParam, LPARAM lParam)
 		mBrowserClient->GetBrowser()->SendMouseWheelEvent(LOWORD(lParam), HIWORD(lParam), GET_WHEEL_DELTA_WPARAM(wParam));
 }
 
+
+void CSWindow::CreateBitmap(int width, int height)
+{
+	BITMAPINFO bmi = {0};
+	bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+	bmi.bmiHeader.biWidth = width;
+	bmi.bmiHeader.biHeight = -height; // top-down
+	bmi.bmiHeader.biPlanes = 1;
+	bmi.bmiHeader.biBitCount = 32;
+	bmi.bmiHeader.biCompression = BI_RGB;
+
+	if (!mMemDC)
+		mMemDC = CreateCompatibleDC(NULL);
+
+	if (mBitmap)
+		DeleteObject(mBitmap);
+
+	mBitmap = CreateDIBSection(mMemDC, &bmi, DIB_RGB_COLORS, (void **)&mBitmapBits, NULL, NULL);
+	
+	SelectObject(mMemDC, mBitmap);
+	mBitmapSize.cx = width;
+	mBitmapSize.cy = height;
+
+}
 
 LRESULT CSWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {

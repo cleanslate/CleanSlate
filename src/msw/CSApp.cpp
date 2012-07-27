@@ -3,6 +3,8 @@
 #include "CSApp.h"
 #include "CSWindow.h"
 
+#include "CSSchemeFactory.h"
+
 CSApp::CSApp()
 {
 
@@ -36,6 +38,9 @@ void CSApp::Init()
     
     // Initialize CEF.
     CefInitialize(settings, app);
+
+	// Register the local scheme
+	CSSchemeFactory::Register();
 }
 
 void CSApp::Run()

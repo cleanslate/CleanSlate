@@ -9,7 +9,7 @@
 #ifndef __CSUTIL_H__
 #define __CSUTIL_H__
 
-#define OS_PATH_SEP "/"
+#define OS_PATH_SEP "\\"
 
 class CSUtil
 {
