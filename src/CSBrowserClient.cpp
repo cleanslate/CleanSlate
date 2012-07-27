@@ -16,6 +16,7 @@
 #include "CSRect.h"
 
 // Convert from BGRA to RGBA format
+/*
 static void CopyRGBA(CSBrowserClient::Image &image, const unsigned char *buffer, int width, int height, const CefRect &rect)
 {
     if (image.size() != width*height*4)
@@ -28,24 +29,29 @@ static void CopyRGBA(CSBrowserClient::Image &image, const unsigned char *buffer,
         const unsigned char *src = &buffer[offset];
         for (int x = rect.x; x < rect.x + rect.width; x++)
         {
+#ifdef WIN32
+            dst[0] = src[0]; // R
+            dst[1] = src[1]; // G
+            dst[2] = src[2]; // B
+            dst[3] = src[3]; // A
+#else
             dst[0] = src[2]; // R
             dst[1] = src[1]; // G
             dst[2] = src[0]; // B
             dst[3] = src[3]; // A
-            
+#endif            
             dst += 4;
             src += 4;
         }
     }
 }
-
+*/
 
 CSBrowserClient::CSBrowserClient(CSWindow *window) :
     mWindow(window)
 {
-    mImage.resize(100*100);
-}
 
+}
 
 CSBrowserClient::~CSBrowserClient()
 {
@@ -83,18 +89,18 @@ void CSBrowserClient::OnLoadEnd(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFram
 
 bool CSBrowserClient::OnLoadError(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefLoadHandler::ErrorCode errorCode, const CefString& failedUrl, CefString& errorText)
 {
-    CSLogError("code:%d url:%s error:%s", errorCode, failedUrl.c_str(), errorText.c_str());
+    CSLogError("code:%d url:%s error:%s", errorCode, failedUrl.ToString().c_str(), errorText.ToString().c_str());
     return true;
 }
 
 void CSBrowserClient::OnTitleChange(CefRefPtr<CefBrowser> browser, const CefString& title)
 {
-    CSLogInfo("OnTitleChange() - %s", title.c_str());
+    CSLogInfo("OnTitleChange() - %s", title.ToString().c_str());
 }
 
 bool CSBrowserClient::OnConsoleMessage(CefRefPtr<CefBrowser> browser, const CefString& message, const CefString& source, int line)
 {
-    CSLogInfo("%s:%d - %s", source.c_str(), line, message.c_str());
+    CSLogInfo("%s:%d - %s", source.ToString().c_str(), line, message.ToString().c_str());
     return true;
 }
 
@@ -145,13 +151,9 @@ void CSBrowserClient::OnPaint(CefRefPtr<CefBrowser> browser, CefBrowser::PaintEl
     {
         const CefRect &rect = *i;
         CSLogDebug("\tRect %dx%d %dx%d", rect.x, rect.y, rect.width, rect.height);
-        CopyRGBA(mImage, (unsigned char *)buffer, width, height, rect);
-
-        CSRect csRect;
-        csRect.x = rect.x;
-        csRect.y = rect.y;
-        csRect.width = rect.width;
-        csRect.height = rect.height;
+		CSRect csRect = { rect.x, rect.y, rect.width, rect.height };
+ 
+		mWindow->UpdateRect((unsigned char *)buffer, width, height, csRect); 
         mWindow->InvalidateRect(csRect);
     }
 }
@@ -159,11 +161,6 @@ void CSBrowserClient::OnPaint(CefRefPtr<CefBrowser> browser, CefBrowser::PaintEl
 void CSBrowserClient::OnCursorChange(CefRefPtr<CefBrowser> browser, CefCursorHandle cursor)
 {
     mWindow->SetCursor(cursor);
-}
-
-CSBrowserClient::Image &CSBrowserClient::GetBrowserImage()
-{
-    return mImage;
 }
 
 void CSBrowserClient::GetBrowserSize(int &width, int &height)

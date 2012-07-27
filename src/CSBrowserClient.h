@@ -52,9 +52,7 @@ public:
     virtual void OnPaint(CefRefPtr<CefBrowser> browser,  PaintElementType type, const RectList& dirtyRects, const void* buffer);
     virtual void OnCursorChange(CefRefPtr<CefBrowser> browser, CefCursorHandle cursor);
     
-    // getters
-    typedef std::vector<unsigned char> Image;    
-    Image& GetBrowserImage();
+    // setters/getters
     void GetBrowserSize(int &width, int &height);
     void SetBrowserSize(int width, int height);
     CefRefPtr<CefBrowser> GetBrowser() { return mBrowser; }
@@ -63,9 +61,6 @@ private:
     CefRefPtr<CefBrowser> mBrowser;
     CefRefPtr<CefV8Context> mJS;
     CSWindow *mWindow;
-    
-    Image mImage;
-    //JSPluginUI *mPluginUI;
 
     IMPLEMENT_REFCOUNTING(CSBrowserClient);
 };

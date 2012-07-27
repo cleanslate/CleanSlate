@@ -117,6 +117,7 @@ xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir
     <ClInclude Include="..\..\src\CSRect.h" />
     <ClInclude Include="..\..\src\CSSchemeFactory.h" />
     <ClInclude Include="..\..\src\CSSchemeLocalHandler.h" />
+    <ClInclude Include="..\..\src\msw\CSApp.h" />
     <ClInclude Include="..\..\src\msw\CSLog.h" />
     <ClInclude Include="..\..\src\msw\CSWindow.h" />
   </ItemGroup>
@@ -128,6 +129,7 @@ xcopy  $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir
     </ClCompile>
     <ClCompile Include="..\..\src\CSSchemeFactory.cpp" />
     <ClCompile Include="..\..\src\CSSchemeLocalHandler.cpp" />
+    <ClCompile Include="..\..\src\msw\CSApp.cpp" />
     <ClCompile Include="..\..\src\msw\CSLog.cpp" />
     <ClCompile Include="..\..\src\msw\CSWindow.cpp" />
     <ClCompile Include="..\..\src\msw\WinMain.cpp" />

@@ -35,6 +35,9 @@
     <ClInclude Include="..\..\src\CSPrecomp.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\msw\CSApp.h">
+      <Filter>Source Files\msw</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp">
@@ -57,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\CSPrecomp.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\msw\CSApp.cpp">
+      <Filter>Source Files\msw</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

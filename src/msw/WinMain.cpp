@@ -1,15 +1,14 @@
 #include "CSPrecomp.h"
 
+#include "CSApp.h"
+
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	CefSettings settings;
-    CefRefPtr<CefApp> app;
-    
-    // Initialize CEF.
-    CefInitialize(settings, app);
-    
-    // Run the application message loop.
-    CefRunMessageLoop();
+	CSApp app;
+
+	app.Init();
+	app.Run();
+	app.Cleanup();
 
 	return 0;
 }
