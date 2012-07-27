@@ -338,7 +338,6 @@
 		D7DE841415C017C600D7B5D8 /* zh_CN.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = zh_CN.lproj; path = "../../third-party/cef/osx/Resources/zh_CN.lproj"; sourceTree = "<group>"; };
 		D7DE841515C017C600D7B5D8 /* zh_TW.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = zh_TW.lproj; path = "../../third-party/cef/osx/Resources/zh_TW.lproj"; sourceTree = "<group>"; };
 		D7DE843715C1069E00D7B5D8 /* CSBrowserClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSBrowserClient.h; sourceTree = "<group>"; };
-		D7DE843915C106F100D7B5D8 /* CleanSlate-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CleanSlate-Prefix.pch"; sourceTree = "<group>"; };
 		D7E8B48F15BA73FD00475680 /* CleanSlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E8B49315BA73FD00475680 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D7E8B49615BA73FD00475680 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -583,7 +582,6 @@
 		D7DE843815C106D100D7B5D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D7DE843915C106F100D7B5D8 /* CleanSlate-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -913,7 +911,7 @@
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CleanSlate-Prefix.pch";
+				GCC_PREFIX_HEADER = ../../src/CSPrecomp.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"\"CHROMIUM_BUILD\"",
 					"\"ENABLE_ONE_CLICK_SIGNIN\"",
@@ -970,7 +968,7 @@
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CleanSlate-Prefix.pch";
+				GCC_PREFIX_HEADER = ../../src/CSPrecomp.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"\"CHROMIUM_BUILD\"",
 					"\"ENABLE_ONE_CLICK_SIGNIN\"",
