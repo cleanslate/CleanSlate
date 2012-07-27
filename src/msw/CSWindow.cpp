@@ -25,3 +25,20 @@ void CSWindow::InvalidateRect(const CSRect &rect)
 {
 
 }
+
+void CSWindow::GetViewRect(CSRect &rect)
+{
+
+
+}
+
+void CSWindow::GetScreenPoint(int viewX, int viewY, int& screenX, int& screenY)
+{
+
+}
+
+void CSWindow::SetCursor(CefCursorHandle cursor)
+{
+
+}
+
