@@ -42,8 +42,8 @@ public:
     // CefDisplayHandler
     virtual void OnTitleChange(CefRefPtr<CefBrowser> browser, const CefString& title);
     virtual bool OnConsoleMessage(CefRefPtr<CefBrowser> browser, const CefString& message, const CefString& source, int line);
-    
-    // CefRenderHandler
+
+	// CefRenderHandler
     virtual bool GetViewRect(CefRefPtr<CefBrowser> browser, CefRect& rect);
     virtual bool GetScreenRect(CefRefPtr<CefBrowser> browser, CefRect& rect);
     virtual bool GetScreenPoint(CefRefPtr<CefBrowser> browser, int viewX, int viewY, int& screenX, int& screenY);
@@ -52,6 +52,10 @@ public:
     virtual void OnPaint(CefRefPtr<CefBrowser> browser,  PaintElementType type, const RectList& dirtyRects, const void* buffer);
     virtual void OnCursorChange(CefRefPtr<CefBrowser> browser, CefCursorHandle cursor);
     
+	// CefV8ContextHandler
+	virtual void OnContextCreated(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefRefPtr<CefV8Context> context);
+	virtual void OnContextReleased(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefRefPtr<CefV8Context> context);
+	
     // setters/getters
     void GetBrowserSize(int &width, int &height);
     void SetBrowserSize(int width, int height);

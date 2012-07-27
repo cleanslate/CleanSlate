@@ -132,6 +132,16 @@ void CSBrowserClient::OnCursorChange(CefRefPtr<CefBrowser> browser, CefCursorHan
     mWindow->SetCursor(cursor);
 }
 
+void CSBrowserClient::OnContextCreated(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefRefPtr<CefV8Context> context)
+{
+	mJS = context;
+}
+
+void CSBrowserClient::OnContextReleased(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefRefPtr<CefV8Context> context)
+{
+	mJS = NULL;
+}
+
 void CSBrowserClient::GetBrowserSize(int &width, int &height)
 {
     width = height = 0;

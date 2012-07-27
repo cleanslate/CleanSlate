@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="local://style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>
+    $(function () {
+	    window.ui.show(true);
+        window.ui.setSizeHints(400, 400);
+
+	    $(".titlebar").mousedown(function () { window.ui.startMove(); })
+		    .mouseup(function () { window.ui.stopMove(); });
+
+        $(".resize").mousedown(function() { window.ui.startResize(); })
+            .mouseup(function() { window.ui.stopResize(); });
+
+        $(window).resize(function () {
+            var browser = $("#browser");
+            var win = $(".window");
+            browser.width(win.width());
+            browser.height(win.height() - browser.position().top);
+            window.sys.log("width = " + win.width().toString() + ", height = " + win.height().toString());
+        });
+
+        // resize
+        var browser = $("#browser");
+            var win = $(".window");
+            browser.width(win.width());
+            browser.height(win.height() - browser.position().top);
+            window.sys.log("width = " + win.width().toString() + ", height = " + win.height().toString());
+    });
+    </script>
+</head>
+
+<body>
+    <div class="window">
+    <div class="titlebar"><a href="#" onclick="window.ui.close(); return false;">X</a><div class="clear"></div></div>
+    <div class="resize"></div>
+    <a href="local://index.html">refresh</a> |
+    <a href="#" onclick="return false;">stop</a> |
+    <a href="#" onclick="return false;">back</a>
+    <br>
+    <form>
+    url:<input type="text"></input>
+    </form>
+    <br>
+    <!--div id="browser"></div -->
+    <embed type="application/x-client-browser" id="browser">
+    <!-- iframe id="browser" src="http://www.google.com/"></iframe -->
+    </div>
+</body>
+
+</html>
