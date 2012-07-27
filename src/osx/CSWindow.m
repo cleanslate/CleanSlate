@@ -33,7 +33,7 @@ CSWindow::CSWindow()
     mBrowserClient = new CSBrowserClient(this);
     [view setBrowserClient:mBrowserClient];
     
-    bool result = CefBrowser::CreateBrowser(windowInfo, mBrowserClient, "http://www.google.com/", browserSettings);
+    bool result = CefBrowser::CreateBrowser(windowInfo, mBrowserClient, "local://index.html", browserSettings);
     if (!result)
         CSLogDebug("CefBrowser::CreateBrowser() failed");
     else

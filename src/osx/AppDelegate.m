@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 
 #include "CSWindow.h"
+#include "CSSchemeFactory.h"
 
 @implementation AppDelegate
 
@@ -28,6 +29,10 @@
 
 -(void) applicationWillFinishLaunching:(NSNotification *)notification
 {
+    // add handler
+    CSSchemeFactory::Register();
+    
+    
     CSWindow *window = new CSWindow();
     window->Show(true);
     //NSWindow *win = [[NSWindow alloc] init];

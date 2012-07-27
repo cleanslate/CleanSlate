@@ -25,8 +25,10 @@ public:
     IMPLEMENT_REFCOUNTING(UIBrowserSchemeHandler);
     
 private:
-    FILE *mInputStream;
+    FILE *mFile;
     std::string mMimeType;
+    
+    std::string GetMimeType(const std::string &ext);
 };
 
 

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		D749480D15C192FA00703695 /* CSSchemeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749480C15C192FA00703695 /* CSSchemeFactory.cpp */; };
 		D749481315C1939900703695 /* CSSchemeLocalHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749481215C1939900703695 /* CSSchemeLocalHandler.cpp */; };
+		D749481B15C2A4B100703695 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D749481915C2A4B100703695 /* index.html */; };
+		D749481C15C2A4B100703695 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = D749481A15C2A4B100703695 /* style.css */; };
+		D749481F15C2A65700703695 /* CSUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749481E15C2A65600703695 /* CSUtil.cpp */; };
 		D78C9D1515BC678000DCF697 /* CSView.m in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D1415BC678000DCF697 /* CSView.m */; };
 		D78C9D9A15BCB7F500DCF697 /* app_cpptoc.cc in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D2115BCB7F500DCF697 /* app_cpptoc.cc */; };
 		D78C9D9B15BCB7F500DCF697 /* client_cpptoc.cc in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D2415BCB7F500DCF697 /* client_cpptoc.cc */; };
@@ -155,6 +158,10 @@
 		D749480C15C192FA00703695 /* CSSchemeFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSSchemeFactory.cpp; sourceTree = "<group>"; };
 		D749481115C1938A00703695 /* CSSchemeLocalHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSSchemeLocalHandler.h; sourceTree = "<group>"; };
 		D749481215C1939900703695 /* CSSchemeLocalHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSSchemeLocalHandler.cpp; sourceTree = "<group>"; };
+		D749481915C2A4B100703695 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = index.html; path = ../common/index.html; sourceTree = "<group>"; };
+		D749481A15C2A4B100703695 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = style.css; path = ../common/style.css; sourceTree = "<group>"; };
+		D749481D15C2A61C00703695 /* CSUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSUtil.h; sourceTree = "<group>"; };
+		D749481E15C2A65600703695 /* CSUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSUtil.cpp; sourceTree = "<group>"; };
 		D78C9D1315BC678000DCF697 /* CSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSView.h; sourceTree = "<group>"; };
 		D78C9D1415BC678000DCF697 /* CSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSView.m; sourceTree = "<group>"; };
 		D78C9D1F15BCB7F500DCF697 /* cef_logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cef_logging.h; sourceTree = "<group>"; };
@@ -575,6 +582,8 @@
 				D7DE841415C017C600D7B5D8 /* zh_CN.lproj */,
 				D7DE841515C017C600D7B5D8 /* zh_TW.lproj */,
 				D7DE83BC15C0172E00D7B5D8 /* chrome.pak */,
+				D749481915C2A4B100703695 /* index.html */,
+				D749481A15C2A4B100703695 /* style.css */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -658,6 +667,8 @@
 				D7E8B4EB15BA8A8F00475680 /* CSWindowImpl.h */,
 				D7E8B4EC15BA8A8F00475680 /* CSWindowImpl.m */,
 				D7E8B4E915BA8A0500475680 /* main.m */,
+				D749481D15C2A61C00703695 /* CSUtil.h */,
+				D749481E15C2A65600703695 /* CSUtil.cpp */,
 			);
 			path = osx;
 			sourceTree = "<group>";
@@ -767,6 +778,8 @@
 				D7DE842515C017C600D7B5D8 /* vi.lproj in Resources */,
 				D7DE842615C017C600D7B5D8 /* zh_CN.lproj in Resources */,
 				D7DE842715C017C600D7B5D8 /* zh_TW.lproj in Resources */,
+				D749481B15C2A4B100703695 /* index.html in Resources */,
+				D749481C15C2A4B100703695 /* style.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,6 +859,7 @@
 				D7C00FCA15C11CA1004CD6D9 /* CSLog.cpp in Sources */,
 				D749480D15C192FA00703695 /* CSSchemeFactory.cpp in Sources */,
 				D749481315C1939900703695 /* CSSchemeLocalHandler.cpp in Sources */,
+				D749481F15C2A65700703695 /* CSUtil.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
