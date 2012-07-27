@@ -15,6 +15,8 @@
 #include "CSLog.h"
 #include "CSRect.h"
 
+#include "CSJsUi.h"
+
 
 CSBrowserClient::CSBrowserClient(CSWindow *window) :
     mWindow(window)
@@ -44,6 +46,9 @@ void CSBrowserClient::OnBeforeClose(CefRefPtr<CefBrowser> browser)
 {
     CSLogDebug("OnBeforeClose");    
     mBrowser = NULL;
+    
+    // destroy the window
+    mWindow->Destroy();
 }
 
 void CSBrowserClient::OnLoadStart(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame)
@@ -135,6 +140,13 @@ void CSBrowserClient::OnCursorChange(CefRefPtr<CefBrowser> browser, CefCursorHan
 void CSBrowserClient::OnContextCreated(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefRefPtr<CefV8Context> context)
 {
 	mJS = context;
+    
+    // register any javascript plugins
+    CefRefPtr<CefV8Value> windowObject = context->GetGlobal();
+	{
+		CSJsUi *js = new CSJsUi(mWindow);
+		js->Register(windowObject);
+	}
 }
 
 void CSBrowserClient::OnContextReleased(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefRefPtr<CefV8Context> context)

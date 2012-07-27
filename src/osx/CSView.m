@@ -34,6 +34,8 @@
         [self addTrackingArea:trackingArea];
         
         mBrowserClient = NULL;
+        mMoving = NO;
+        mResizing = NO;
     }
     
     return self;
@@ -54,8 +56,12 @@
     int width = size.width;
     int height = size.height;
     
+    mImageSize = size;
+    
     if (mImage.size() != width*height*4)
         mImage.resize(width*height*4);
+    
+    //if (mImageSize != [self frame].size)
     
     for (int y = rect.origin.y; y < rect.origin.y + rect.size.height; y++)
     {
@@ -73,6 +79,44 @@
             src += 4;
         }
     }
+    
+    NSWindow *window = [self window];
+    NSRect frame = [window frame];
+    if (frame.size.width != mImageSize.width || 
+        frame.size.height != mImageSize.height)
+    {
+        float diff = frame.size.height - mImageSize.height;
+        frame.size.width = mImageSize.width;
+        frame.size.height = mImageSize.height; 
+        frame.origin.y += diff;
+        
+        [window setFrame:frame display:YES];
+    }
+}
+
+-(void) startMove
+{    
+    mStartMovePos = [NSEvent mouseLocation];
+    mMoving = YES;
+    CSLogDebug("startMove %f x %f", mStartMovePos.x, mStartMovePos.y);
+}
+
+-(void) stopMove
+{
+    mMoving = NO;
+}
+
+-(void) startResize
+{
+    mStartResizePos = [NSEvent mouseLocation];
+    mStartResizeFrame = [[self window] frame];
+    mResizing = YES;
+    CSLogDebug("startMove %f x %f", mStartResizePos.x, mStartResizePos.y);
+}
+
+-(void) stopResize
+{
+    mResizing = NO;
 }
 
 -(void) drawRect:(NSRect)dirtyRect
@@ -83,42 +127,35 @@
 
     if (mBrowserClient)
     {
-        int width, height;
-        mBrowserClient->GetBrowserSize(width, height);
-        if (width > 0 && height > 0)
+        //int width, height;
+        //mBrowserClient->GetBrowserSize(width, height);
+        //if (width > 0 && height > 0 && mImage.size() == width*height*4)
+        int width = mImageSize.width;
+        int height = mImageSize.height;
         {
+            NSRect frame = [self frame];
+            
             unsigned char *data = &mImage.front();
             NSBitmapImageRep *bitmap = [[[NSBitmapImageRep alloc] initWithBitmapDataPlanes:&data pixelsWide:width pixelsHigh:height bitsPerSample:8 samplesPerPixel:4 hasAlpha:YES isPlanar:NO colorSpaceName:NSDeviceRGBColorSpace  bytesPerRow:width*4 bitsPerPixel:32] autorelease];
             
+            
+            //NSPoint pt = NSMakePoint(0, frame.size.height - height);
             
             NSImage *nsImage = [[[NSImage alloc] init] autorelease];
             [nsImage addRepresentation:bitmap];
             [nsImage compositeToPoint:NSZeroPoint operation:NSCompositeCopy];
             
+            //[self setImage:nsImage];
+            /*
             if ([[self window] hasShadow])
             {
                 [[self window] setHasShadow:NO];
                 [[self window] setHasShadow:YES];
             }
+             */
         }
     }
 }
-
--(void) setFrame:(NSRect)frameRect
-{
-    [super setFrame:frameRect];
-    
-    int width = frameRect.size.width;
-    int height = frameRect.size.height;
-    
-    CSLogDebug("setFrame(%dx%d)", width, height);
-    
-    if (mBrowserClient)
-        mBrowserClient->SetBrowserSize(width, height);
-    
-    mImage.resize(width*height*4);
-}
-
 
 -(NSPoint) getClickPointForEvent:(NSEvent*)event
 {
@@ -161,6 +198,8 @@
 
 -(void) mouseUp:(NSEvent *)event
 {
+    mMoving = NO;
+    mResizing = NO;
     [self mouseEvent:event type:MBT_LEFT clickRelease:true];    
 }
 
@@ -174,14 +213,64 @@
     [self mouseEvent:event type:MBT_MIDDLE clickRelease:true];    
 }
 
+- (void) setFrameSize:(NSSize)newSize
+{
+    [super setFrameSize:newSize];
+    
+    /*
+    int width = newSize.width;
+    int height = newSize.height;
+    
+    CSLogDebug("setFrame(%dx%d)", width, height);
+    
+    if (mBrowserClient)
+        mBrowserClient->SetBrowserSize(width, height);
+     */
+}
+
 -(void) mouseMoved:(NSEvent *)event
 {
+    if (mMoving)
+    {
+        // handle window drag   
+        NSWindow *window = [self window];
+        NSRect screenVisibleFrame = [[NSScreen mainScreen] visibleFrame];
+        NSRect windowFrame = [window frame];
+        NSPoint newOrigin = windowFrame.origin;
+        
+        // Get the mouse location in window coordinates.
+        NSPoint currentLocation = [NSEvent mouseLocation];
+        
+        // Update the origin with the difference between the new mouse location and the old mouse location.
+        newOrigin.x += (currentLocation.x - mStartMovePos.x);
+        newOrigin.y += (currentLocation.y - mStartMovePos.y);
+        
+        mStartMovePos = currentLocation;
+        
+        [window setFrameOrigin:newOrigin];
+        
+        return;
+    }
+    
+    if (mResizing)
+    {
+        // Get the mouse location in window coordinates.
+        NSPoint currentLocation = [NSEvent mouseLocation];
+        
+        NSSize newSize;
+        newSize.width = mStartResizeFrame.size.width + (currentLocation.x - mStartResizePos.x);
+        newSize.height = mStartResizeFrame.size.height - (currentLocation.y - mStartResizePos.y);        
+        
+        if (mBrowserClient)
+            mBrowserClient->SetBrowserSize(newSize.width, newSize.height);
+        
+        return;        
+    }
+    
     if (!mBrowserClient || !mBrowserClient->GetBrowser().get())
         return;
     
     NSPoint point = [self getClickPointForEvent:event];
-    
-    CSLogDebug("mouseMoved %dx%d", point.x, point.y);
     mBrowserClient->GetBrowser()->SendMouseMoveEvent(point.x, point.y, false);    
 }
 

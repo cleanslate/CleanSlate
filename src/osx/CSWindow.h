@@ -24,6 +24,14 @@ public:
     void GetViewRect(CSRect &rect);
     void GetScreenPoint(int viewX, int viewY, int& screenX, int& screenY);
     void SetCursor(CefCursorHandle cursor);
+    void Close();
+    void Destroy();
+    
+    // javascript functions
+    void StartMove();
+    void StopMove();
+    void StartResize();
+    void StopResize();
     
 private:
     void *mWindow;

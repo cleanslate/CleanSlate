@@ -23,6 +23,7 @@ body  {
 }
 
 .resize {
+    border: 1px solid black;
     position: absolute;
     cursor: nw-resize;
     width: 20px;

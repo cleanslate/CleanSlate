@@ -15,8 +15,8 @@
 
 CSWindow::CSWindow()
 {
-    CSWindowImpl *window = [[CSWindowImpl alloc] init];
-
+    CSWindowImpl *window = [[[CSWindowImpl alloc] init] autorelease];
+    [window retain];
     [window setAlphaValue:1.0];
     [window setOpaque:NO];
     
@@ -42,9 +42,7 @@ CSWindow::CSWindow()
 
 CSWindow::~CSWindow()
 {
-    delete mBrowserClient;
-    
-    [(id)mWindow release];
+    // we don't delete mWindow because calling close will automatically delete it
 }
 
 void CSWindow::Show(bool show)
@@ -112,4 +110,59 @@ void CSWindow::SetCursor(CefCursorHandle cursor)
 {
     [cursor set];
 }
+
+void CSWindow::Close()
+{
+    // tell the browser to close first
+    mBrowserClient->GetBrowser()->CloseBrowser();
+}
+
+void CSWindow::Destroy()
+{
+    // called when browser is destroyed
+    NSWindow *window = (NSWindow *)mWindow;
+    [window close];
+
+    // check to see if we should terminate the app
+    NSApplication *app = [NSApplication sharedApplication];
+    NSArray *windows = [app windows];
+    if ([windows count] == 0)
+        [app terminate:nil];
+
+    // delete ourself
+    delete this;
+}
+
+void CSWindow::StartMove()
+{
+    NSWindow *window = (NSWindow *)mWindow;
+    CSView *view = (CSView *)[window contentView];
+    
+    [view startMove];
+}
+
+void CSWindow::StopMove()
+{
+    NSWindow *window = (NSWindow *)mWindow;
+    CSView *view = (CSView *)[window contentView];
+    
+    [view stopMove];
+}
+
+void CSWindow::StartResize()
+{
+    NSWindow *window = (NSWindow *)mWindow;
+    CSView *view = (CSView *)[window contentView];
+    
+    [view startResize];    
+}
+
+void CSWindow::StopResize()
+{
+    NSWindow *window = (NSWindow *)mWindow;
+    CSView *view = (CSView *)[window contentView];
+    
+    [view stopResize];    
+}
+
 

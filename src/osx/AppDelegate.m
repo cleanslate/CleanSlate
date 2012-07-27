@@ -35,6 +35,10 @@
     
     CSWindow *window = new CSWindow();
     window->Show(true);
+
+    window = new CSWindow();
+    window->Show(true);
+    
     //NSWindow *win = [[NSWindow alloc] init];
     //[win makeKeyWindow];
     //[win orderFront:self];

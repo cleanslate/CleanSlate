@@ -13,7 +13,7 @@
 
 -(id) init
 {
-    if ((self = [super initWithContentRect:NSMakeRect(100,100,400,300)
+    if ((self = [super initWithContentRect:NSMakeRect(0,0,640,480)
                                  styleMask:NSBorderlessWindowMask 
                                    backing:NSBackingStoreBuffered 
                                      defer:NO]))
@@ -26,41 +26,21 @@
         // create a view
         
         CSView *view = [[[CSView alloc] init] autorelease];
+        [view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
         [self setContentView:view];
         
     }
     return self;
 }
 
+-(void) dealloc
+{
+    [super dealloc];
+}
+
 -(BOOL) canBecomeKeyWindow
 {
     return YES;
-}
-
--(void) mouseDown:(NSEvent *)theEvent
-{
-    initialLocation = [theEvent locationInWindow];
-}
-
--(void) mouseDragged:(NSEvent *)theEvent 
-{
-    NSRect screenVisibleFrame = [[NSScreen mainScreen] visibleFrame];
-    NSRect windowFrame = [self frame];
-    NSPoint newOrigin = windowFrame.origin;
-    
-    // Get the mouse location in window coordinates.
-    NSPoint currentLocation = [theEvent locationInWindow];
-    // Update the origin with the difference between the new mouse location and the old mouse location.
-    newOrigin.x += (currentLocation.x - initialLocation.x);
-    newOrigin.y += (currentLocation.y - initialLocation.y);
-    
-    // Don't let window get dragged up under the menu bar
-    if ((newOrigin.y + windowFrame.size.height) > (screenVisibleFrame.origin.y + screenVisibleFrame.size.height)) {
-        newOrigin.y = screenVisibleFrame.origin.y + (screenVisibleFrame.size.height - windowFrame.size.height);
-    }
-    
-    // Move the window to the new location
-    [self setFrameOrigin:newOrigin];
 }
 
 @end
