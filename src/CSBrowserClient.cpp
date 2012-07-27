@@ -9,9 +9,12 @@
 #include <iostream>
 
 #include "include/cef_app.h"
+#include "include/cef_client.h"
 
 #include "CSBrowserClient.h"
 #include "CSWindow.h"
+#include "CSLog.h"
+#include "CSRect.h"
 
 static void CopyRGBA(std::vector<unsigned char> &image, const unsigned char *buffer, int width, int height, const CefRect &rect)
 {

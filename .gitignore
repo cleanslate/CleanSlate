@@ -16,3 +16,15 @@
 *xcuserdata
 *project.xcworkspace
 *xcodebuild
+
+build/msw/Debug/
+build/msw/Release/
+build/msw/debug.log
+build/msw/ipch/
+third-party/cef/msw/Debug/lib/
+third-party/cef/msw/Release/lib/
+*.vcxproj.user
+*.sdf
+*.opensdf
+*.suo
+
