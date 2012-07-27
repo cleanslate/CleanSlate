@@ -52,17 +52,22 @@ void CSWindow::Show(bool show)
     [(id)mWindow makeKeyAndOrderFront:nil];
 }
 
-void *CSWindow::winHandle()
-{
-    return mWindow;
-}
-
 void CSWindow::GetSize(int &width, int &height)
 {
     width = height = 0;
     NSRect rect = [(id)mWindow frame];
     width = rect.size.width;
     height = rect.size.height;
+}
+
+void CSWindow::UpdateRect(unsigned char *buffer, int width, int height, const CSRect &rect)
+{
+    NSWindow *window = (NSWindow *)mWindow;
+    CSView *view = (CSView *)[window contentView];
+
+    NSSize nsSize = { width, height };
+    NSRect nsRect = NSMakeRect(rect.x, rect.y, rect.width, rect.height);
+    [view updateRect:buffer size:nsSize rect:nsRect];
 }
 
 void CSWindow::InvalidateRect(const CSRect &rect)

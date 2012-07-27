@@ -15,37 +15,6 @@
 #include "CSLog.h"
 #include "CSRect.h"
 
-// Convert from BGRA to RGBA format
-/*
-static void CopyRGBA(CSBrowserClient::Image &image, const unsigned char *buffer, int width, int height, const CefRect &rect)
-{
-    if (image.size() != width*height*4)
-        image.resize(width*height*4);
-    
-    for (int y = rect.y; y < rect.y + rect.height; y++)
-    {
-        int offset = (y*width + rect.x) * 4;
-        unsigned char *dst = &image[offset];
-        const unsigned char *src = &buffer[offset];
-        for (int x = rect.x; x < rect.x + rect.width; x++)
-        {
-#ifdef WIN32
-            dst[0] = src[0]; // R
-            dst[1] = src[1]; // G
-            dst[2] = src[2]; // B
-            dst[3] = src[3]; // A
-#else
-            dst[0] = src[2]; // R
-            dst[1] = src[1]; // G
-            dst[2] = src[0]; // B
-            dst[3] = src[3]; // A
-#endif            
-            dst += 4;
-            src += 4;
-        }
-    }
-}
-*/
 
 CSBrowserClient::CSBrowserClient(CSWindow *window) :
     mWindow(window)

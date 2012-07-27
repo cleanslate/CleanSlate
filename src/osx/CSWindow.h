@@ -17,9 +17,9 @@ public:
     CSWindow();
     ~CSWindow();
     
-    void *winHandle();
     void Show(bool show);
     void GetSize(int &width, int &height);
+    void UpdateRect(unsigned char *buffer, int width, int height, const CSRect &rect);
     void InvalidateRect(const CSRect &rect);
     void GetViewRect(CSRect &rect);
     void GetScreenPoint(int viewX, int viewY, int& screenX, int& screenY);

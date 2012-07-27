@@ -49,6 +49,32 @@
     mBrowserClient = client;
 }
 
+-(void) updateRect:(unsigned char *)buffer size:(NSSize)size rect:(NSRect)rect
+{
+    int width = size.width;
+    int height = size.height;
+    
+    if (mImage.size() != width*height*4)
+        mImage.resize(width*height*4);
+    
+    for (int y = rect.origin.y; y < rect.origin.y + rect.size.height; y++)
+    {
+        int offset = (y*width + rect.origin.x) * 4;
+        unsigned char *dst = &mImage[offset];
+        const unsigned char *src = &buffer[offset];
+        for (int x = rect.origin.x; x < rect.origin.x + rect.size.width; x++)
+        {
+            dst[0] = src[2]; // R
+            dst[1] = src[1]; // G
+            dst[2] = src[0]; // B
+            dst[3] = src[3]; // A
+         
+            dst += 4;
+            src += 4;
+        }
+    }
+}
+
 -(void) drawRect:(NSRect)dirtyRect
 {
     // Drawing code here.
@@ -57,12 +83,11 @@
 
     if (mBrowserClient)
     {
-        CSBrowserClient::Image &image = mBrowserClient->GetBrowserImage();
         int width, height;
         mBrowserClient->GetBrowserSize(width, height);
         if (width > 0 && height > 0)
         {
-            unsigned char *data = &image.front();
+            unsigned char *data = &mImage.front();
             NSBitmapImageRep *bitmap = [[[NSBitmapImageRep alloc] initWithBitmapDataPlanes:&data pixelsWide:width pixelsHigh:height bitsPerSample:8 samplesPerPixel:4 hasAlpha:YES isPlanar:NO colorSpaceName:NSDeviceRGBColorSpace  bytesPerRow:width*4 bitsPerPixel:32] autorelease];
             
             
@@ -90,6 +115,8 @@
     
     if (mBrowserClient)
         mBrowserClient->SetBrowserSize(width, height);
+    
+    mImage.resize(width*height*4);
 }
 
 

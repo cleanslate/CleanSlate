@@ -13,7 +13,9 @@ class CSBrowserClient;
 @interface CSView : NSView
 {
     CSBrowserClient *mBrowserClient;
+    std::vector<unsigned char> mImage;
 }
 
 -(void) setBrowserClient:(CSBrowserClient *)client;
+-(void) updateRect:(unsigned char *)buffer size:(NSSize)size rect:(NSRect)rect;
 @end
