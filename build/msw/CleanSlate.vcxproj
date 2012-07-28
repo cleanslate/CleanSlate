@@ -115,6 +115,8 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\CSBrowserClient.h" />
+    <ClInclude Include="..\..\src\CSJsModule.h" />
+    <ClInclude Include="..\..\src\CSJsSys.h" />
     <ClInclude Include="..\..\src\CSJsUi.h" />
     <ClInclude Include="..\..\src\CSPrecomp.h" />
     <ClInclude Include="..\..\src\CSRect.h" />
@@ -127,6 +129,8 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp" />
+    <ClCompile Include="..\..\src\CSJsModule.cpp" />
+    <ClCompile Include="..\..\src\CSJsSys.cpp" />
     <ClCompile Include="..\..\src\CSJsUi.cpp" />
     <ClCompile Include="..\..\src\CSPrecomp.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

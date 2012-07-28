@@ -44,6 +44,12 @@
     <ClInclude Include="..\..\src\msw\CSUtil.h">
       <Filter>Source Files\msw</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\CSJsModule.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\CSJsSys.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp">
@@ -75,6 +81,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\msw\CSUtil.cpp">
       <Filter>Source Files\msw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CSJsModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CSJsSys.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
