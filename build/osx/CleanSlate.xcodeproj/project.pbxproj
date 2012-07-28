@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D7351BE915C360F900EE3B4F /* CSJsSys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351BE815C360F900EE3B4F /* CSJsSys.cpp */; };
 		D7351BEC15C366E300EE3B4F /* CSJsModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */; };
+		D7351D0915C44B2F00EE3B4F /* libevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7351C8215C440E000EE3B4F /* libevent.a */; };
 		D749480D15C192FA00703695 /* CSSchemeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749480C15C192FA00703695 /* CSSchemeFactory.cpp */; };
 		D749481315C1939900703695 /* CSSchemeLocalHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749481215C1939900703695 /* CSSchemeLocalHandler.cpp */; };
 		D749481B15C2A4B100703695 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D749481915C2A4B100703695 /* index.html */; };
@@ -142,6 +143,23 @@
 		D7E8B50115BAAA7100475680 /* CSWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E8B50015BAA6A900475680 /* CSWindow.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D7351C8115C440E000EE3B4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7351C7A15C440E000EE3B4F /* libevent.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7351BF815C43FF200EE3B4F;
+			remoteInfo = libevent;
+		};
+		D7351CF815C4418700EE3B4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7351C7A15C440E000EE3B4F /* libevent.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D7351BF715C43FF200EE3B4F;
+			remoteInfo = libevent;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		D7DE834F15C0137A00D7B5D8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -161,6 +179,7 @@
 		D7351BE815C360F900EE3B4F /* CSJsSys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsSys.cpp; sourceTree = "<group>"; };
 		D7351BEA15C366D400EE3B4F /* CSJsModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsModule.h; sourceTree = "<group>"; };
 		D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsModule.cpp; sourceTree = "<group>"; };
+		D7351C7A15C440E000EE3B4F /* libevent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = libevent.xcodeproj; sourceTree = "<group>"; };
 		D749480B15C192E900703695 /* CSSchemeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSSchemeFactory.h; sourceTree = "<group>"; };
 		D749480C15C192FA00703695 /* CSSchemeFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSSchemeFactory.cpp; sourceTree = "<group>"; };
 		D749481115C1938A00703695 /* CSSchemeLocalHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSSchemeLocalHandler.h; sourceTree = "<group>"; };
@@ -376,6 +395,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7351D0915C44B2F00EE3B4F /* libevent.a in Frameworks */,
 				D7E8B49415BA73FD00475680 /* Cocoa.framework in Frameworks */,
 				D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */,
 			);
@@ -384,6 +404,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D7351C7B15C440E000EE3B4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7351C8215C440E000EE3B4F /* libevent.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D78C9D1E15BCB7F500DCF697 /* libcef_dll */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +637,7 @@
 		D7E8B48415BA73FD00475680 = {
 			isa = PBXGroup;
 			children = (
+				D7351C7A15C440E000EE3B4F /* libevent.xcodeproj */,
 				D7E8B4D215BA75DD00475680 /* Classes */,
 				D7DE843815C106D100D7B5D8 /* Supporting Files */,
 				D7DE835815C0154200D7B5D8 /* Resources */,
@@ -707,6 +736,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D7351CF915C4418700EE3B4F /* PBXTargetDependency */,
 			);
 			name = CleanSlate;
 			productName = CleanSlate;
@@ -731,12 +761,28 @@
 			mainGroup = D7E8B48415BA73FD00475680;
 			productRefGroup = D7E8B49015BA73FD00475680 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D7351C7B15C440E000EE3B4F /* Products */;
+					ProjectRef = D7351C7A15C440E000EE3B4F /* libevent.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D7E8B48E15BA73FD00475680 /* CleanSlate */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D7351C8215C440E000EE3B4F /* libevent.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libevent.a;
+			remoteRef = D7351C8115C440E000EE3B4F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D7E8B48D15BA73FD00475680 /* Resources */ = {
@@ -886,6 +932,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D7351CF915C4418700EE3B4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libevent;
+			targetProxy = D7351CF815C4418700EE3B4F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D7E8B4BF15BA73FD00475680 /* Debug */ = {
