@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7351BE915C360F900EE3B4F /* CSJsSys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351BE815C360F900EE3B4F /* CSJsSys.cpp */; };
+		D7351BEC15C366E300EE3B4F /* CSJsModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */; };
 		D749480D15C192FA00703695 /* CSSchemeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749480C15C192FA00703695 /* CSSchemeFactory.cpp */; };
 		D749481315C1939900703695 /* CSSchemeLocalHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749481215C1939900703695 /* CSSchemeLocalHandler.cpp */; };
 		D749481B15C2A4B100703695 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D749481915C2A4B100703695 /* index.html */; };
@@ -155,6 +157,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D7351BE615C360D400EE3B4F /* CSJsSys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsSys.h; sourceTree = "<group>"; };
+		D7351BE815C360F900EE3B4F /* CSJsSys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsSys.cpp; sourceTree = "<group>"; };
+		D7351BEA15C366D400EE3B4F /* CSJsModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsModule.h; sourceTree = "<group>"; };
+		D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsModule.cpp; sourceTree = "<group>"; };
 		D749480B15C192E900703695 /* CSSchemeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSSchemeFactory.h; sourceTree = "<group>"; };
 		D749480C15C192FA00703695 /* CSSchemeFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSSchemeFactory.cpp; sourceTree = "<group>"; };
 		D749481115C1938A00703695 /* CSSchemeLocalHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSSchemeLocalHandler.h; sourceTree = "<group>"; };
@@ -647,6 +653,8 @@
 				D7E8B4D315BA75DD00475680 /* osx */,
 				D7DE843715C1069E00D7B5D8 /* CSBrowserClient.h */,
 				D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */,
+				D7351BE615C360D400EE3B4F /* CSJsSys.h */,
+				D7351BE815C360F900EE3B4F /* CSJsSys.cpp */,
 				D749482015C2AA4100703695 /* CSJsUi.h */,
 				D749482115C2AA7300703695 /* CSJsUi.cpp */,
 				D749482315C2ADBB00703695 /* CSPrecomp.cpp */,
@@ -656,6 +664,8 @@
 				D749480C15C192FA00703695 /* CSSchemeFactory.cpp */,
 				D749481115C1938A00703695 /* CSSchemeLocalHandler.h */,
 				D749481215C1939900703695 /* CSSchemeLocalHandler.cpp */,
+				D7351BEA15C366D400EE3B4F /* CSJsModule.h */,
+				D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */,
 			);
 			name = Classes;
 			path = ../../src;
@@ -870,6 +880,8 @@
 				D749481315C1939900703695 /* CSSchemeLocalHandler.cpp in Sources */,
 				D749481F15C2A65700703695 /* CSUtil.cpp in Sources */,
 				D749482215C2AA7300703695 /* CSJsUi.cpp in Sources */,
+				D7351BE915C360F900EE3B4F /* CSJsSys.cpp in Sources */,
+				D7351BEC15C366E300EE3B4F /* CSJsModule.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

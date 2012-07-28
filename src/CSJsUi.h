@@ -9,23 +9,19 @@
 #ifndef __CSJSUI_H__
 #define __CSJSUI_H__
 
+#include "CSJsModule.h"
+
 class CSWindow;
 
-class CSJsUi : public CefV8Handler
+class CSJsUi : public CSJsModule
 {
 public:
-    CSJsUi(CSWindow *window);
-    virtual ~CSJsUi();
+    CSJsUi(CSWindow *window);    
     
     void Register(CefRefPtr<CefV8Value> windowObject);
     
     virtual bool Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const CefV8ValueList& arguments,  CefRefPtr<CefV8Value>& retval, CefString& exception);                    
 
-    
-private:
-    CSWindow *mWindow;
-    
-    IMPLEMENT_REFCOUNTING(JSPluginUI);
 };
 
 #endif

@@ -15,7 +15,10 @@
 #include "CSLog.h"
 #include "CSRect.h"
 
+
+// javascript modules
 #include "CSJsUi.h"
+#include "CSJsSys.h"
 
 
 CSBrowserClient::CSBrowserClient(CSWindow *window) :
@@ -147,6 +150,11 @@ void CSBrowserClient::OnContextCreated(CefRefPtr<CefBrowser> browser, CefRefPtr<
 		CSJsUi *js = new CSJsUi(mWindow);
 		js->Register(windowObject);
 	}
+    
+    {
+        CSJsSys *js = new CSJsSys(mWindow);
+        js->Register(windowObject);
+    }
 }
 
 void CSBrowserClient::OnContextReleased(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefRefPtr<CefV8Context> context)
