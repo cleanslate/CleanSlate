@@ -22,7 +22,7 @@ public:
 protected:
     CSWindow *mWindow;
     
-    IMPLEMENT_REFCOUNTING(JSPluginUI);
+    IMPLEMENT_REFCOUNTING(CSJsModule);
 };
 
 #endif

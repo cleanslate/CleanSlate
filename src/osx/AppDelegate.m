@@ -29,16 +29,26 @@
 
 -(void) applicationWillFinishLaunching:(NSNotification *)notification
 {
+    // start timer to process libevent
+    mTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+
     // add handler
     CSSchemeFactory::Register();
     
-    
     CSWindow *window = new CSWindow();
     window->Show(true);
-    
-    //NSWindow *win = [[NSWindow alloc] init];
-    //[win makeKeyWindow];
-    //[win orderFront:self];
+}
+
+-(void) applicationWillTerminate:(NSNotification *)notification
+{
+    // stop the timer
+    [mTimer invalidate];
+}
+
+
+-(void) onTimer:(NSTimer *)timer
+{
+    event_loop(EVLOOP_ONCE);
 }
 
 @end

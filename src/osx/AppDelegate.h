@@ -10,8 +10,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 {
-    //NSWindow			*window;
-	//RootViewController	*viewController;
+    NSTimer *mTimer;
 }
 
 @end

@@ -373,6 +373,7 @@
 		D7351BFD15C43FF200EE3B4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				EXECUTABLE_PREFIX = "";
 				HEADER_SEARCH_PATHS = (
 					"../../third-party/libevent/include",
@@ -390,6 +391,7 @@
 		D7351BFE15C43FF200EE3B4F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				EXECUTABLE_PREFIX = "";
 				HEADER_SEARCH_PATHS = (
 					"../../third-party/libevent/include",

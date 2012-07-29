@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		D7351BE915C360F900EE3B4F /* CSJsSys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351BE815C360F900EE3B4F /* CSJsSys.cpp */; };
 		D7351BEC15C366E300EE3B4F /* CSJsModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */; };
-		D7351D0915C44B2F00EE3B4F /* libevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7351C8215C440E000EE3B4F /* libevent.a */; };
+		D7351D0C15C44BE000EE3B4F /* CSJsNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351D0B15C44BE000EE3B4F /* CSJsNet.cpp */; };
+		D7351D0F15C44E1D00EE3B4F /* CSJsSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351D0E15C44E1D00EE3B4F /* CSJsSocket.cpp */; };
+		D7351D1015C56C1400EE3B4F /* libevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7351C8215C440E000EE3B4F /* libevent.a */; };
 		D749480D15C192FA00703695 /* CSSchemeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749480C15C192FA00703695 /* CSSchemeFactory.cpp */; };
 		D749481315C1939900703695 /* CSSchemeLocalHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749481215C1939900703695 /* CSSchemeLocalHandler.cpp */; };
 		D749481B15C2A4B100703695 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D749481915C2A4B100703695 /* index.html */; };
@@ -180,6 +182,10 @@
 		D7351BEA15C366D400EE3B4F /* CSJsModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsModule.h; sourceTree = "<group>"; };
 		D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsModule.cpp; sourceTree = "<group>"; };
 		D7351C7A15C440E000EE3B4F /* libevent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = libevent.xcodeproj; sourceTree = "<group>"; };
+		D7351D0A15C44BD200EE3B4F /* CSJsNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsNet.h; sourceTree = "<group>"; };
+		D7351D0B15C44BE000EE3B4F /* CSJsNet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsNet.cpp; sourceTree = "<group>"; };
+		D7351D0D15C44E0E00EE3B4F /* CSJsSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsSocket.h; sourceTree = "<group>"; };
+		D7351D0E15C44E1D00EE3B4F /* CSJsSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsSocket.cpp; sourceTree = "<group>"; };
 		D749480B15C192E900703695 /* CSSchemeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSSchemeFactory.h; sourceTree = "<group>"; };
 		D749480C15C192FA00703695 /* CSSchemeFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSSchemeFactory.cpp; sourceTree = "<group>"; };
 		D749481115C1938A00703695 /* CSSchemeLocalHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSSchemeLocalHandler.h; sourceTree = "<group>"; };
@@ -395,9 +401,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7351D0915C44B2F00EE3B4F /* libevent.a in Frameworks */,
 				D7E8B49415BA73FD00475680 /* Cocoa.framework in Frameworks */,
 				D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */,
+				D7351D1015C56C1400EE3B4F /* libevent.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +701,10 @@
 				D749481215C1939900703695 /* CSSchemeLocalHandler.cpp */,
 				D7351BEA15C366D400EE3B4F /* CSJsModule.h */,
 				D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */,
+				D7351D0A15C44BD200EE3B4F /* CSJsNet.h */,
+				D7351D0B15C44BE000EE3B4F /* CSJsNet.cpp */,
+				D7351D0D15C44E0E00EE3B4F /* CSJsSocket.h */,
+				D7351D0E15C44E1D00EE3B4F /* CSJsSocket.cpp */,
 			);
 			name = Classes;
 			path = ../../src;
@@ -928,6 +938,8 @@
 				D749482215C2AA7300703695 /* CSJsUi.cpp in Sources */,
 				D7351BE915C360F900EE3B4F /* CSJsSys.cpp in Sources */,
 				D7351BEC15C366E300EE3B4F /* CSJsModule.cpp in Sources */,
+				D7351D0C15C44BE000EE3B4F /* CSJsNet.cpp in Sources */,
+				D7351D0F15C44E1D00EE3B4F /* CSJsSocket.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -992,7 +1004,7 @@
 		D7E8B4C215BA73FD00475680 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_CW_ASM_SYNTAX = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1027,7 +1039,11 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				HEADER_SEARCH_PATHS = "../../third-party/cef/osx";
+				HEADER_SEARCH_PATHS = (
+					"../../third-party/cef/osx",
+					"../../third-party/libevent/include",
+					"../../third-party/libevent",
+				);
 				INFOPLIST_FILE = "CleanSlate-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1048,7 +1064,7 @@
 		D7E8B4C315BA73FD00475680 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_CW_ASM_SYNTAX = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1083,7 +1099,11 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				HEADER_SEARCH_PATHS = "../../third-party/cef/osx";
+				HEADER_SEARCH_PATHS = (
+					"../../third-party/cef/osx",
+					"../../third-party/libevent/include",
+					"../../third-party/libevent",
+				);
 				INFOPLIST_FILE = "CleanSlate-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
