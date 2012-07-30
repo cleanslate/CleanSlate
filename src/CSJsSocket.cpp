@@ -39,6 +39,7 @@ CefRefPtr<CefV8Value> CSJsSocket::CreateSocket(const CefString &hostname, int po
     }
     
     saddr.sin_port = htons(port);
+	saddr.sin_family = AF_INET;
     
     if (connect(s, (struct sockaddr *)&saddr, sizeof(saddr)) == 0)
     {
@@ -95,7 +96,7 @@ bool CSJsSocket::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, c
 void CSJsSocket::OnRead(int fd, short ev)
 {
     char buffer[1024];
-    int len = read(fd, buffer, sizeof(buffer));
+    int len = recv(fd, buffer, sizeof(buffer), 0);
     if (len == 0 || len == -1)
     {
         close(fd);

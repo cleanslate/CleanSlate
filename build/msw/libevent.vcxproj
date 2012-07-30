@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\third-party\libevent\bufferevent-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\changelist-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\defer-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\evbuffer-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\evdns.h" />
+    <ClInclude Include="..\..\third-party\libevent\event-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\event.h" />
+    <ClInclude Include="..\..\third-party\libevent\evhttp.h" />
+    <ClInclude Include="..\..\third-party\libevent\evmap-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\evrpc-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\evrpc.h" />
+    <ClInclude Include="..\..\third-party\libevent\evsignal-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\evthread-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\evutil.h" />
+    <ClInclude Include="..\..\third-party\libevent\ht-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\http-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\iocp-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\ipv6-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\log-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\minheap-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\mm-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\ratelim-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\strlcpy-internal.h" />
+    <ClInclude Include="..\..\third-party\libevent\util-internal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\third-party\libevent\buffer.c" />
+    <ClCompile Include="..\..\third-party\libevent\bufferevent.c" />
+    <ClCompile Include="..\..\third-party\libevent\bufferevent_async.c" />
+    <ClCompile Include="..\..\third-party\libevent\bufferevent_filter.c" />
+    <ClCompile Include="..\..\third-party\libevent\bufferevent_pair.c" />
+    <ClCompile Include="..\..\third-party\libevent\bufferevent_ratelim.c" />
+    <ClCompile Include="..\..\third-party\libevent\bufferevent_sock.c" />
+    <ClCompile Include="..\..\third-party\libevent\buffer_iocp.c" />
+    <ClCompile Include="..\..\third-party\libevent\evdns.c" />
+    <ClCompile Include="..\..\third-party\libevent\event.c" />
+    <ClCompile Include="..\..\third-party\libevent\event_iocp.c" />
+    <ClCompile Include="..\..\third-party\libevent\event_tagging.c" />
+    <ClCompile Include="..\..\third-party\libevent\evmap.c" />
+    <ClCompile Include="..\..\third-party\libevent\evrpc.c" />
+    <ClCompile Include="..\..\third-party\libevent\evthread.c" />
+    <ClCompile Include="..\..\third-party\libevent\evthread_win32.c" />
+    <ClCompile Include="..\..\third-party\libevent\evutil.c" />
+    <ClCompile Include="..\..\third-party\libevent\evutil_rand.c" />
+    <ClCompile Include="..\..\third-party\libevent\http.c" />
+    <ClCompile Include="..\..\third-party\libevent\listener.c" />
+    <ClCompile Include="..\..\third-party\libevent\log.c" />
+    <ClCompile Include="..\..\third-party\libevent\signal.c" />
+    <ClCompile Include="..\..\third-party\libevent\strlcpy.c" />
+    <ClCompile Include="..\..\third-party\libevent\win32select.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DEC85337-D906-425C-803A-77FDF444AA0D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libevent</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/WIN32-Code;../../third-party/libevent/compat;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

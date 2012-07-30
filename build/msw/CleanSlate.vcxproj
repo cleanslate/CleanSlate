@@ -40,18 +40,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>Run</CustomBuildBeforeTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../third-party/cef/msw;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;../../third-party/libevent;../../third-party/cef/msw;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderFile>CSPrecomp.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -59,7 +63,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../../third-party/cef/msw/lib/Debug</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcef.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcef.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -85,8 +89,8 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../third-party/cef/msw;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;../../third-party/libevent;../../third-party/cef/msw;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeaderFile>CSPrecomp.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -116,6 +120,8 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
   <ItemGroup>
     <ClInclude Include="..\..\src\CSBrowserClient.h" />
     <ClInclude Include="..\..\src\CSJsModule.h" />
+    <ClInclude Include="..\..\src\CSJsNet.h" />
+    <ClInclude Include="..\..\src\CSJsSocket.h" />
     <ClInclude Include="..\..\src\CSJsSys.h" />
     <ClInclude Include="..\..\src\CSJsUi.h" />
     <ClInclude Include="..\..\src\CSPrecomp.h" />
@@ -130,6 +136,8 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp" />
     <ClCompile Include="..\..\src\CSJsModule.cpp" />
+    <ClCompile Include="..\..\src\CSJsNet.cpp" />
+    <ClCompile Include="..\..\src\CSJsSocket.cpp" />
     <ClCompile Include="..\..\src\CSJsSys.cpp" />
     <ClCompile Include="..\..\src\CSJsUi.cpp" />
     <ClCompile Include="..\..\src\CSPrecomp.cpp">
@@ -148,6 +156,15 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
     <ProjectReference Include="..\..\third-party\cef\msw\libcef_dll_wrapper.vcxproj">
       <Project>{a9d6dc71-c0dc-4549-aea0-3b15b44e86a9}</Project>
     </ProjectReference>
+    <ProjectReference Include="libevent.vcxproj">
+      <Project>{dec85337-d906-425c-803a-77fdf444aa0d}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\common\index.html">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\common\style.css" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,8 @@
 #ifdef WIN32
-#include <Windows.h>
 #include <winsock2.h>
+#include <Windows.h>
+
+#define close closesocket
 #else
 #include <sys/socket.h>
 #include <netdb.h>
