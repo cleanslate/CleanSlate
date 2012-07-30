@@ -77,6 +77,7 @@ private:
 	void OnMouseMiddleUp(WPARAM wParam, LPARAM lParam);
 	void OnMouseMove(WPARAM wParam, LPARAM lParam);
 	void OnMouseWheel(WPARAM wParam, LPARAM lParam);
+	void OnKeyEvent(UINT msg, WPARAM wParam, LPARAM lParam);
 
 	void CreateBitmap(int width, int height);
 };

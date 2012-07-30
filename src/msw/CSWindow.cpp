@@ -320,6 +320,28 @@ void CSWindow::OnMouseWheel(WPARAM wParam, LPARAM lParam)
 }
 
 
+void CSWindow::OnKeyEvent(UINT message, WPARAM wParam, LPARAM lParam)
+{
+	CefBrowser::KeyType type = KT_CHAR;
+	bool sysChar = false, imeChar = false;
+
+	if (message == WM_KEYDOWN || message == WM_SYSKEYDOWN)
+		type = KT_KEYDOWN;
+	else if (message == WM_KEYUP || message == WM_SYSKEYUP)
+		type = KT_KEYUP;
+
+	if (message == WM_SYSKEYDOWN || message == WM_SYSKEYUP ||
+		message == WM_SYSCHAR)
+		sysChar = true;
+
+	if (message == WM_IME_CHAR)
+		imeChar = true;
+
+	if (mBrowserClient && mBrowserClient->GetBrowser().get())
+		mBrowserClient->GetBrowser()->SendKeyEvent(type, wParam, lParam, sysChar, imeChar);
+}
+
+
 void CSWindow::CreateBitmap(int width, int height)
 {
 	BITMAPINFO bmi = {0};
@@ -392,6 +414,17 @@ LRESULT CSWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_MOUSEWHEEL:
 		win->OnMouseWheel(wParam, lParam);
 		break;
+
+	case WM_KEYDOWN:
+	case WM_KEYUP:
+	case WM_SYSKEYDOWN:
+	case WM_SYSKEYUP:
+	case WM_CHAR:
+	case WM_SYSCHAR:
+	case WM_IME_CHAR:
+		win->OnKeyEvent(message, wParam, lParam);
+		break;
+
 
 	case WM_DESTROY:
 		PostQuitMessage(0);
