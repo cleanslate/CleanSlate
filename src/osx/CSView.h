@@ -31,4 +31,5 @@ class CSBrowserClient;
 -(void) stopMove;
 -(void) startResize;
 -(void) stopResize;
+-(void) setSize:(NSSize)size;
 @end

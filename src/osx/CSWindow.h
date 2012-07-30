@@ -15,6 +15,7 @@ class CSWindow
 {
 public:
     CSWindow();
+    CSWindow(int x, int y, int width, int height);
     ~CSWindow();
     
     void Show(bool show);
@@ -32,6 +33,9 @@ public:
     void StopMove();
     void StartResize();
     void StopResize();
+    void SetSize(int width, int height);
+    void SetPos(int x, int y);
+    void GetScreenSize(int &width, int &height);
     
 private:
     void *mWindow;

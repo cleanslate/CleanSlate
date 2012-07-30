@@ -10,7 +10,7 @@
 
 @interface CSWindowImpl : NSWindow
 {
-    NSPoint initialLocation;
+
 }
 
 

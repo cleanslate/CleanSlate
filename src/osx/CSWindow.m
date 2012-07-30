@@ -165,4 +165,30 @@ void CSWindow::StopResize()
     [view stopResize];    
 }
 
+void CSWindow::SetSize(int width, int height)
+{
+    NSWindow *window = (NSWindow *)mWindow;
+    CSView *view = (CSView *)[window contentView];
 
+    [view setSize:NSMakeSize(width, height)];
+}
+
+void CSWindow::SetPos(int x, int y)
+{
+    NSWindow *window = (NSWindow *)mWindow;
+    NSRect windowFrame = [window frame];
+    NSRect frame = [[NSScreen mainScreen] visibleFrame];
+    
+    //NSPoint pt = NSMakePoint(x, frame.size.height - y - windowFrame.size.height);
+    NSPoint pt = NSMakePoint(x, frame.size.height - y - windowFrame.size.height);
+
+    [window setFrameOrigin:pt];
+}
+
+void CSWindow::GetScreenSize(int &width, int &height)
+{
+    NSWindow *window = (NSWindow *)mWindow;
+    NSRect rect = [window frame];
+    width = rect.size.width;
+    height = rect.size.height;
+}

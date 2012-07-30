@@ -37,6 +37,20 @@
             s.close(function(reason) { window.sys.log("socket closed: " + reason); });
             s.send("test");
         }
+      
+        // test window ui
+        window.ui.setPos(0, 0);
+        window.ui.setSize(800, 600);
+      
+        // test files
+        var f = window.sys.file();
+        f.open("test.txt", "w");
+        f.write("hello world");
+        f.close();
+      
+        f.open("test.txt", "r");
+        var data = f.read(100);
+      window.sys.log("data = " + data);
     });
     </script>
 </head>

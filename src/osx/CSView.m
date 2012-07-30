@@ -119,6 +119,12 @@
     mResizing = NO;
 }
 
+-(void) setSize:(NSSize)size
+{
+    if (mBrowserClient && mBrowserClient->GetBrowser().get())
+        mBrowserClient->GetBrowser()->SetSize(PET_VIEW, size.width, size.height);
+}
+
 -(void) drawRect:(NSRect)dirtyRect
 {
     // Drawing code here.
@@ -211,21 +217,6 @@
 -(void) otherMouseUp:(NSEvent *)event
 {
     [self mouseEvent:event type:MBT_MIDDLE clickRelease:true];    
-}
-
-- (void) setFrameSize:(NSSize)newSize
-{
-    [super setFrameSize:newSize];
-    
-    /*
-    int width = newSize.width;
-    int height = newSize.height;
-    
-    CSLogDebug("setFrame(%dx%d)", width, height);
-    
-    if (mBrowserClient)
-        mBrowserClient->SetBrowserSize(width, height);
-     */
 }
 
 -(void) mouseMoved:(NSEvent *)event

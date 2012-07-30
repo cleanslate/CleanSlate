@@ -9,7 +9,7 @@
 #include "CSPrecomp.h"
 
 #include "CSJsSys.h"
-
+#include "CSJsFile.h"
 
 CSJsSys::CSJsSys(CSWindow *window) : CSJsModule(window)
 {
@@ -21,10 +21,10 @@ void CSJsSys::Register(CefRefPtr<CefV8Value> windowObject)
     CefRefPtr<CefV8Value> obj = CefV8Value::CreateObject(NULL, NULL);
 	
     RegFunc(obj, "log");
+    RegFunc(obj, "file");
     
 	// bind window.ui object
-	windowObject->SetValue("sys", obj, V8_PROPERTY_ATTRIBUTE_READONLY);    
-
+	windowObject->SetValue("sys", obj, V8_PROPERTY_ATTRIBUTE_READONLY);
 }
 
 bool CSJsSys::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const CefV8ValueList& arguments,  CefRefPtr<CefV8Value>& retval, CefString& exception)
@@ -38,6 +38,11 @@ bool CSJsSys::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, cons
 		}
 		retval = CefV8Value::CreateNull();
 		return true;
+    }
+    else if (name == "file")
+    {
+		retval = CSJsFile::CreateFile();
+		return true;        
     }
 
     return false;

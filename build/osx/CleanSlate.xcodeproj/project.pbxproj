@@ -12,6 +12,7 @@
 		D7351D0C15C44BE000EE3B4F /* CSJsNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351D0B15C44BE000EE3B4F /* CSJsNet.cpp */; };
 		D7351D0F15C44E1D00EE3B4F /* CSJsSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351D0E15C44E1D00EE3B4F /* CSJsSocket.cpp */; };
 		D7351D1015C56C1400EE3B4F /* libevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7351C8215C440E000EE3B4F /* libevent.a */; };
+		D7351D1315C6702600EE3B4F /* CSJsFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351D1215C6702500EE3B4F /* CSJsFile.cpp */; };
 		D749480D15C192FA00703695 /* CSSchemeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749480C15C192FA00703695 /* CSSchemeFactory.cpp */; };
 		D749481315C1939900703695 /* CSSchemeLocalHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749481215C1939900703695 /* CSSchemeLocalHandler.cpp */; };
 		D749481B15C2A4B100703695 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D749481915C2A4B100703695 /* index.html */; };
@@ -186,6 +187,8 @@
 		D7351D0B15C44BE000EE3B4F /* CSJsNet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsNet.cpp; sourceTree = "<group>"; };
 		D7351D0D15C44E0E00EE3B4F /* CSJsSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsSocket.h; sourceTree = "<group>"; };
 		D7351D0E15C44E1D00EE3B4F /* CSJsSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsSocket.cpp; sourceTree = "<group>"; };
+		D7351D1115C66FE300EE3B4F /* CSJsFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsFile.h; sourceTree = "<group>"; };
+		D7351D1215C6702500EE3B4F /* CSJsFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsFile.cpp; sourceTree = "<group>"; };
 		D749480B15C192E900703695 /* CSSchemeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSSchemeFactory.h; sourceTree = "<group>"; };
 		D749480C15C192FA00703695 /* CSSchemeFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSSchemeFactory.cpp; sourceTree = "<group>"; };
 		D749481115C1938A00703695 /* CSSchemeLocalHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSSchemeLocalHandler.h; sourceTree = "<group>"; };
@@ -688,6 +691,14 @@
 				D7E8B4D315BA75DD00475680 /* osx */,
 				D7DE843715C1069E00D7B5D8 /* CSBrowserClient.h */,
 				D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */,
+				D7351D1115C66FE300EE3B4F /* CSJsFile.h */,
+				D7351D1215C6702500EE3B4F /* CSJsFile.cpp */,
+				D7351BEA15C366D400EE3B4F /* CSJsModule.h */,
+				D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */,
+				D7351D0A15C44BD200EE3B4F /* CSJsNet.h */,
+				D7351D0B15C44BE000EE3B4F /* CSJsNet.cpp */,
+				D7351D0D15C44E0E00EE3B4F /* CSJsSocket.h */,
+				D7351D0E15C44E1D00EE3B4F /* CSJsSocket.cpp */,
 				D7351BE615C360D400EE3B4F /* CSJsSys.h */,
 				D7351BE815C360F900EE3B4F /* CSJsSys.cpp */,
 				D749482015C2AA4100703695 /* CSJsUi.h */,
@@ -699,12 +710,6 @@
 				D749480C15C192FA00703695 /* CSSchemeFactory.cpp */,
 				D749481115C1938A00703695 /* CSSchemeLocalHandler.h */,
 				D749481215C1939900703695 /* CSSchemeLocalHandler.cpp */,
-				D7351BEA15C366D400EE3B4F /* CSJsModule.h */,
-				D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */,
-				D7351D0A15C44BD200EE3B4F /* CSJsNet.h */,
-				D7351D0B15C44BE000EE3B4F /* CSJsNet.cpp */,
-				D7351D0D15C44E0E00EE3B4F /* CSJsSocket.h */,
-				D7351D0E15C44E1D00EE3B4F /* CSJsSocket.cpp */,
 			);
 			name = Classes;
 			path = ../../src;
@@ -940,6 +945,7 @@
 				D7351BEC15C366E300EE3B4F /* CSJsModule.cpp in Sources */,
 				D7351D0C15C44BE000EE3B4F /* CSJsNet.cpp in Sources */,
 				D7351D0F15C44E1D00EE3B4F /* CSJsSocket.cpp in Sources */,
+				D7351D1315C6702600EE3B4F /* CSJsFile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
