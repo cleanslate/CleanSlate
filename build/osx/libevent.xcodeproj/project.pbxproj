@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D7351CBE15C4413100EE3B4F /* bufferevent-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8415C4413100EE3B4F /* bufferevent-internal.h */; };
+		D7351CBF15C4413100EE3B4F /* changelist-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8515C4413100EE3B4F /* changelist-internal.h */; };
+		D7351CC015C4413100EE3B4F /* defer-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8615C4413100EE3B4F /* defer-internal.h */; };
+		D7351CC115C4413100EE3B4F /* evbuffer-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8715C4413100EE3B4F /* evbuffer-internal.h */; };
+		D7351CC215C4413100EE3B4F /* evdns.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8815C4413100EE3B4F /* evdns.h */; };
+		D7351CC315C4413100EE3B4F /* event-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8915C4413100EE3B4F /* event-internal.h */; };
+		D7351CC415C4413100EE3B4F /* event.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8A15C4413100EE3B4F /* event.h */; };
+		D7351CC515C4413100EE3B4F /* evhttp.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8B15C4413100EE3B4F /* evhttp.h */; };
+		D7351CC615C4413100EE3B4F /* evmap-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8C15C4413100EE3B4F /* evmap-internal.h */; };
+		D7351CC715C4413100EE3B4F /* evrpc-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8D15C4413100EE3B4F /* evrpc-internal.h */; };
+		D7351CC815C4413100EE3B4F /* evrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8E15C4413100EE3B4F /* evrpc.h */; };
+		D7351CC915C4413100EE3B4F /* evsignal-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C8F15C4413100EE3B4F /* evsignal-internal.h */; };
+		D7351CCA15C4413100EE3B4F /* evthread-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9015C4413100EE3B4F /* evthread-internal.h */; };
+		D7351CCB15C4413100EE3B4F /* evutil.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9115C4413100EE3B4F /* evutil.h */; };
+		D7351CCC15C4413100EE3B4F /* ht-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9215C4413100EE3B4F /* ht-internal.h */; };
+		D7351CCD15C4413100EE3B4F /* http-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9315C4413100EE3B4F /* http-internal.h */; };
+		D7351CCE15C4413100EE3B4F /* iocp-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9415C4413100EE3B4F /* iocp-internal.h */; };
+		D7351CCF15C4413100EE3B4F /* ipv6-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9515C4413100EE3B4F /* ipv6-internal.h */; };
+		D7351CD015C4413100EE3B4F /* log-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9615C4413100EE3B4F /* log-internal.h */; };
+		D7351CD115C4413100EE3B4F /* minheap-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9715C4413100EE3B4F /* minheap-internal.h */; };
+		D7351CD215C4413100EE3B4F /* mm-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9815C4413100EE3B4F /* mm-internal.h */; };
+		D7351CD315C4413100EE3B4F /* ratelim-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9915C4413100EE3B4F /* ratelim-internal.h */; };
+		D7351CD415C4413100EE3B4F /* strlcpy-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9A15C4413100EE3B4F /* strlcpy-internal.h */; };
+		D7351CD515C4413100EE3B4F /* util-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D7351C9B15C4413100EE3B4F /* util-internal.h */; };
+		D7351CD815C4413100EE3B4F /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351C9E15C4413100EE3B4F /* buffer.c */; };
+		D7351CDA15C4413100EE3B4F /* bufferevent_filter.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CA015C4413100EE3B4F /* bufferevent_filter.c */; };
+		D7351CDB15C4413100EE3B4F /* bufferevent_openssl.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CA115C4413100EE3B4F /* bufferevent_openssl.c */; };
+		D7351CDC15C4413100EE3B4F /* bufferevent_pair.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CA215C4413100EE3B4F /* bufferevent_pair.c */; };
+		D7351CDD15C4413100EE3B4F /* bufferevent_ratelim.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CA315C4413100EE3B4F /* bufferevent_ratelim.c */; };
+		D7351CDE15C4413100EE3B4F /* bufferevent_sock.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CA415C4413100EE3B4F /* bufferevent_sock.c */; };
+		D7351CDF15C4413100EE3B4F /* bufferevent.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CA515C4413100EE3B4F /* bufferevent.c */; };
+		D7351CE315C4413100EE3B4F /* evdns.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CA915C4413100EE3B4F /* evdns.c */; };
+		D7351CE515C4413100EE3B4F /* event_tagging.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CAB15C4413100EE3B4F /* event_tagging.c */; };
+		D7351CE615C4413100EE3B4F /* event.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CAC15C4413100EE3B4F /* event.c */; };
+		D7351CE715C4413100EE3B4F /* evmap.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CAD15C4413100EE3B4F /* evmap.c */; };
+		D7351CE915C4413100EE3B4F /* evrpc.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CAF15C4413100EE3B4F /* evrpc.c */; };
+		D7351CEA15C4413100EE3B4F /* evthread_pthread.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CB015C4413100EE3B4F /* evthread_pthread.c */; };
+		D7351CEC15C4413100EE3B4F /* evthread.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CB215C4413100EE3B4F /* evthread.c */; };
+		D7351CED15C4413100EE3B4F /* evutil_rand.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CB315C4413100EE3B4F /* evutil_rand.c */; };
+		D7351CEE15C4413100EE3B4F /* evutil.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CB415C4413100EE3B4F /* evutil.c */; };
+		D7351CEF15C4413100EE3B4F /* http.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CB515C4413100EE3B4F /* http.c */; };
+		D7351CF015C4413100EE3B4F /* kqueue.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CB615C4413100EE3B4F /* kqueue.c */; };
+		D7351CF115C4413100EE3B4F /* listener.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CB715C4413100EE3B4F /* listener.c */; };
+		D7351CF215C4413100EE3B4F /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CB815C4413100EE3B4F /* log.c */; };
+		D7351CF315C4413100EE3B4F /* poll.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CB915C4413100EE3B4F /* poll.c */; };
+		D7351CF415C4413100EE3B4F /* select.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CBA15C4413100EE3B4F /* select.c */; };
+		D7351CF515C4413100EE3B4F /* signal.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CBB15C4413100EE3B4F /* signal.c */; };
+		D7351CF615C4413100EE3B4F /* strlcpy.c in Sources */ = {isa = PBXBuildFile; fileRef = D7351CBC15C4413100EE3B4F /* strlcpy.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D7351BF815C43FF200EE3B4F /* libevent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libevent.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7351C8415C4413100EE3B4F /* bufferevent-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "bufferevent-internal.h"; path = "../../third-party/libevent/bufferevent-internal.h"; sourceTree = "<group>"; };
+		D7351C8515C4413100EE3B4F /* changelist-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "changelist-internal.h"; path = "../../third-party/libevent/changelist-internal.h"; sourceTree = "<group>"; };
+		D7351C8615C4413100EE3B4F /* defer-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "defer-internal.h"; path = "../../third-party/libevent/defer-internal.h"; sourceTree = "<group>"; };
+		D7351C8715C4413100EE3B4F /* evbuffer-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "evbuffer-internal.h"; path = "../../third-party/libevent/evbuffer-internal.h"; sourceTree = "<group>"; };
+		D7351C8815C4413100EE3B4F /* evdns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = evdns.h; path = "../../third-party/libevent/evdns.h"; sourceTree = "<group>"; };
+		D7351C8915C4413100EE3B4F /* event-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "event-internal.h"; path = "../../third-party/libevent/event-internal.h"; sourceTree = "<group>"; };
+		D7351C8A15C4413100EE3B4F /* event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = event.h; path = "../../third-party/libevent/event.h"; sourceTree = "<group>"; };
+		D7351C8B15C4413100EE3B4F /* evhttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = evhttp.h; path = "../../third-party/libevent/evhttp.h"; sourceTree = "<group>"; };
+		D7351C8C15C4413100EE3B4F /* evmap-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "evmap-internal.h"; path = "../../third-party/libevent/evmap-internal.h"; sourceTree = "<group>"; };
+		D7351C8D15C4413100EE3B4F /* evrpc-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "evrpc-internal.h"; path = "../../third-party/libevent/evrpc-internal.h"; sourceTree = "<group>"; };
+		D7351C8E15C4413100EE3B4F /* evrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = evrpc.h; path = "../../third-party/libevent/evrpc.h"; sourceTree = "<group>"; };
+		D7351C8F15C4413100EE3B4F /* evsignal-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "evsignal-internal.h"; path = "../../third-party/libevent/evsignal-internal.h"; sourceTree = "<group>"; };
+		D7351C9015C4413100EE3B4F /* evthread-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "evthread-internal.h"; path = "../../third-party/libevent/evthread-internal.h"; sourceTree = "<group>"; };
+		D7351C9115C4413100EE3B4F /* evutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = evutil.h; path = "../../third-party/libevent/evutil.h"; sourceTree = "<group>"; };
+		D7351C9215C4413100EE3B4F /* ht-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ht-internal.h"; path = "../../third-party/libevent/ht-internal.h"; sourceTree = "<group>"; };
+		D7351C9315C4413100EE3B4F /* http-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "http-internal.h"; path = "../../third-party/libevent/http-internal.h"; sourceTree = "<group>"; };
+		D7351C9415C4413100EE3B4F /* iocp-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "iocp-internal.h"; path = "../../third-party/libevent/iocp-internal.h"; sourceTree = "<group>"; };
+		D7351C9515C4413100EE3B4F /* ipv6-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ipv6-internal.h"; path = "../../third-party/libevent/ipv6-internal.h"; sourceTree = "<group>"; };
+		D7351C9615C4413100EE3B4F /* log-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "log-internal.h"; path = "../../third-party/libevent/log-internal.h"; sourceTree = "<group>"; };
+		D7351C9715C4413100EE3B4F /* minheap-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "minheap-internal.h"; path = "../../third-party/libevent/minheap-internal.h"; sourceTree = "<group>"; };
+		D7351C9815C4413100EE3B4F /* mm-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "mm-internal.h"; path = "../../third-party/libevent/mm-internal.h"; sourceTree = "<group>"; };
+		D7351C9915C4413100EE3B4F /* ratelim-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ratelim-internal.h"; path = "../../third-party/libevent/ratelim-internal.h"; sourceTree = "<group>"; };
+		D7351C9A15C4413100EE3B4F /* strlcpy-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "strlcpy-internal.h"; path = "../../third-party/libevent/strlcpy-internal.h"; sourceTree = "<group>"; };
+		D7351C9B15C4413100EE3B4F /* util-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "util-internal.h"; path = "../../third-party/libevent/util-internal.h"; sourceTree = "<group>"; };
+		D7351C9E15C4413100EE3B4F /* buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = buffer.c; path = "../../third-party/libevent/buffer.c"; sourceTree = "<group>"; };
+		D7351CA015C4413100EE3B4F /* bufferevent_filter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bufferevent_filter.c; path = "../../third-party/libevent/bufferevent_filter.c"; sourceTree = "<group>"; };
+		D7351CA115C4413100EE3B4F /* bufferevent_openssl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bufferevent_openssl.c; path = "../../third-party/libevent/bufferevent_openssl.c"; sourceTree = "<group>"; };
+		D7351CA215C4413100EE3B4F /* bufferevent_pair.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bufferevent_pair.c; path = "../../third-party/libevent/bufferevent_pair.c"; sourceTree = "<group>"; };
+		D7351CA315C4413100EE3B4F /* bufferevent_ratelim.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bufferevent_ratelim.c; path = "../../third-party/libevent/bufferevent_ratelim.c"; sourceTree = "<group>"; };
+		D7351CA415C4413100EE3B4F /* bufferevent_sock.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bufferevent_sock.c; path = "../../third-party/libevent/bufferevent_sock.c"; sourceTree = "<group>"; };
+		D7351CA515C4413100EE3B4F /* bufferevent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bufferevent.c; path = "../../third-party/libevent/bufferevent.c"; sourceTree = "<group>"; };
+		D7351CA915C4413100EE3B4F /* evdns.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = evdns.c; path = "../../third-party/libevent/evdns.c"; sourceTree = "<group>"; };
+		D7351CAB15C4413100EE3B4F /* event_tagging.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = event_tagging.c; path = "../../third-party/libevent/event_tagging.c"; sourceTree = "<group>"; };
+		D7351CAC15C4413100EE3B4F /* event.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = event.c; path = "../../third-party/libevent/event.c"; sourceTree = "<group>"; };
+		D7351CAD15C4413100EE3B4F /* evmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = evmap.c; path = "../../third-party/libevent/evmap.c"; sourceTree = "<group>"; };
+		D7351CAF15C4413100EE3B4F /* evrpc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = evrpc.c; path = "../../third-party/libevent/evrpc.c"; sourceTree = "<group>"; };
+		D7351CB015C4413100EE3B4F /* evthread_pthread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = evthread_pthread.c; path = "../../third-party/libevent/evthread_pthread.c"; sourceTree = "<group>"; };
+		D7351CB215C4413100EE3B4F /* evthread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = evthread.c; path = "../../third-party/libevent/evthread.c"; sourceTree = "<group>"; };
+		D7351CB315C4413100EE3B4F /* evutil_rand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = evutil_rand.c; path = "../../third-party/libevent/evutil_rand.c"; sourceTree = "<group>"; };
+		D7351CB415C4413100EE3B4F /* evutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = evutil.c; path = "../../third-party/libevent/evutil.c"; sourceTree = "<group>"; };
+		D7351CB515C4413100EE3B4F /* http.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = http.c; path = "../../third-party/libevent/http.c"; sourceTree = "<group>"; };
+		D7351CB615C4413100EE3B4F /* kqueue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = kqueue.c; path = "../../third-party/libevent/kqueue.c"; sourceTree = "<group>"; };
+		D7351CB715C4413100EE3B4F /* listener.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = listener.c; path = "../../third-party/libevent/listener.c"; sourceTree = "<group>"; };
+		D7351CB815C4413100EE3B4F /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = log.c; path = "../../third-party/libevent/log.c"; sourceTree = "<group>"; };
+		D7351CB915C4413100EE3B4F /* poll.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = poll.c; path = "../../third-party/libevent/poll.c"; sourceTree = "<group>"; };
+		D7351CBA15C4413100EE3B4F /* select.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = select.c; path = "../../third-party/libevent/select.c"; sourceTree = "<group>"; };
+		D7351CBB15C4413100EE3B4F /* signal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = signal.c; path = "../../third-party/libevent/signal.c"; sourceTree = "<group>"; };
+		D7351CBC15C4413100EE3B4F /* strlcpy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = strlcpy.c; path = "../../third-party/libevent/strlcpy.c"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D7351BF515C43FF200EE3B4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D7351BED15C43FF200EE3B4F = {
+			isa = PBXGroup;
+			children = (
+				D7351C0515C4402500EE3B4F /* Source Files */,
+				D7351BF915C43FF200EE3B4F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D7351BF915C43FF200EE3B4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7351BF815C43FF200EE3B4F /* libevent.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D7351C0515C4402500EE3B4F /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7351C8415C4413100EE3B4F /* bufferevent-internal.h */,
+				D7351C8515C4413100EE3B4F /* changelist-internal.h */,
+				D7351C8615C4413100EE3B4F /* defer-internal.h */,
+				D7351C8715C4413100EE3B4F /* evbuffer-internal.h */,
+				D7351C8815C4413100EE3B4F /* evdns.h */,
+				D7351C8915C4413100EE3B4F /* event-internal.h */,
+				D7351C8A15C4413100EE3B4F /* event.h */,
+				D7351C8B15C4413100EE3B4F /* evhttp.h */,
+				D7351C8C15C4413100EE3B4F /* evmap-internal.h */,
+				D7351C8D15C4413100EE3B4F /* evrpc-internal.h */,
+				D7351C8E15C4413100EE3B4F /* evrpc.h */,
+				D7351C8F15C4413100EE3B4F /* evsignal-internal.h */,
+				D7351C9015C4413100EE3B4F /* evthread-internal.h */,
+				D7351C9115C4413100EE3B4F /* evutil.h */,
+				D7351C9215C4413100EE3B4F /* ht-internal.h */,
+				D7351C9315C4413100EE3B4F /* http-internal.h */,
+				D7351C9415C4413100EE3B4F /* iocp-internal.h */,
+				D7351C9515C4413100EE3B4F /* ipv6-internal.h */,
+				D7351C9615C4413100EE3B4F /* log-internal.h */,
+				D7351C9715C4413100EE3B4F /* minheap-internal.h */,
+				D7351C9815C4413100EE3B4F /* mm-internal.h */,
+				D7351C9915C4413100EE3B4F /* ratelim-internal.h */,
+				D7351C9A15C4413100EE3B4F /* strlcpy-internal.h */,
+				D7351C9B15C4413100EE3B4F /* util-internal.h */,
+				D7351C9E15C4413100EE3B4F /* buffer.c */,
+				D7351CA015C4413100EE3B4F /* bufferevent_filter.c */,
+				D7351CA115C4413100EE3B4F /* bufferevent_openssl.c */,
+				D7351CA215C4413100EE3B4F /* bufferevent_pair.c */,
+				D7351CA315C4413100EE3B4F /* bufferevent_ratelim.c */,
+				D7351CA415C4413100EE3B4F /* bufferevent_sock.c */,
+				D7351CA515C4413100EE3B4F /* bufferevent.c */,
+				D7351CA915C4413100EE3B4F /* evdns.c */,
+				D7351CAB15C4413100EE3B4F /* event_tagging.c */,
+				D7351CAC15C4413100EE3B4F /* event.c */,
+				D7351CAD15C4413100EE3B4F /* evmap.c */,
+				D7351CAF15C4413100EE3B4F /* evrpc.c */,
+				D7351CB015C4413100EE3B4F /* evthread_pthread.c */,
+				D7351CB215C4413100EE3B4F /* evthread.c */,
+				D7351CB315C4413100EE3B4F /* evutil_rand.c */,
+				D7351CB415C4413100EE3B4F /* evutil.c */,
+				D7351CB515C4413100EE3B4F /* http.c */,
+				D7351CB615C4413100EE3B4F /* kqueue.c */,
+				D7351CB715C4413100EE3B4F /* listener.c */,
+				D7351CB815C4413100EE3B4F /* log.c */,
+				D7351CB915C4413100EE3B4F /* poll.c */,
+				D7351CBA15C4413100EE3B4F /* select.c */,
+				D7351CBB15C4413100EE3B4F /* signal.c */,
+				D7351CBC15C4413100EE3B4F /* strlcpy.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D7351BF615C43FF200EE3B4F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7351CBE15C4413100EE3B4F /* bufferevent-internal.h in Headers */,
+				D7351CBF15C4413100EE3B4F /* changelist-internal.h in Headers */,
+				D7351CC015C4413100EE3B4F /* defer-internal.h in Headers */,
+				D7351CC115C4413100EE3B4F /* evbuffer-internal.h in Headers */,
+				D7351CC215C4413100EE3B4F /* evdns.h in Headers */,
+				D7351CC315C4413100EE3B4F /* event-internal.h in Headers */,
+				D7351CC415C4413100EE3B4F /* event.h in Headers */,
+				D7351CC515C4413100EE3B4F /* evhttp.h in Headers */,
+				D7351CC615C4413100EE3B4F /* evmap-internal.h in Headers */,
+				D7351CC715C4413100EE3B4F /* evrpc-internal.h in Headers */,
+				D7351CC815C4413100EE3B4F /* evrpc.h in Headers */,
+				D7351CC915C4413100EE3B4F /* evsignal-internal.h in Headers */,
+				D7351CCA15C4413100EE3B4F /* evthread-internal.h in Headers */,
+				D7351CCB15C4413100EE3B4F /* evutil.h in Headers */,
+				D7351CCC15C4413100EE3B4F /* ht-internal.h in Headers */,
+				D7351CCD15C4413100EE3B4F /* http-internal.h in Headers */,
+				D7351CCE15C4413100EE3B4F /* iocp-internal.h in Headers */,
+				D7351CCF15C4413100EE3B4F /* ipv6-internal.h in Headers */,
+				D7351CD015C4413100EE3B4F /* log-internal.h in Headers */,
+				D7351CD115C4413100EE3B4F /* minheap-internal.h in Headers */,
+				D7351CD215C4413100EE3B4F /* mm-internal.h in Headers */,
+				D7351CD315C4413100EE3B4F /* ratelim-internal.h in Headers */,
+				D7351CD415C4413100EE3B4F /* strlcpy-internal.h in Headers */,
+				D7351CD515C4413100EE3B4F /* util-internal.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D7351BF715C43FF200EE3B4F /* libevent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7351BFC15C43FF200EE3B4F /* Build configuration list for PBXNativeTarget "libevent" */;
+			buildPhases = (
+				D7351CFD15C4423500EE3B4F /* ShellScript */,
+				D7351BF415C43FF200EE3B4F /* Sources */,
+				D7351BF515C43FF200EE3B4F /* Frameworks */,
+				D7351BF615C43FF200EE3B4F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libevent;
+			productName = libevent;
+			productReference = D7351BF815C43FF200EE3B4F /* libevent.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D7351BEF15C43FF200EE3B4F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = D7351BF215C43FF200EE3B4F /* Build configuration list for PBXProject "libevent" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D7351BED15C43FF200EE3B4F;
+			productRefGroup = D7351BF915C43FF200EE3B4F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D7351BF715C43FF200EE3B4F /* libevent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D7351CFD15C4423500EE3B4F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ../../third-party/libevent\n[ ! -f Makefile ] && ./configure --enable-shared=NO\n[ ! -f include/event2/event-config.h ] && make include/event2/event-config.h\n[ 1 == 1 ]";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D7351BF415C43FF200EE3B4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7351CD815C4413100EE3B4F /* buffer.c in Sources */,
+				D7351CDA15C4413100EE3B4F /* bufferevent_filter.c in Sources */,
+				D7351CDB15C4413100EE3B4F /* bufferevent_openssl.c in Sources */,
+				D7351CDC15C4413100EE3B4F /* bufferevent_pair.c in Sources */,
+				D7351CDD15C4413100EE3B4F /* bufferevent_ratelim.c in Sources */,
+				D7351CDE15C4413100EE3B4F /* bufferevent_sock.c in Sources */,
+				D7351CDF15C4413100EE3B4F /* bufferevent.c in Sources */,
+				D7351CE315C4413100EE3B4F /* evdns.c in Sources */,
+				D7351CE515C4413100EE3B4F /* event_tagging.c in Sources */,
+				D7351CE615C4413100EE3B4F /* event.c in Sources */,
+				D7351CE715C4413100EE3B4F /* evmap.c in Sources */,
+				D7351CE915C4413100EE3B4F /* evrpc.c in Sources */,
+				D7351CEA15C4413100EE3B4F /* evthread_pthread.c in Sources */,
+				D7351CEC15C4413100EE3B4F /* evthread.c in Sources */,
+				D7351CED15C4413100EE3B4F /* evutil_rand.c in Sources */,
+				D7351CEE15C4413100EE3B4F /* evutil.c in Sources */,
+				D7351CEF15C4413100EE3B4F /* http.c in Sources */,
+				D7351CF015C4413100EE3B4F /* kqueue.c in Sources */,
+				D7351CF115C4413100EE3B4F /* listener.c in Sources */,
+				D7351CF215C4413100EE3B4F /* log.c in Sources */,
+				D7351CF315C4413100EE3B4F /* poll.c in Sources */,
+				D7351CF415C4413100EE3B4F /* select.c in Sources */,
+				D7351CF515C4413100EE3B4F /* signal.c in Sources */,
+				D7351CF615C4413100EE3B4F /* strlcpy.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D7351BFA15C43FF200EE3B4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D7351BFB15C43FF200EE3B4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D7351BFD15C43FF200EE3B4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				HEADER_SEARCH_PATHS = (
+					"../../third-party/libevent/include",
+					"../../third-party/libevent/compat",
+				);
+				OTHER_CFLAGS = (
+					"-fno-strict-aliasing",
+					"-Wno-deprecated-declarations",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "../../third-party/libevent/include";
+			};
+			name = Debug;
+		};
+		D7351BFE15C43FF200EE3B4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				HEADER_SEARCH_PATHS = (
+					"../../third-party/libevent/include",
+					"../../third-party/libevent/compat",
+				);
+				OTHER_CFLAGS = (
+					"-fno-strict-aliasing",
+					"-Wno-deprecated-declarations",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "../../third-party/libevent/include";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D7351BF215C43FF200EE3B4F /* Build configuration list for PBXProject "libevent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7351BFA15C43FF200EE3B4F /* Debug */,
+				D7351BFB15C43FF200EE3B4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7351BFC15C43FF200EE3B4F /* Build configuration list for PBXNativeTarget "libevent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7351BFD15C43FF200EE3B4F /* Debug */,
+				D7351BFE15C43FF200EE3B4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D7351BEF15C43FF200EE3B4F /* Project object */;
+}

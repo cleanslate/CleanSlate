@@ -28,3 +28,21 @@ third-party/cef/msw/Release/lib/
 *.opensdf
 *.suo
 
+
+# libevent configure remnants
+third-party/libevent/.deps/
+third-party/libevent/Makefile
+third-party/libevent/config.h
+third-party/libevent/config.log
+third-party/libevent/config.status
+third-party/libevent/include/Makefile
+third-party/libevent/include/event2/event-config.h
+third-party/libevent/libevent.pc
+third-party/libevent/libevent_openssl.pc
+third-party/libevent/libevent_pthreads.pc
+third-party/libevent/libtool
+third-party/libevent/sample/Makefile
+third-party/libevent/stamp-h1
+third-party/libevent/test/.deps/
+third-party/libevent/test/Makefile
+
