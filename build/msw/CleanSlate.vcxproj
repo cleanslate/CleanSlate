@@ -119,6 +119,7 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\CSBrowserClient.h" />
+    <ClInclude Include="..\..\src\CSJsFile.h" />
     <ClInclude Include="..\..\src\CSJsModule.h" />
     <ClInclude Include="..\..\src\CSJsNet.h" />
     <ClInclude Include="..\..\src\CSJsSocket.h" />
@@ -135,6 +136,7 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp" />
+    <ClCompile Include="..\..\src\CSJsFile.cpp" />
     <ClCompile Include="..\..\src\CSJsModule.cpp" />
     <ClCompile Include="..\..\src\CSJsNet.cpp" />
     <ClCompile Include="..\..\src\CSJsSocket.cpp" />

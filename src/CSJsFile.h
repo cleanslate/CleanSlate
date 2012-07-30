@@ -19,9 +19,9 @@ public:
     
     bool Open(const CefString &path, const char *mode);
     void Close();
-    off_t Size();
-    off_t Pos();
-    bool Seek(off_t pos);
+    off_type Size();
+    off_type Pos();
+    bool Seek(off_type pos);
     bool SeekEnd();
     int Read(void *data, int size);
     int Write(void *data, int size);

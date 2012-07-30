@@ -55,22 +55,22 @@ void CSJsFile::Close()
     }
 }
 
-off_t CSJsFile::Size()
+off_type CSJsFile::Size()
 {
-    off_t pos = Pos();
+    off_type pos = Pos();
     SeekEnd();
-    off_t size = Pos();
+    off_type size = Pos();
     Seek(pos);
     
     return size;
 }
 
-off_t CSJsFile::Pos()
+off_type CSJsFile::Pos()
 {
     return ftell64(mFile);
 }
 
-bool CSJsFile::Seek(off_t pos)
+bool CSJsFile::Seek(off_type pos)
 {
     return fseek64(mFile, pos, SEEK_SET) == 0;
 }
@@ -101,7 +101,7 @@ bool CSJsFile::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, con
             
             bool result = Open(path.ToString().c_str(), mode.ToString().c_str());
             
-            result = CefV8Value::CreateBool(result);
+            retval = CefV8Value::CreateBool(result);
             return true;
         }
     }
@@ -113,21 +113,21 @@ bool CSJsFile::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, con
     }
     else if (name == "size")
     {
-        off_t size = Size();
-        retval = CefV8Value::CreateDouble(size);
+        off_type size = Size();
+        retval = CefV8Value::CreateDouble((double)size);
         return true;
     }
     else if (name == "pos")
     {
-        off_t pos = Pos();
-        retval = CefV8Value::CreateDouble(pos);
+        off_type pos = Pos();
+        retval = CefV8Value::CreateDouble((double)pos);
         return true;
     }
     else if (name == "seek")
     {
         if (arguments.size() == 1)
         {
-            off_t pos = arguments[0]->GetDoubleValue();
+            off_type pos = (off_type)arguments[0]->GetDoubleValue();
             retval = CefV8Value::CreateBool(Seek(pos));
             return true;
         }

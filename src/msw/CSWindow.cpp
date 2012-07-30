@@ -173,6 +173,23 @@ void CSWindow::StopResize()
 	mResizing = false;
 }
 
+void CSWindow::SetSize(int width, int height)
+{
+	if (mBrowserClient)
+        mBrowserClient->SetBrowserSize(width, height);
+}
+
+void CSWindow::SetPos(int x, int y)
+{
+	SetWindowPos(mWindow, NULL, x, y, 0, 0, SWP_NOSIZE);
+}
+
+void CSWindow::GetScreenSize(int &width, int &height)
+{
+	width = GetSystemMetrics(SM_CXBORDER);
+	height = GetSystemMetrics(SM_CYBORDER);
+}
+
 void CSWindow::OnPaint(WPARAM wParam, LPARAM lParam)
 {
 	if (mBrowserClient)
@@ -201,10 +218,7 @@ void CSWindow::OnPaint(WPARAM wParam, LPARAM lParam)
 
 void CSWindow::OnSize(WPARAM wParam, LPARAM lParam)
 {
-	//int width  = LOWORD(lParam);
-    //int height = HIWORD(lParam);
-    //if (width > 0 && height > 0 && mBrowserClient && mBrowserClient->GetBrowser().get())
-	//	mBrowserClient->GetBrowser()->SetSize(PET_VIEW, width, height);
+
 }
 
 void CSWindow::OnMouseLeftDown(WPARAM wParam, LPARAM lParam)
