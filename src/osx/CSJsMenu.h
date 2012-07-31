@@ -34,6 +34,7 @@ public:
     
     void AddMenuItem(const CefString &name, const CefString &hotkey, CefRefPtr<CefV8Value> callback, CefRefPtr<CefV8Context> context);
     void AddSubMenu(const CefString &name, CefRefPtr<CefV8Value> menu);
+    void Popup(int x, int y);
     
     virtual bool Execute(const CefString& name,  CefRefPtr<CefV8Value> object, 
                          const CefV8ValueList& arguments,  CefRefPtr<CefV8Value>& retval, CefString& exception);    

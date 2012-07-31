@@ -88,6 +88,26 @@ void CSJsMenu::AddSubMenu(const CefString &name, CefRefPtr<CefV8Value> menu)
 	[mMenu setSubmenu:subMenu->mMenu forItem:item];
 }
 
+void CSJsMenu::Popup(int x, int y)
+{
+    NSWindow *window = [NSApp keyWindow];
+    NSView *view = window.contentView;
+    
+    
+    NSRect rect = [view frame];
+    NSPoint menuOrigin = { x, rect.size.height - y };
+    NSEvent *event = [NSEvent mouseEventWithType:NSLeftMouseDown
+                                        location:menuOrigin
+                                   modifierFlags:NSLeftMouseDownMask // 0x100
+                                       timestamp:nil
+                                    windowNumber:[window windowNumber]
+                                         context:[window graphicsContext]
+                                     eventNumber:0
+                                      clickCount:1
+                                        pressure:1];
+    [NSMenu popUpContextMenu:mMenu withEvent:event forView:view];
+}
+
 bool CSJsMenu::Execute(const CefString& name, CefRefPtr<CefV8Value> object, const CefV8ValueList& arguments, CefRefPtr<CefV8Value>& retval, CefString& exception)
 {
     if (name == "addItem")
@@ -108,6 +128,12 @@ bool CSJsMenu::Execute(const CefString& name, CefRefPtr<CefV8Value> object, cons
             return true;
         }        
     }
+    else if (name == "popup")
+    {
+        Popup(arguments[0]->GetIntValue(), arguments[1]->GetIntValue());
+        retval = CefV8Value::CreateNull();
+        return true;        
+    }
     
     return false;
 }
@@ -116,5 +142,6 @@ void CSJsMenu::BindFunction(CefRefPtr<CefV8Value> obj)
 {
     obj->SetValue("addItem", CefV8Value::CreateFunction("addItem", this), V8_PROPERTY_ATTRIBUTE_READONLY);    
     obj->SetValue("addSubMenu", CefV8Value::CreateFunction("addSubMenu", this), V8_PROPERTY_ATTRIBUTE_READONLY);    
+    obj->SetValue("popup", CefV8Value::CreateFunction("popup", this), V8_PROPERTY_ATTRIBUTE_READONLY);    
 }
 
