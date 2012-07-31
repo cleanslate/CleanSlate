@@ -23,6 +23,7 @@
 
 #include "CSJsSys.h"
 #include "CSJsFile.h"
+#include "CSUtil.h"
 
 CSJsSys::CSJsSys(CSWindow *window) : CSJsModule(window)
 {
@@ -35,6 +36,7 @@ void CSJsSys::Register(CefRefPtr<CefV8Value> windowObject)
 	
     RegFunc(obj, "log");
     RegFunc(obj, "file");
+    RegFunc(obj, "os");
     
 	// bind window.ui object
 	windowObject->SetValue("sys", obj, V8_PROPERTY_ATTRIBUTE_READONLY);
@@ -56,6 +58,12 @@ bool CSJsSys::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, cons
     {
 		retval = CSJsFile::CreateFile();
 		return true;        
+    }
+    else if (name == "os")
+    {
+        CefString osName = CSUtil::GetOS();
+        retval = CefV8Value::CreateString(osName);
+        return true;
     }
 
     return false;

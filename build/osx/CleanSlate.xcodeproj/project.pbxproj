@@ -80,6 +80,9 @@
 		D78C9DD315BCB7F500DCF697 /* cef_zip_archive.cc in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D9715BCB7F500DCF697 /* cef_zip_archive.cc */; };
 		D78C9DD415BCB7F500DCF697 /* libcef_dll_wrapper.cc in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D9815BCB7F500DCF697 /* libcef_dll_wrapper.cc */; };
 		D78C9DD515BCB7F500DCF697 /* libcef_dll_wrapper2.cc in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D9915BCB7F500DCF697 /* libcef_dll_wrapper2.cc */; };
+		D79E443C15C6E75E00DA6612 /* CSJsMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D79E443B15C6E75E00DA6612 /* CSJsMenuItem.m */; };
+		D79E444615C703A600DA6612 /* missingImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D79E444515C703A600DA6612 /* missingImage.png */; };
+		D79E444B15C79B6700DA6612 /* CSJsMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D79E443415C6DA6300DA6612 /* CSJsMenu.cpp */; };
 		D7C00FC315C10D99004CD6D9 /* CSBrowserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */; };
 		D7C00FCA15C11CA1004CD6D9 /* CSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */; };
 		D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7DE834C15C0128900D7B5D8 /* libcef.dylib */; };
@@ -323,6 +326,11 @@
 		D78C9D9715BCB7F500DCF697 /* cef_zip_archive.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cef_zip_archive.cc; sourceTree = "<group>"; };
 		D78C9D9815BCB7F500DCF697 /* libcef_dll_wrapper.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libcef_dll_wrapper.cc; sourceTree = "<group>"; };
 		D78C9D9915BCB7F500DCF697 /* libcef_dll_wrapper2.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libcef_dll_wrapper2.cc; sourceTree = "<group>"; };
+		D79E443415C6DA6300DA6612 /* CSJsMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsMenu.cpp; sourceTree = "<group>"; };
+		D79E443515C6DA6300DA6612 /* CSJsMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsMenu.h; sourceTree = "<group>"; };
+		D79E443A15C6E74900DA6612 /* CSJsMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsMenuItem.h; sourceTree = "<group>"; };
+		D79E443B15C6E75E00DA6612 /* CSJsMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSJsMenuItem.m; sourceTree = "<group>"; };
+		D79E444515C703A600DA6612 /* missingImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = missingImage.png; path = "../../third-party/cef/osx/Resources/missingImage.png"; sourceTree = "<group>"; };
 		D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSBrowserClient.cpp; sourceTree = "<group>"; };
 		D7C00FC815C11C40004CD6D9 /* CSLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSLog.h; sourceTree = "<group>"; };
 		D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSLog.cpp; sourceTree = "<group>"; };
@@ -630,6 +638,7 @@
 				D7DE841415C017C600D7B5D8 /* zh_CN.lproj */,
 				D7DE841515C017C600D7B5D8 /* zh_TW.lproj */,
 				D7DE83BC15C0172E00D7B5D8 /* chrome.pak */,
+				D79E444515C703A600DA6612 /* missingImage.png */,
 				D749481915C2A4B100703695 /* index.html */,
 				D749481A15C2A4B100703695 /* style.css */,
 			);
@@ -721,6 +730,10 @@
 				D78C9D1E15BCB7F500DCF697 /* libcef_dll */,
 				D7E8B4E715BA89F600475680 /* AppDelegate.m */,
 				D7E8B4E515BA82F700475680 /* AppDelegate.h */,
+				D79E443515C6DA6300DA6612 /* CSJsMenu.h */,
+				D79E443415C6DA6300DA6612 /* CSJsMenu.cpp */,
+				D79E443A15C6E74900DA6612 /* CSJsMenuItem.h */,
+				D79E443B15C6E75E00DA6612 /* CSJsMenuItem.m */,
 				D7C00FC815C11C40004CD6D9 /* CSLog.h */,
 				D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */,
 				D78C9D1315BC678000DCF697 /* CSView.h */,
@@ -729,9 +742,9 @@
 				D7E8B50015BAA6A900475680 /* CSWindow.m */,
 				D7E8B4EB15BA8A8F00475680 /* CSWindowImpl.h */,
 				D7E8B4EC15BA8A8F00475680 /* CSWindowImpl.m */,
-				D7E8B4E915BA8A0500475680 /* main.m */,
 				D749481D15C2A61C00703695 /* CSUtil.h */,
 				D749481E15C2A65600703695 /* CSUtil.cpp */,
+				D7E8B4E915BA8A0500475680 /* main.m */,
 			);
 			path = osx;
 			sourceTree = "<group>";
@@ -860,6 +873,7 @@
 				D7DE842715C017C600D7B5D8 /* zh_TW.lproj in Resources */,
 				D749481B15C2A4B100703695 /* index.html in Resources */,
 				D749481C15C2A4B100703695 /* style.css in Resources */,
+				D79E444615C703A600DA6612 /* missingImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,6 +884,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D79E444B15C79B6700DA6612 /* CSJsMenu.cpp in Sources */,
 				D7E8B50115BAAA7100475680 /* CSWindow.m in Sources */,
 				D7E8B4E815BA89F600475680 /* AppDelegate.m in Sources */,
 				D7E8B4EA15BA8A0500475680 /* main.m in Sources */,
@@ -946,6 +961,7 @@
 				D7351D0C15C44BE000EE3B4F /* CSJsNet.cpp in Sources */,
 				D7351D0F15C44E1D00EE3B4F /* CSJsSocket.cpp in Sources */,
 				D7351D1315C6702600EE3B4F /* CSJsFile.cpp in Sources */,
+				D79E443C15C6E75E00DA6612 /* CSJsMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
