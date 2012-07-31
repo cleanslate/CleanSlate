@@ -61,12 +61,14 @@
       var mainMenu = window.ui.mainMenu();
       var testMenu = window.ui.menu("");
       testMenu.addItem("test1", "q", function() { window.sys.log("test1"); });
-      mainMenu.addSubMenu("App", testMenu);
+      //mainMenu.addSubMenu("App", testMenu);
       
       var fileMenu = window.ui.menu("File");
       fileMenu.addItem("file1", "f", function() { window.sys.log("file1"); });
       fileMenu.addItem("file2", "", function() { window.sys.log("file2"); });
-      mainMenu.addSubMenu("File", fileMenu);
+      //mainMenu.addSubMenu("File", fileMenu);
+      
+      $("#menu").click(function() { var m = $("#menu"); fileMenu.popup(m.offset().left, m.offset().top + m.height()); });
     });
     </script>
 </head>
@@ -77,7 +79,8 @@
     <div class="resize"></div>
     <a href="local://index.html">refresh</a> |
     <a id="stop" href="#" onclick="return false;">stop</a> |
-    <a id="back" href="#" onclick="return false;">back</a>
+    <a id="back" href="#" onclick="return false;">back</a> |
+    <a id="menu" href="#" onclick="return false;">menu</a>
     <br>
     <form>
     url:<input type="text"></input>

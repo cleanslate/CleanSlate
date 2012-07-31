@@ -59,6 +59,9 @@
     <ClInclude Include="..\..\src\CSJsFile.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\msw\CSJsMenu.h">
+      <Filter>Source Files\msw</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp">
@@ -105,6 +108,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\CSJsFile.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\msw\CSJsMenu.cpp">
+      <Filter>Source Files\msw</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

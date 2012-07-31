@@ -22,6 +22,7 @@
 #include "CSPrecomp.h"
 #include "CSWindow.h"
 #include "CSBrowserClient.h"
+#include "CSJsMenu.h"
 
 CSWindow::CSWindow() :
 	mWindow(NULL),
@@ -50,7 +51,7 @@ CSWindow::CSWindow() :
     CefBrowserSettings settings;
     windowInfo.SetAsOffScreen(window);
     windowInfo.SetTransparentPainting(TRUE);
-    CefBrowser::CreateBrowser(windowInfo, mBrowserClient, "local://index.html", settings);
+    CefBrowser::CreateBrowser(windowInfo, mBrowserClient, "local://file/index.html", settings);
 
 	// create bitmap
 	CreateBitmap(width, height);
@@ -132,8 +133,11 @@ void CSWindow::GetViewRect(CSRect &rect)
 	RECT r;
 	GetClientRect(mWindow, &r);
 
-	rect.x = r.left;
-	rect.y = r.top;
+	POINT ptZero = {0, 0};
+    MapWindowPoints(mWindow, HWND_DESKTOP, &ptZero, 1);
+
+	rect.x = r.left + ptZero.x;
+	rect.y = r.top + ptZero.x;
 	rect.width = r.right - r.left;
 	rect.height = r.bottom - r.top;
 }
@@ -425,6 +429,11 @@ LRESULT CSWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		win->OnKeyEvent(message, wParam, lParam);
 		break;
 
+	case WM_COMMAND:
+		{
+			CSJsMenu::OnMenuItemSelected(LOWORD(wParam));
+		}
+		break;
 
 	case WM_DESTROY:
 		PostQuitMessage(0);

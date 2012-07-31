@@ -130,6 +130,7 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
     <ClInclude Include="..\..\src\CSSchemeFactory.h" />
     <ClInclude Include="..\..\src\CSSchemeLocalHandler.h" />
     <ClInclude Include="..\..\src\msw\CSApp.h" />
+    <ClInclude Include="..\..\src\msw\CSJsMenu.h" />
     <ClInclude Include="..\..\src\msw\CSLog.h" />
     <ClInclude Include="..\..\src\msw\CSUtil.h" />
     <ClInclude Include="..\..\src\msw\CSWindow.h" />
@@ -149,6 +150,7 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
     <ClCompile Include="..\..\src\CSSchemeFactory.cpp" />
     <ClCompile Include="..\..\src\CSSchemeLocalHandler.cpp" />
     <ClCompile Include="..\..\src\msw\CSApp.cpp" />
+    <ClCompile Include="..\..\src\msw\CSJsMenu.cpp" />
     <ClCompile Include="..\..\src\msw\CSLog.cpp" />
     <ClCompile Include="..\..\src\msw\CSUtil.cpp" />
     <ClCompile Include="..\..\src\msw\CSWindow.cpp" />

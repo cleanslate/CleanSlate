@@ -28,6 +28,7 @@ class CSUtil
 {
 public:
     static std::string GetLocalDir();
+	static std::string GetOS();
 };
 
 #endif

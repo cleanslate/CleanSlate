@@ -37,3 +37,8 @@ std::string CSUtil::GetLocalDir()
 
 	return str;
 }
+
+std::string CSUtil::GetOS()
+{
+	return "msw";
+}
