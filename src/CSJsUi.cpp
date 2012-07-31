@@ -22,6 +22,7 @@
 #include "CSPrecomp.h"
 
 #include "CSJsUi.h"
+#include "CSJsMenu.h"
 
 #include "CSWindow.h"
 
@@ -44,6 +45,8 @@ void CSJsUi::Register(CefRefPtr<CefV8Value> windowObject)
     RegFunc(obj, "setSize");
     RegFunc(obj, "setPos");
     RegFunc(obj, "createWindow");
+    RegFunc(obj, "menu");
+    RegFunc(obj, "mainMenu");
     
 	// bind window.ui object
 	windowObject->SetValue("ui", obj, V8_PROPERTY_ATTRIBUTE_READONLY);    
@@ -134,6 +137,19 @@ bool CSJsUi::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const
             retval = CefV8Value::CreateNull();
             return true;            
         }
+    }
+    else if (name == "menu")
+    {
+        if (arguments.size() == 1)
+        {
+            retval = CSJsMenu::CreateMenu(arguments[0]->GetStringValue());
+            return true;
+        }
+    }
+    else if (name == "mainMenu")
+    {
+        retval = CSJsMenu::GetMainMenu();
+        return true;
     }
     
     return false;

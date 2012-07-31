@@ -27,3 +27,8 @@ std::string CSUtil::GetLocalDir()
     NSString *path = [[NSBundle mainBundle] resourcePath];
     return [path UTF8String];
 }
+
+std::string CSUtil::GetOS()
+{
+    return "osx";
+}

@@ -39,7 +39,7 @@ bool CSSchemeLocalHandler::ProcessRequest(CefRefPtr<CefRequest> request, CefRefP
     std::string url = request->GetURL().ToString();
     
 	// scheme is local://
-    std::string scheme = std::string(LOCAL_SCHEME).append("://");
+    std::string scheme = std::string(LOCAL_SCHEME).append("://file");
     std::string path = url.substr(scheme.size());
     path = CSUtil::GetLocalDir().append(OS_PATH_SEP).append(path);
     

@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>test</title>
-    <link rel="stylesheet" type="text/css" href="local://style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>
     $(function () {
@@ -29,6 +29,12 @@
             browser.height(win.height() - browser.position().top);
             window.sys.log("width = " + win.width().toString() + ", height = " + win.height().toString());
       
+      $("#back").click(function () {
+                       window.sys.log("click");
+                       //document.getElementById("browser").contentWindow.history.back();
+                       $("#browser").contentWindow.history.back();	
+                       });
+      
         // test socket
         var s = window.net.socket("localhost", 9898);
         if (s)
@@ -51,6 +57,16 @@
         f.open("test.txt", "r");
         var data = f.read(100);
       window.sys.log("data = " + data);
+      
+      var mainMenu = window.ui.mainMenu();
+      var testMenu = window.ui.menu("");
+      testMenu.addItem("test1", "q", function() { window.sys.log("test1"); });
+      mainMenu.addSubMenu("App", testMenu);
+      
+      var fileMenu = window.ui.menu("File");
+      fileMenu.addItem("file1", "f", function() { window.sys.log("file1"); });
+      fileMenu.addItem("file2", "", function() { window.sys.log("file2"); });
+      mainMenu.addSubMenu("File", fileMenu);
     });
     </script>
 </head>
@@ -60,16 +76,16 @@
     <div class="titlebar"><a href="#" onclick="window.ui.close(); return false;">X</a><div class="clear"></div></div>
     <div class="resize"></div>
     <a href="local://index.html">refresh</a> |
-    <a href="#" onclick="return false;">stop</a> |
-    <a href="#" onclick="return false;">back</a>
+    <a id="stop" href="#" onclick="return false;">stop</a> |
+    <a id="back" href="#" onclick="return false;">back</a>
     <br>
     <form>
     url:<input type="text"></input>
     </form>
     <br>
     <!--div id="browser"></div -->
-      <!-- embed type="application/x-client-browser" id="browser" -->
-    <iframe id="browser" src="http://www.reddit.com/"></iframe>
+    <!-- <embed type="application/x-client-browser" id="browser"> -->
+    <iframe id="browser" src="http://reddit.com/"></iframe>
     </div>
 </body>
 

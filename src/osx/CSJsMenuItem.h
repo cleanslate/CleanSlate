@@ -19,28 +19,14 @@
  *
  */
 
-#include "CSPrecomp.h"
-#include "CSSchemeFactory.h"
-#include "CSSchemeLocalHandler.h"
+#import <Cocoa/Cocoa.h>
 
-CSSchemeFactory::CSSchemeFactory()
+@interface CSJsMenuItem : NSMenuItem
 {
-    
+    CefRefPtr<CefV8Value> mCallback;
+    CefRefPtr<CefV8Context> mContext;
 }
+-(id) initWithTitle:(NSString *)aString keyEquivalent:(NSString *)charCode 
+           callback:(CefV8Value *)callback context:(CefV8Context *)context;
 
-CSSchemeFactory::~CSSchemeFactory()
-{
-    
-}
-
-void CSSchemeFactory::Register()
-{
-    CefRegisterCustomScheme(LOCAL_SCHEME, true, false, false);
-    CefRegisterSchemeHandlerFactory(LOCAL_SCHEME, "file", new CSSchemeFactory());
-    //CefRegisterSchemeHandlerFactory(LOCAL_SCHEME, "zip", new CSZipSchemeFactory());
-}
-
-CefRefPtr<CefSchemeHandler> CSSchemeFactory::Create(CefRefPtr<CefBrowser> browser, const CefString& scheme_name, CefRefPtr<CefRequest> request)
-{
-    return new CSSchemeLocalHandler();
-}
+@end
