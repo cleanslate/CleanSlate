@@ -62,6 +62,12 @@
     <ClInclude Include="..\..\src\msw\CSJsMenu.h">
       <Filter>Source Files\msw</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\CSJsDb.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\CSJsApp.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp">
@@ -111,6 +117,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\msw\CSJsMenu.cpp">
       <Filter>Source Files\msw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CSJsDb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CSJsApp.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

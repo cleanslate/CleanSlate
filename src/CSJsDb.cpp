@@ -88,7 +88,7 @@ void CSJsDb::Close()
 
 bool CSJsDb::Delete(CefRefPtr<CefV8Value> dbName)
 {
-    CSUtil::Unlink(dbName->GetStringValue());
+    return CSUtil::Unlink(dbName->GetStringValue()) == TRUE;
 }
 
 CefRefPtr<CefV8Value> CSJsDb::Sql(CefRefPtr<CefV8Value> sqlStr)

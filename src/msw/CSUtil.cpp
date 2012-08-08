@@ -42,3 +42,8 @@ std::string CSUtil::GetOS()
 {
 	return "msw";
 }
+
+bool CSUtil::Unlink(const CefString &path)
+{
+	return DeleteFile(path.ToWString().c_str()) == TRUE;
+}

@@ -5,11 +5,17 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CleanSlate", "CleanSlate.vc
 	ProjectSection(ProjectDependencies) = postProject
 		{DEC85337-D906-425C-803A-77FDF444AA0D} = {DEC85337-D906-425C-803A-77FDF444AA0D}
 		{A9D6DC71-C0DC-4549-AEA0-3B15B44E86A9} = {A9D6DC71-C0DC-4549-AEA0-3B15B44E86A9}
+		{91A0AC8F-0323-4E4B-A2DF-F8CBF35C1536} = {91A0AC8F-0323-4E4B-A2DF-F8CBF35C1536}
+		{A10CF1CD-3017-43C9-81D9-F9D1207AE5AC} = {A10CF1CD-3017-43C9-81D9-F9D1207AE5AC}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcef_dll_wrapper", "..\..\third-party\cef\msw\libcef_dll_wrapper.vcxproj", "{A9D6DC71-C0DC-4549-AEA0-3B15B44E86A9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libevent", "libevent.vcxproj", "{DEC85337-D906-425C-803A-77FDF444AA0D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openssl", "openssl.vcxproj", "{A10CF1CD-3017-43C9-81D9-F9D1207AE5AC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlcipher", "sqlcipher.vcxproj", "{91A0AC8F-0323-4E4B-A2DF-F8CBF35C1536}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{DEC85337-D906-425C-803A-77FDF444AA0D}.Release|Win32.ActiveCfg = Release|Win32
 		{DEC85337-D906-425C-803A-77FDF444AA0D}.Release|Win32.Build.0 = Release|Win32
 		{DEC85337-D906-425C-803A-77FDF444AA0D}.Release|x64.ActiveCfg = Release|Win32
+		{A10CF1CD-3017-43C9-81D9-F9D1207AE5AC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A10CF1CD-3017-43C9-81D9-F9D1207AE5AC}.Debug|Win32.Build.0 = Debug|Win32
+		{A10CF1CD-3017-43C9-81D9-F9D1207AE5AC}.Debug|x64.ActiveCfg = Debug|Win32
+		{A10CF1CD-3017-43C9-81D9-F9D1207AE5AC}.Release|Win32.ActiveCfg = Release|Win32
+		{A10CF1CD-3017-43C9-81D9-F9D1207AE5AC}.Release|Win32.Build.0 = Release|Win32
+		{A10CF1CD-3017-43C9-81D9-F9D1207AE5AC}.Release|x64.ActiveCfg = Release|Win32
+		{91A0AC8F-0323-4E4B-A2DF-F8CBF35C1536}.Debug|Win32.ActiveCfg = Debug|Win32
+		{91A0AC8F-0323-4E4B-A2DF-F8CBF35C1536}.Debug|Win32.Build.0 = Debug|Win32
+		{91A0AC8F-0323-4E4B-A2DF-F8CBF35C1536}.Debug|x64.ActiveCfg = Debug|Win32
+		{91A0AC8F-0323-4E4B-A2DF-F8CBF35C1536}.Release|Win32.ActiveCfg = Release|Win32
+		{91A0AC8F-0323-4E4B-A2DF-F8CBF35C1536}.Release|Win32.Build.0 = Release|Win32
+		{91A0AC8F-0323-4E4B-A2DF-F8CBF35C1536}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

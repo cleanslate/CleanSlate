@@ -69,3 +69,25 @@ third-party/sqlcipher/sqlite3.h
 third-party/sqlcipher/sqlite3.pc
 third-party/sqlcipher/tsrc/
 
+third-party/sqlcipher/lemon.exe
+third-party/sqlcipher/lemon.obj
+third-party/sqlcipher/libsqlite3.lib
+third-party/sqlcipher/mkkeywordhash.exe
+third-party/sqlcipher/mkkeywordhash.obj
+third-party/sqlcipher/vc100.pdb
+
+# openssl
+third-party/openssl/MINFO
+third-party/openssl/Makefile.bak
+third-party/openssl/NUL
+third-party/openssl/crypto/buildinf.h
+third-party/openssl/crypto/opensslconf.h.bak
+third-party/openssl/inc32/
+third-party/openssl/ms/bcb.mak
+third-party/openssl/ms/libeay32.def
+third-party/openssl/ms/nt.mak
+third-party/openssl/ms/ntdll.mak
+third-party/openssl/ms/ssleay32.def
+third-party/openssl/ms/version32.rc
+third-party/openssl/out32/
+

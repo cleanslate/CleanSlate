@@ -45,17 +45,17 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <CustomBuildAfterTargets>
-    </CustomBuildAfterTargets>
-    <CustomBuildBeforeTargets>Run</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;../../third-party/libevent;../../third-party/cef/msw;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DEBUG;_CRT_SECURE_NO_WARNINGS;SQLITE_HAS_CODEC;SQLITE_TEMP_STORE=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;../../third-party/libevent;../../third-party/cef/msw;../../third-party/openssl;../../third-party/sqlcipher;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderFile>CSPrecomp.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -89,8 +89,8 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;../../third-party/libevent;../../third-party/cef/msw;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;SQLITE_HAS_CODEC;SQLITE_TEMP_STORE=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;../../third-party/libevent;../../third-party/cef/msw;../../third-party/openssl;../../third-party/sqlcipher;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeaderFile>CSPrecomp.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -100,7 +100,7 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>../../third-party/cef/msw/lib/Release</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcef.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcef.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -119,6 +119,8 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\CSBrowserClient.h" />
+    <ClInclude Include="..\..\src\CSJsApp.h" />
+    <ClInclude Include="..\..\src\CSJsDb.h" />
     <ClInclude Include="..\..\src\CSJsFile.h" />
     <ClInclude Include="..\..\src\CSJsModule.h" />
     <ClInclude Include="..\..\src\CSJsNet.h" />
@@ -137,6 +139,8 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp" />
+    <ClCompile Include="..\..\src\CSJsApp.cpp" />
+    <ClCompile Include="..\..\src\CSJsDb.cpp" />
     <ClCompile Include="..\..\src\CSJsFile.cpp" />
     <ClCompile Include="..\..\src\CSJsModule.cpp" />
     <ClCompile Include="..\..\src\CSJsNet.cpp" />
@@ -162,6 +166,12 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
     </ProjectReference>
     <ProjectReference Include="libevent.vcxproj">
       <Project>{dec85337-d906-425c-803a-77fdf444aa0d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="openssl.vcxproj">
+      <Project>{a10cf1cd-3017-43c9-81d9-f9d1207ae5ac}</Project>
+    </ProjectReference>
+    <ProjectReference Include="sqlcipher.vcxproj">
+      <Project>{91a0ac8f-0323-4e4b-a2df-f8cbf35c1536}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

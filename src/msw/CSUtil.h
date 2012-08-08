@@ -29,6 +29,7 @@ class CSUtil
 public:
     static std::string GetLocalDir();
 	static std::string GetOS();
+	static bool Unlink(const CefString &path);
 };
 
 #endif
