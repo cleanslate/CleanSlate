@@ -34,6 +34,7 @@
 #include "CSJsUi.h"
 #include "CSJsSys.h"
 #include "CSJsNet.h"
+#include "CSJsApp.h"
 
 
 CSBrowserClient::CSBrowserClient(CSWindow *window) :
@@ -175,6 +176,12 @@ void CSBrowserClient::OnContextCreated(CefRefPtr<CefBrowser> browser, CefRefPtr<
         CSJsNet *js = new CSJsNet(mWindow);
         js->Register(windowObject);
     }
+    
+    {
+        CSJsApp *js = new CSJsApp(mWindow);
+        js->Register(windowObject);
+    }
+    
 }
 
 void CSBrowserClient::OnContextReleased(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefRefPtr<CefV8Context> context)

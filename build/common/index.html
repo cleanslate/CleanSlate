@@ -61,7 +61,8 @@
       var mainMenu = window.ui.mainMenu();
       var testMenu = window.ui.menu("");
       testMenu.addItem("test1", "q", function() { window.sys.log("test1"); });
-      //mainMenu.addSubMenu("App", testMenu);
+      if (window.sys.os() == "osx")
+        mainMenu.addSubMenu("App", testMenu);
       
       var fileMenu = window.ui.menu("File");
       fileMenu.addItem("file1", "f", function() { window.sys.log("file1"); });
@@ -69,6 +70,16 @@
       //mainMenu.addSubMenu("File", fileMenu);
       
       $("#menu").click(function() { var m = $("#menu"); fileMenu.popup(m.offset().left, m.offset().top + m.height()); });
+      
+      // test sql
+      var db = window.app.db();
+      db.open("test.sqlite");
+      db.sql("create table tbl1(one varchar(10), two smallint);");
+      db.sql("insert into tbl1 values('hello!',10);");
+      db.sql("insert into tbl1 values('goodbye', 20);");
+      result = db.sql("select * from tbl1;");
+      window.sys.log(result[0][0] + " : " + result[0][1]);
+      window.sys.log(result[1][0] + " : " + result[1][1]);
     });
     </script>
 </head>
@@ -77,7 +88,7 @@
     <div class="window">
     <div class="titlebar"><a href="#" onclick="window.ui.close(); return false;">X</a><div class="clear"></div></div>
     <div class="resize"></div>
-    <a href="local://index.html">refresh</a> |
+    <a href="index.html">refresh</a> |
     <a id="stop" href="#" onclick="return false;">stop</a> |
     <a id="back" href="#" onclick="return false;">back</a> |
     <a id="menu" href="#" onclick="return false;">menu</a>

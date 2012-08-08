@@ -83,6 +83,9 @@
 		D79E443C15C6E75E00DA6612 /* CSJsMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D79E443B15C6E75E00DA6612 /* CSJsMenuItem.m */; };
 		D79E444615C703A600DA6612 /* missingImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D79E444515C703A600DA6612 /* missingImage.png */; };
 		D79E444B15C79B6700DA6612 /* CSJsMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D79E443415C6DA6300DA6612 /* CSJsMenu.cpp */; };
+		D79E445315C8470000DA6612 /* CSJsApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D79E445215C846FF00DA6612 /* CSJsApp.cpp */; };
+		D7AB0B4615D1D52C004B3101 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB0B4515D1D52C004B3101 /* libsqlite3.dylib */; };
+		D7AB0B4915D1D589004B3101 /* CSJsDb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7AB0B4815D1D589004B3101 /* CSJsDb.cpp */; };
 		D7C00FC315C10D99004CD6D9 /* CSBrowserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */; };
 		D7C00FCA15C11CA1004CD6D9 /* CSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */; };
 		D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7DE834C15C0128900D7B5D8 /* libcef.dylib */; };
@@ -331,6 +334,11 @@
 		D79E443A15C6E74900DA6612 /* CSJsMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsMenuItem.h; sourceTree = "<group>"; };
 		D79E443B15C6E75E00DA6612 /* CSJsMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSJsMenuItem.m; sourceTree = "<group>"; };
 		D79E444515C703A600DA6612 /* missingImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = missingImage.png; path = "../../third-party/cef/osx/Resources/missingImage.png"; sourceTree = "<group>"; };
+		D79E445115C846F300DA6612 /* CSJsApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsApp.h; sourceTree = "<group>"; };
+		D79E445215C846FF00DA6612 /* CSJsApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsApp.cpp; sourceTree = "<group>"; };
+		D7AB0B4515D1D52C004B3101 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		D7AB0B4715D1D57C004B3101 /* CSJsDb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsDb.h; sourceTree = "<group>"; };
+		D7AB0B4815D1D589004B3101 /* CSJsDb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsDb.cpp; sourceTree = "<group>"; };
 		D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSBrowserClient.cpp; sourceTree = "<group>"; };
 		D7C00FC815C11C40004CD6D9 /* CSLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSLog.h; sourceTree = "<group>"; };
 		D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSLog.cpp; sourceTree = "<group>"; };
@@ -412,6 +420,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7AB0B4615D1D52C004B3101 /* libsqlite3.dylib in Frameworks */,
 				D7E8B49415BA73FD00475680 /* Cocoa.framework in Frameworks */,
 				D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */,
 				D7351D1015C56C1400EE3B4F /* libevent.a in Frameworks */,
@@ -675,6 +684,7 @@
 		D7E8B49215BA73FD00475680 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7AB0B4515D1D52C004B3101 /* libsqlite3.dylib */,
 				D7DE835115C0139A00D7B5D8 /* ffmpegsumo.so */,
 				D7DE834C15C0128900D7B5D8 /* libcef.dylib */,
 				D7E8B49315BA73FD00475680 /* Cocoa.framework */,
@@ -700,6 +710,10 @@
 				D7E8B4D315BA75DD00475680 /* osx */,
 				D7DE843715C1069E00D7B5D8 /* CSBrowserClient.h */,
 				D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */,
+				D79E445115C846F300DA6612 /* CSJsApp.h */,
+				D79E445215C846FF00DA6612 /* CSJsApp.cpp */,
+				D7AB0B4715D1D57C004B3101 /* CSJsDb.h */,
+				D7AB0B4815D1D589004B3101 /* CSJsDb.cpp */,
 				D7351D1115C66FE300EE3B4F /* CSJsFile.h */,
 				D7351D1215C6702500EE3B4F /* CSJsFile.cpp */,
 				D7351BEA15C366D400EE3B4F /* CSJsModule.h */,
@@ -962,6 +976,8 @@
 				D7351D0F15C44E1D00EE3B4F /* CSJsSocket.cpp in Sources */,
 				D7351D1315C6702600EE3B4F /* CSJsFile.cpp in Sources */,
 				D79E443C15C6E75E00DA6612 /* CSJsMenuItem.m in Sources */,
+				D79E445315C8470000DA6612 /* CSJsApp.cpp in Sources */,
+				D7AB0B4915D1D589004B3101 /* CSJsDb.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
