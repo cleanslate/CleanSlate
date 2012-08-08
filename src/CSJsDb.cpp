@@ -8,9 +8,10 @@
 
 #include "CSPrecomp.h"
 
-#include "CSJsDb.h"
+#include "sqlite3.h"
 
-#include <sqlite3.h>
+#include "CSJsDb.h"
+#include "CSUtil.h"
 
 CSJsDb::CSJsDb() :
     mDb(NULL)
@@ -29,21 +30,53 @@ CefRefPtr<CefV8Value> CSJsDb::CreateDb()
     obj->SetValue("open", CefV8Value::CreateFunction("open", db), V8_PROPERTY_ATTRIBUTE_READONLY);
     obj->SetValue("close", CefV8Value::CreateFunction("close", db), V8_PROPERTY_ATTRIBUTE_READONLY);
     obj->SetValue("sql", CefV8Value::CreateFunction("sql", db), V8_PROPERTY_ATTRIBUTE_READONLY);
+    obj->SetValue("delete", CefV8Value::CreateFunction("delete", db), V8_PROPERTY_ATTRIBUTE_READONLY);
     
     return obj;
 }
 
 
-bool CSJsDb::Open(CefRefPtr<CefV8Value> dbname)
+bool CSJsDb::Open(CefRefPtr<CefV8Value> dbName)
 {
     Close();
     
-    int retval = sqlite3_open_v2(dbname->GetStringValue().ToString().c_str(), &mDb, SQLITE_OPEN_READWRITE|SQLITE_OPEN_CREATE, NULL);
+    int retval = sqlite3_open_v2(dbName->GetStringValue().ToString().c_str(), &mDb, SQLITE_OPEN_READWRITE|SQLITE_OPEN_CREATE, NULL);
     if (retval != SQLITE_OK)
     {
-        CSLogError("Can't open database: %s\n", sqlite3_errmsg(mDb));
+        CSLogError("Can't open database: %s", sqlite3_errmsg(mDb));
         return false;
     }
+    
+    return true;
+}
+
+bool CSJsDb::OpenEncrypted(CefRefPtr<CefV8Value> dbName, CefRefPtr<CefV8Value> password)
+{
+    Close();
+    
+    int retval = sqlite3_open_v2(dbName->GetStringValue().ToString().c_str(), &mDb, SQLITE_OPEN_READWRITE|SQLITE_OPEN_CREATE, NULL);
+    if (retval != SQLITE_OK)
+    {
+        CSLogError("Can't open database: %s", sqlite3_errmsg(mDb));
+        return false;
+    }
+    
+    std::string key = dbName->GetStringValue().ToString();
+    retval = sqlite3_key(mDb, key.c_str(), key.size());
+    if (retval != SQLITE_OK)
+    {
+        CSLogError("Can't decrypt db: %s", sqlite3_errmsg(mDb));
+        return false;
+    }
+    
+    // verify decryption works  
+    retval = sqlite3_exec(mDb, "select * from sqlite_master", NULL, NULL, NULL);
+    if (retval != SQLITE_OK)
+    {
+        CSLogError("Password incorrect: %s", sqlite3_errmsg(mDb));
+        return false;        
+    }
+    
     return true;
 }
 
@@ -51,6 +84,11 @@ void CSJsDb::Close()
 {
     if (mDb)
         sqlite3_close(mDb);
+}
+
+bool CSJsDb::Delete(CefRefPtr<CefV8Value> dbName)
+{
+    CSUtil::Unlink(dbName->GetStringValue());
 }
 
 CefRefPtr<CefV8Value> CSJsDb::Sql(CefRefPtr<CefV8Value> sqlStr)
@@ -116,6 +154,12 @@ bool CSJsDb::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const
             retval = CefV8Value::CreateBool(result);
             return true;
         }
+        else if (arguments.size() == 2)
+        {
+            bool result = OpenEncrypted(arguments[0], arguments[1]);
+            retval = CefV8Value::CreateBool(result);
+            return true;            
+        }
     }
     else if (name == "close")
     {
@@ -130,6 +174,15 @@ bool CSJsDb::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const
             retval = Sql(arguments[0]);
             return true;
         }
+    }
+    else if (name == "delete")
+    {
+        if (arguments.size() == 1)
+        {
+            bool result = Delete(arguments[0]);
+            retval = CefV8Value::CreateBool(result);
+            return true;
+        }        
     }
     
     return false;

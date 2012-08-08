@@ -1110,6 +1110,7 @@
 					"\"USING_CEF_SHARED\"",
 					"\"__STD_FORMAT_MACROS\"",
 					"\"DYNAMIC_ANNOTATIONS_ENABLED=1\"",
+					"SQLITE_HAS_CODEC=1",
 					DEBUG,
 				);
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -1119,6 +1120,7 @@
 					"../../third-party/cef/osx",
 					"../../third-party/libevent/include",
 					"../../third-party/libevent",
+					"../../third-party/sqlcipher",
 				);
 				INFOPLIST_FILE = "CleanSlate-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1171,6 +1173,7 @@
 					"\"USING_CEF_SHARED\"",
 					"\"__STD_FORMAT_MACROS\"",
 					"\"DYNAMIC_ANNOTATIONS_ENABLED=1\"",
+					"SQLITE_HAS_CODEC=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
@@ -1179,6 +1182,7 @@
 					"../../third-party/cef/osx",
 					"../../third-party/libevent/include",
 					"../../third-party/libevent",
+					"../../third-party/sqlcipher",
 				);
 				INFOPLIST_FILE = "CleanSlate-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

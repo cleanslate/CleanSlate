@@ -32,3 +32,8 @@ std::string CSUtil::GetOS()
 {
     return "osx";
 }
+
+bool CSUtil::Unlink(const CefString &str)
+{
+    return unlink(str.ToString().c_str()) == 0;
+}

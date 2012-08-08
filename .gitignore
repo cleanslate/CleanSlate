@@ -46,3 +46,26 @@ third-party/libevent/stamp-h1
 third-party/libevent/test/.deps/
 third-party/libevent/test/Makefile
 
+# sqlcipher
+third-party/sqlcipher/.target_source
+third-party/sqlcipher/Makefile
+third-party/sqlcipher/config.h
+third-party/sqlcipher/config.log
+third-party/sqlcipher/config.status
+third-party/sqlcipher/keywordhash.h
+third-party/sqlcipher/lemon
+third-party/sqlcipher/lempar.c
+third-party/sqlcipher/libtool
+third-party/sqlcipher/mkkeywordhash
+third-party/sqlcipher/opcodes.c
+third-party/sqlcipher/opcodes.h
+third-party/sqlcipher/parse.c
+third-party/sqlcipher/parse.h
+third-party/sqlcipher/parse.h.temp
+third-party/sqlcipher/parse.out
+third-party/sqlcipher/parse.y
+third-party/sqlcipher/sqlite3.c
+third-party/sqlcipher/sqlite3.h
+third-party/sqlcipher/sqlite3.pc
+third-party/sqlcipher/tsrc/
+

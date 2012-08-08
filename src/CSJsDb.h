@@ -19,8 +19,10 @@ public:
     
     static CefRefPtr<CefV8Value> CreateDb();
     
-    bool Open(CefRefPtr<CefV8Value> sqlStr);
+    bool Open(CefRefPtr<CefV8Value> dbName);
+    bool OpenEncrypted(CefRefPtr<CefV8Value> dbName, CefRefPtr<CefV8Value> password);
     void Close();
+    bool Delete(CefRefPtr<CefV8Value> dbName);
     CefRefPtr<CefV8Value> Sql(CefRefPtr<CefV8Value> sql);
     
     virtual bool Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const CefV8ValueList& arguments,  CefRefPtr<CefV8Value>& retval, CefString& exception);
