@@ -84,8 +84,10 @@
 		D79E444615C703A600DA6612 /* missingImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D79E444515C703A600DA6612 /* missingImage.png */; };
 		D79E444B15C79B6700DA6612 /* CSJsMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D79E443415C6DA6300DA6612 /* CSJsMenu.cpp */; };
 		D79E445315C8470000DA6612 /* CSJsApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D79E445215C846FF00DA6612 /* CSJsApp.cpp */; };
-		D7AB0B4615D1D52C004B3101 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB0B4515D1D52C004B3101 /* libsqlite3.dylib */; };
 		D7AB0B4915D1D589004B3101 /* CSJsDb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7AB0B4815D1D589004B3101 /* CSJsDb.cpp */; };
+		D7AB0B5415D228EB004B3101 /* libsqlcipher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB0B5315D228DD004B3101 /* libsqlcipher.a */; };
+		D7AB0B5815D22A06004B3101 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB0B5715D22A06004B3101 /* libcrypto.dylib */; };
+		D7AB0B5A15D22A0C004B3101 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB0B5915D22A0C004B3101 /* libssl.dylib */; };
 		D7C00FC315C10D99004CD6D9 /* CSBrowserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */; };
 		D7C00FCA15C11CA1004CD6D9 /* CSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */; };
 		D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7DE834C15C0128900D7B5D8 /* libcef.dylib */; };
@@ -166,6 +168,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D7351BF715C43FF200EE3B4F;
 			remoteInfo = libevent;
+		};
+		D7AB0B5215D228DD004B3101 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7AB0B4A15D228DC004B3101 /* sqlcipher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC046055464E500DB518D;
+			remoteInfo = sqlcipher;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -339,6 +348,10 @@
 		D7AB0B4515D1D52C004B3101 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D7AB0B4715D1D57C004B3101 /* CSJsDb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsDb.h; sourceTree = "<group>"; };
 		D7AB0B4815D1D589004B3101 /* CSJsDb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsDb.cpp; sourceTree = "<group>"; };
+		D7AB0B4A15D228DC004B3101 /* sqlcipher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sqlcipher.xcodeproj; path = "../../third-party/sqlcipher/sqlcipher.xcodeproj"; sourceTree = "<group>"; };
+		D7AB0B5515D22999004B3101 /* libssl.0.9.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.0.9.8.dylib; path = usr/lib/libssl.0.9.8.dylib; sourceTree = SDKROOT; };
+		D7AB0B5715D22A06004B3101 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		D7AB0B5915D22A0C004B3101 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = usr/lib/libssl.dylib; sourceTree = SDKROOT; };
 		D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSBrowserClient.cpp; sourceTree = "<group>"; };
 		D7C00FC815C11C40004CD6D9 /* CSLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSLog.h; sourceTree = "<group>"; };
 		D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSLog.cpp; sourceTree = "<group>"; };
@@ -420,7 +433,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7AB0B4615D1D52C004B3101 /* libsqlite3.dylib in Frameworks */,
+				D7AB0B5A15D22A0C004B3101 /* libssl.dylib in Frameworks */,
+				D7AB0B5815D22A06004B3101 /* libcrypto.dylib in Frameworks */,
+				D7AB0B5415D228EB004B3101 /* libsqlcipher.a in Frameworks */,
 				D7E8B49415BA73FD00475680 /* Cocoa.framework in Frameworks */,
 				D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */,
 				D7351D1015C56C1400EE3B4F /* libevent.a in Frameworks */,
@@ -590,6 +605,14 @@
 			path = wrapper;
 			sourceTree = "<group>";
 		};
+		D7AB0B4B15D228DC004B3101 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7AB0B5315D228DD004B3101 /* libsqlcipher.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D7DE835815C0154200D7B5D8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +687,7 @@
 		D7E8B48415BA73FD00475680 = {
 			isa = PBXGroup;
 			children = (
+				D7AB0B4A15D228DC004B3101 /* sqlcipher.xcodeproj */,
 				D7351C7A15C440E000EE3B4F /* libevent.xcodeproj */,
 				D7E8B4D215BA75DD00475680 /* Classes */,
 				D7DE843815C106D100D7B5D8 /* Supporting Files */,
@@ -687,6 +711,9 @@
 				D7AB0B4515D1D52C004B3101 /* libsqlite3.dylib */,
 				D7DE835115C0139A00D7B5D8 /* ffmpegsumo.so */,
 				D7DE834C15C0128900D7B5D8 /* libcef.dylib */,
+				D7AB0B5915D22A0C004B3101 /* libssl.dylib */,
+				D7AB0B5715D22A06004B3101 /* libcrypto.dylib */,
+				D7AB0B5515D22999004B3101 /* libssl.0.9.8.dylib */,
 				D7E8B49315BA73FD00475680 /* Cocoa.framework */,
 				D7E8B4B115BA73FD00475680 /* SenTestingKit.framework */,
 				D7E8B49515BA73FD00475680 /* Other Frameworks */,
@@ -808,6 +835,10 @@
 					ProductGroup = D7351C7B15C440E000EE3B4F /* Products */;
 					ProjectRef = D7351C7A15C440E000EE3B4F /* libevent.xcodeproj */;
 				},
+				{
+					ProductGroup = D7AB0B4B15D228DC004B3101 /* Products */;
+					ProjectRef = D7AB0B4A15D228DC004B3101 /* sqlcipher.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -822,6 +853,13 @@
 			fileType = archive.ar;
 			path = libevent.a;
 			remoteRef = D7351C8115C440E000EE3B4F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D7AB0B5315D228DD004B3101 /* libsqlcipher.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libsqlcipher.a;
+			remoteRef = D7AB0B5215D228DD004B3101 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
