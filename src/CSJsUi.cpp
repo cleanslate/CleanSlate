@@ -43,7 +43,8 @@ void CSJsUi::Register(CefRefPtr<CefV8Value> windowObject)
     RegFunc(obj, "close");
     RegFunc(obj, "setSizeHints");
     RegFunc(obj, "setSize");
-    RegFunc(obj, "setPos");
+    RegFunc(obj, "move");
+    RegFunc(obj, "screenSize");
     RegFunc(obj, "createWindow");
     RegFunc(obj, "menu");
     RegFunc(obj, "mainMenu");
@@ -106,7 +107,7 @@ bool CSJsUi::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const
             return true;            
         }
     }
-    else if (name == "setPos")
+    else if (name == "move")
     {
         if (arguments.size() == 2)
         {

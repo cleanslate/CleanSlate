@@ -88,6 +88,7 @@
 		D7AB0B5415D228EB004B3101 /* libsqlcipher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB0B5315D228DD004B3101 /* libsqlcipher.a */; };
 		D7AB0B5815D22A06004B3101 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB0B5715D22A06004B3101 /* libcrypto.dylib */; };
 		D7AB0B5A15D22A0C004B3101 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB0B5915D22A0C004B3101 /* libssl.dylib */; };
+		D7AB0B5C15D2873D004B3101 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D7AB0B5B15D2873C004B3101 /* chat */; };
 		D7C00FC315C10D99004CD6D9 /* CSBrowserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */; };
 		D7C00FCA15C11CA1004CD6D9 /* CSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */; };
 		D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7DE834C15C0128900D7B5D8 /* libcef.dylib */; };
@@ -352,6 +353,7 @@
 		D7AB0B5515D22999004B3101 /* libssl.0.9.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.0.9.8.dylib; path = usr/lib/libssl.0.9.8.dylib; sourceTree = SDKROOT; };
 		D7AB0B5715D22A06004B3101 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
 		D7AB0B5915D22A0C004B3101 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = usr/lib/libssl.dylib; sourceTree = SDKROOT; };
+		D7AB0B5B15D2873C004B3101 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = chat; path = ../common/chat; sourceTree = "<group>"; };
 		D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSBrowserClient.cpp; sourceTree = "<group>"; };
 		D7C00FC815C11C40004CD6D9 /* CSLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSLog.h; sourceTree = "<group>"; };
 		D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSLog.cpp; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 				D79E444515C703A600DA6612 /* missingImage.png */,
 				D749481915C2A4B100703695 /* index.html */,
 				D749481A15C2A4B100703695 /* style.css */,
+				D7AB0B5B15D2873C004B3101 /* chat */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -926,6 +929,7 @@
 				D749481B15C2A4B100703695 /* index.html in Resources */,
 				D749481C15C2A4B100703695 /* style.css in Resources */,
 				D79E444615C703A600DA6612 /* missingImage.png in Resources */,
+				D7AB0B5C15D2873D004B3101 /* chat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,7 +26,7 @@
 #import "CSWindowImpl.h"
 #import "CSView.h"
 
-CSWindow::CSWindow()
+CSWindow::CSWindow(const char *url)
 {
     CSWindowImpl *window = [[[CSWindowImpl alloc] init] autorelease];
     [window retain];
@@ -46,7 +46,7 @@ CSWindow::CSWindow()
     mBrowserClient = new CSBrowserClient(this);
     [view setBrowserClient:mBrowserClient];
     
-    bool result = CefBrowser::CreateBrowser(windowInfo, mBrowserClient, "local://file/index.html", browserSettings);
+    bool result = CefBrowser::CreateBrowser(windowInfo, mBrowserClient, url, browserSettings);
     if (!result)
         CSLogDebug("CefBrowser::CreateBrowser() failed");
     else
@@ -200,8 +200,8 @@ void CSWindow::SetPos(int x, int y)
 
 void CSWindow::GetScreenSize(int &width, int &height)
 {
-    NSWindow *window = (NSWindow *)mWindow;
-    NSRect rect = [window frame];
+    NSScreen *screen = [NSScreen mainScreen];
+    NSRect rect = [screen visibleFrame];
     width = rect.size.width;
     height = rect.size.height;
 }

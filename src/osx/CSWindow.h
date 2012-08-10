@@ -27,7 +27,7 @@ class CSBrowserClient;
 class CSWindow
 {
 public:
-    CSWindow();
+    CSWindow(const char *url);
     CSWindow(int x, int y, int width, int height);
     ~CSWindow();
     

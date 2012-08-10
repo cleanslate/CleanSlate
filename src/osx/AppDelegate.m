@@ -49,7 +49,9 @@
     // add handler
     CSSchemeFactory::Register();
     
-    CSWindow *window = new CSWindow();
+    
+    // TODO: Make this configurable either through plist or something else
+    CSWindow *window = new CSWindow("local://file/chat/login.html");
     window->Show(true);
 }
 

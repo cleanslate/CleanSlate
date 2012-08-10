@@ -1,0 +1,78 @@
+#frame {
+    background: -webkit-linear-gradient(top, #fff 0%,#aaa 100%);
+    min-height: 450px;
+}
+
+.logo {
+    position:relative;
+    height:100px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 1px 20px #555, 0px 1px 1px #000;
+    color: #666;
+}
+
+.logo-c {
+    color: #09f;
+}
+
+.logo-s {
+    color: #f90;
+}
+
+#login {
+    width: 280px;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: -webkit-linear-gradient(top, #fff 0%,#ccc 100%);
+}
+
+#login .field {
+    padding-bottom: 10px;
+}
+
+#login label {
+    width: 280px;
+    position: static;
+    display:block;
+    clear:both;
+    font-size:14px;
+    color: #888;
+}
+
+#login input[type="text"], input[type="password"] {
+    width: 280px;
+    font-size: 20px;
+    padding: 5px;
+    border: 0px;
+    border-radius:5px;
+    border: 1px solid #ccc;
+    color: #666;
+}
+
+#login input[type="text"]:focus, input[type="password"]:focus {
+    border: 1px solid #ccc;
+    background-color: #ee9;
+}
+
+#login input[type="submit"] {
+    float: right;
+}
+
+#login input[type="submit"]:hover {
+    background-color: #ddd;
+}
+
+#login:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
