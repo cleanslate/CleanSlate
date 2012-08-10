@@ -28,7 +28,7 @@ struct CSRect;
 class CSWindow
 {
 public:
-    CSWindow();
+    CSWindow(const char *url);
     ~CSWindow();
     
     void Show(bool show);
