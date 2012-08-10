@@ -73,7 +73,7 @@
       <Command>xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\chrome*.pak $(OutDir) /y /d
 xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\*.dll $(OutDir) /y /d
 xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir)\locales /i /s /y /d
-xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
+xcopy $(SoultionDir)..\common\* $(OutDir) /y /d /e</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Message>Copying CEF Files...</Message>
@@ -110,7 +110,7 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
       <Command>xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\chrome*.pak $(OutDir) /y /d
 xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\*.dll $(OutDir) /y /d
 xcopy $(SolutionDir)..\..\third-party\cef\msw\$(Configuration)\locales $(OutDir)\locales /i /s /y /d
-xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
+xcopy $(SoultionDir)..\common\* $(OutDir) /y /d /e</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Message>Copying CEF Files...</Message>
@@ -173,12 +173,6 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d</Command>
     <ProjectReference Include="sqlcipher.vcxproj">
       <Project>{91a0ac8f-0323-4e4b-a2df-f8cbf35c1536}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\common\index.html">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="..\common\style.css" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

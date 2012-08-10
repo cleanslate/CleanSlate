@@ -82,7 +82,7 @@ void CSApp::Init()
 
 void CSApp::Run()
 {
-	CSWindow *window = new CSWindow();
+	CSWindow *window = new CSWindow("local://file/chat/login.html");
 	window->Show(true);
 
 	// create timer

@@ -24,7 +24,7 @@
 #include "CSBrowserClient.h"
 #include "CSJsMenu.h"
 
-CSWindow::CSWindow() :
+CSWindow::CSWindow(const char *url) :
 	mWindow(NULL),
 	mResizing(false),
 	mMoving(false),
@@ -51,7 +51,7 @@ CSWindow::CSWindow() :
     CefBrowserSettings settings;
     windowInfo.SetAsOffScreen(window);
     windowInfo.SetTransparentPainting(TRUE);
-    CefBrowser::CreateBrowser(windowInfo, mBrowserClient, "local://file/index.html", settings);
+    CefBrowser::CreateBrowser(windowInfo, mBrowserClient, url, settings);
 
 	// create bitmap
 	CreateBitmap(width, height);
@@ -211,8 +211,12 @@ void CSWindow::SetPos(int x, int y)
 
 void CSWindow::GetScreenSize(int &width, int &height)
 {
-	width = GetSystemMetrics(SM_CXBORDER);
-	height = GetSystemMetrics(SM_CYBORDER);
+	HWND hwnd = GetDesktopWindow();
+	RECT rect;
+	GetWindowRect(hwnd, &rect);
+
+	width = rect.right - rect.left;
+	height = rect.bottom - rect.top;
 }
 
 void CSWindow::OnPaint(WPARAM wParam, LPARAM lParam)
