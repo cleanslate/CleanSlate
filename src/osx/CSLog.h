@@ -25,7 +25,7 @@
 #ifdef DEBUG
 #define CSLogDebug CSLogDebugImpl
 #else
-#define CSLogDebug(...) (void *)
+#define CSLogDebug(...) (void *)0
 #endif
 
 #define CSLogError CSLogErrorImpl
