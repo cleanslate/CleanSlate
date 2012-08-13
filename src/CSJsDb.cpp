@@ -27,6 +27,7 @@ CefRefPtr<CefV8Value> CSJsDb::CreateDb()
 {
     CSJsDb *db = new CSJsDb();
     CefRefPtr<CefV8Value> obj = CefV8Value::CreateObject(db, NULL);
+    obj->SetValue("exists", CefV8Value::CreateFunction("exists", db), V8_PROPERTY_ATTRIBUTE_READONLY);
     obj->SetValue("open", CefV8Value::CreateFunction("open", db), V8_PROPERTY_ATTRIBUTE_READONLY);
     obj->SetValue("close", CefV8Value::CreateFunction("close", db), V8_PROPERTY_ATTRIBUTE_READONLY);
     obj->SetValue("sql", CefV8Value::CreateFunction("sql", db), V8_PROPERTY_ATTRIBUTE_READONLY);
@@ -35,9 +36,24 @@ CefRefPtr<CefV8Value> CSJsDb::CreateDb()
     return obj;
 }
 
+bool CSJsDb::Exists(CefRefPtr<CefV8Value> dbName)
+{
+    const char *name = dbName->GetStringValue().ToString().c_str();
+    FILE *fp = fopen(name, "r");
+    if (fp)
+    {
+        fclose(fp);
+        return true;
+    }
+    
+    return false;
+}
 
 bool CSJsDb::Open(CefRefPtr<CefV8Value> dbName)
 {
+    if (!Exists(dbName))
+        return false;
+    
     Close();
     
     int retval = sqlite3_open_v2(dbName->GetStringValue().ToString().c_str(), &mDb, SQLITE_OPEN_READWRITE|SQLITE_OPEN_CREATE, NULL);
@@ -52,6 +68,9 @@ bool CSJsDb::Open(CefRefPtr<CefV8Value> dbName)
 
 bool CSJsDb::OpenEncrypted(CefRefPtr<CefV8Value> dbName, CefRefPtr<CefV8Value> password)
 {
+    if (!Exists(dbName))
+        return false;
+    
     Close();
     
     int retval = sqlite3_open_v2(dbName->GetStringValue().ToString().c_str(), &mDb, SQLITE_OPEN_READWRITE|SQLITE_OPEN_CREATE, NULL);
@@ -61,7 +80,7 @@ bool CSJsDb::OpenEncrypted(CefRefPtr<CefV8Value> dbName, CefRefPtr<CefV8Value> p
         return false;
     }
     
-    std::string key = dbName->GetStringValue().ToString();
+    std::string key = password->GetStringValue().ToString();
     retval = sqlite3_key(mDb, key.c_str(), key.size());
     if (retval != SQLITE_OK)
     {
@@ -70,7 +89,7 @@ bool CSJsDb::OpenEncrypted(CefRefPtr<CefV8Value> dbName, CefRefPtr<CefV8Value> p
     }
     
     // verify decryption works  
-    retval = sqlite3_exec(mDb, "select * from sqlite_master", NULL, NULL, NULL);
+    retval = sqlite3_exec(mDb, "select * from sqlite_master;", NULL, NULL, NULL);
     if (retval != SQLITE_OK)
     {
         CSLogError("Password incorrect: %s", sqlite3_errmsg(mDb));
@@ -146,7 +165,16 @@ CefRefPtr<CefV8Value> CSJsDb::Sql(CefRefPtr<CefV8Value> sqlStr)
 
 bool CSJsDb::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const CefV8ValueList& arguments,  CefRefPtr<CefV8Value>& retval, CefString& exception)
 {
-    if (name == "open")
+    if (name == "exists")
+    {
+        if (arguments.size() == 1)
+        {
+            bool result = Exists(arguments[0]);
+            retval = CefV8Value::CreateBool(result);
+            return true;
+        }        
+    }
+    else if (name == "open")
     {
         if (arguments.size() == 1)
         {

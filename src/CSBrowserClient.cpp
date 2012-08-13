@@ -134,7 +134,7 @@ void CSBrowserClient::OnPopupSize(CefRefPtr<CefBrowser> browser, const CefRect& 
 
 void CSBrowserClient::OnPaint(CefRefPtr<CefBrowser> browser, CefBrowser::PaintElementType type, const CefRenderHandler::RectList& dirtyRects, const void* buffer)
 {
-    CSLogDebug("OnPaint()");
+    //CSLogDebug("OnPaint()");
     
     int width, height;
     browser->GetSize(PET_VIEW, width, height);
@@ -143,7 +143,7 @@ void CSBrowserClient::OnPaint(CefRefPtr<CefBrowser> browser, CefBrowser::PaintEl
     for (; i != dirtyRects.end(); ++i)
     {
         const CefRect &rect = *i;
-        CSLogDebug("\tRect %dx%d %dx%d", rect.x, rect.y, rect.width, rect.height);
+        //CSLogDebug("\tRect %dx%d %dx%d", rect.x, rect.y, rect.width, rect.height);
 		CSRect csRect = { rect.x, rect.y, rect.width, rect.height };
  
 		mWindow->UpdateRect((unsigned char *)buffer, width, height, csRect); 

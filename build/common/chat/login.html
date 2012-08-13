@@ -3,30 +3,55 @@
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="css/common.css"></link>
     <link rel="stylesheet" type="text/css" href="css/login.css"></link>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/jquery.tools.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/login.js"></script>
 </head>
 <body>
     <div id="frame">
-        <div class="titlebar"><a href="#" class="close-button">&#10006;</a></div>
+        <div class="titlebar"><span class="logo-c">[C</span><span class="logo-s">S]</span><a href="#" class="close-button">&#10006;</a></div>
         <div id="resize"></div>
         <div class="logo"><span class="logo-c">[C]</span>lean<span class="logo-s">[S]</span>late</div>
         
-        <div id="login" class="ui-widget ui-widget-content ui-corner-all">
-            <form>
-                <div class="field">
-                    <label>Username:</label>
-                    <input id="username" type="text" name="username" value=""/>
-                </div>
-                <div class="field">
-                    <label>Password:</label>
-                    <input id="password" type="password" name="password" value="" />
-                </div>
-                <a href="login.html">refresh</a>
-                <input class="button" type="submit" value="Login" />
-            </form>
+        <ul class="tabs">
+            <li><a href="#" id="login_tab">Login</a></li>
+            <li><a href="#" id="register_tab">Register</a></li>
+        </ul>
+        
+        <div class="panes">
+            <label id="error" class="error">Error</label>
+            <div id="login" class="form">
+                <form id="loginform">
+                    <div class="field">
+                        <label>Username:</label>
+                        <input id="login_username" type="text" name="username" value=""/>
+                    </div>
+                    <div class="field">
+                        <label>Password:</label>
+                        <input id="login_password" type="password" name="password" value="" />
+                    </div>
+                    <input id="login_submit" class="button" type="submit" value="Login" />
+                </form>
+            </div>
+            
+            <div id="registration" class="form">
+                <form id="regform">
+                    <div class="field">
+                        <label>Username:</label>
+                        <input id="reg_username" type="text" name="username" value=""/>
+                    </div>
+                    <div class="field">
+                        <label>Password:</label>
+                        <input id="reg_password1" type="password" name="password1" value="" />
+                    </div>
+                    <div class="field">
+                        <label>Password (Again):</label>
+                        <input id="reg_password2" type="password" name="password2" value="" />
+                    </div>
+                    <input id="register_submit" class="button" type="submit" value="Register" />
+                </form>
+            </div>
         </div>
     </div>
 </body>

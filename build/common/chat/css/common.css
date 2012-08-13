@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(sanspro.ttf) format('truetype');
+}
+
 * { border: 0; font-family: 'Source Sans Pro', sans-serif; -webkit-user-select: none; cursor:default; }
 input { border: 1px solid black; -webkit-user-select: text; }
 
@@ -8,6 +15,8 @@ input:focus, select:focus, textarea:focus {
 input[type="text"], input[type="password"], textarea {
     cursor:text;
 }
+
+a, input[type="button"], input[type="submit"] { cursor: hand; }
 
 body { background-color: rgba(1, 1, 1, 0); padding: 0px; margin: 0px;}
 
@@ -59,6 +68,11 @@ body { background-color: rgba(1, 1, 1, 0); padding: 0px; margin: 0px;}
     height: 30px;
     background: -webkit-linear-gradient(top, #ccc 0%,#aaa 100%);
     border-bottom: 1px solid #88;
+    padding-left: 6px;
+} .titlebar span {
+    line-height: 30px;
+    vertical-align: middle;
+    text-shadow: 0px 1px 20px #555, 0px 1px 1px #000;
 }
 
 .close-button {

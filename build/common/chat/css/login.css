@@ -22,22 +22,33 @@
     color: #f90;
 }
 
-#login {
+.error {
+    color: #f30;
+    height: 20px;
+    line-height: 30px;
+    display: none;
+    top: -10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+}
+
+.form {
+    text-align: left;
     width: 280px;
     margin-left:auto;
     margin-right:auto;
     padding: 20px;
-    margin-top: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background: -webkit-linear-gradient(top, #fff 0%,#ccc 100%);
 }
 
-#login .field {
+.form .field {
     padding-bottom: 10px;
 }
 
-#login label {
+.form label {
     width: 280px;
     position: static;
     display:block;
@@ -46,7 +57,7 @@
     color: #888;
 }
 
-#login input[type="text"], input[type="password"] {
+.form input[type="text"], input[type="password"] {
     width: 280px;
     font-size: 20px;
     padding: 5px;
@@ -54,25 +65,64 @@
     border-radius:5px;
     border: 1px solid #ccc;
     color: #666;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
 }
 
-#login input[type="text"]:focus, input[type="password"]:focus {
-    border: 1px solid #ccc;
-    background-color: #ee9;
+.form input[type="text"]:focus, input[type="password"]:focus {
+    border: 1px solid #09f;
+    background-color: #ffa;
 }
 
-#login input[type="submit"] {
+.form input[type="submit"] {
     float: right;
 }
 
-#login input[type="submit"]:hover {
-    background-color: #ddd;
-}
-
-#login:after {
+.form:after {
     content: ".";
     display: block;
     height: 0;
     clear: both;
     visibility: hidden;
+}
+
+.tabs {
+    margin:0 !important;
+    padding:0;
+    height:30px;
+    border-bottom:1px solid #ccc;
+    padding-left: 10px;
+} .tabs li {
+    float:left;
+    padding:0;
+    margin:0;
+    list-style-type:none;
+} .tabs a {
+    float:left;
+    font-size:13px;
+    display:block;
+    padding:5px 30px;
+    text-decoration:none;
+    border:1px solid #ccc;
+    border-bottom:0px;
+    height:18px;
+    background-color:#efefef;
+    color:#777;
+    margin-right:2px;
+    position:relative;
+    top:1px;
+    outline:0;
+    border-radius:4px 4px 0 0;
+} .tabs a:hover {
+    background-color:#F7F7F7;
+    color:#333;
+} .tabs a.current {
+    background: -webkit-linear-gradient(top, #fff 0%,#ccc 100%);
+    border-bottom: #ccc;
+    color:#666;
+    cursor:default;
+}
+
+.panes {
+    text-align: center;
+    padding-top: 20px;
 }

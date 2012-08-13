@@ -19,6 +19,7 @@ public:
     
     static CefRefPtr<CefV8Value> CreateDb();
     
+    bool Exists(CefRefPtr<CefV8Value> dbName);
     bool Open(CefRefPtr<CefV8Value> dbName);
     bool OpenEncrypted(CefRefPtr<CefV8Value> dbName, CefRefPtr<CefV8Value> password);
     void Close();
