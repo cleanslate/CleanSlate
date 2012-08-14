@@ -32,8 +32,15 @@ function onLogin()
 
     $("#login_username").val("");
     $("#login_password").val("");
-    
+
     var db = window.app.db();
+    if (!db.exists(username + ".db"))
+    {
+        $("#error").text("Username or password is incorrect");
+        $("#error").css("display", "inline");
+        return false;
+    }
+
     var result = db.open(username + ".db", password);
     if (result)
     {

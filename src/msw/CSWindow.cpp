@@ -24,6 +24,38 @@
 #include "CSBrowserClient.h"
 #include "CSJsMenu.h"
 
+static BOOL CALLBACK EnumWindowsProc(HWND hWnd, LPARAM lParam)
+{
+	DWORD dwProcID = 0;
+    GetWindowThreadProcessId(hWnd, &dwProcID);
+
+	if (dwProcID == GetCurrentProcessId())
+	{
+		// Don't count IME
+		std::wstring name;
+		name.resize(MAX_PATH);
+		int len = GetClassName(hWnd, &name[0], MAX_PATH);
+		name.resize(len);
+
+		if (name != L"MSCTFIME UI" && name != L"IME")
+		{
+			DWORD *count = (DWORD *)lParam;
+			(*count)++;
+		}
+	}
+
+	return TRUE;
+}
+
+static void CheckNoWindows()
+{
+	DWORD windowCount = 0;
+	EnumWindows(EnumWindowsProc, (LPARAM)&windowCount);
+
+	if (windowCount == 1)
+		PostQuitMessage(0);
+}
+
 CSWindow::CSWindow(const char *url) :
 	mWindow(NULL),
 	mResizing(false),
@@ -440,7 +472,8 @@ LRESULT CSWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 
 	case WM_DESTROY:
-		PostQuitMessage(0);
+		CheckNoWindows();
+		//PostQuitMessage(0);
 		break;
 
 	case WM_CLOSE:

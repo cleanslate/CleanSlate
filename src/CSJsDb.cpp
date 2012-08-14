@@ -38,8 +38,9 @@ CefRefPtr<CefV8Value> CSJsDb::CreateDb()
 
 bool CSJsDb::Exists(CefRefPtr<CefV8Value> dbName)
 {
-    const char *name = dbName->GetStringValue().ToString().c_str();
-    FILE *fp = fopen(name, "r");
+    std::string name = dbName->GetStringValue().ToString();
+	CSLogDebug("Exists(%s)", name.c_str());
+    FILE *fp = fopen(name.c_str(), "r");
     if (fp)
     {
         fclose(fp);
@@ -51,9 +52,6 @@ bool CSJsDb::Exists(CefRefPtr<CefV8Value> dbName)
 
 bool CSJsDb::Open(CefRefPtr<CefV8Value> dbName)
 {
-    if (!Exists(dbName))
-        return false;
-    
     Close();
     
     int retval = sqlite3_open_v2(dbName->GetStringValue().ToString().c_str(), &mDb, SQLITE_OPEN_READWRITE|SQLITE_OPEN_CREATE, NULL);
@@ -68,9 +66,6 @@ bool CSJsDb::Open(CefRefPtr<CefV8Value> dbName)
 
 bool CSJsDb::OpenEncrypted(CefRefPtr<CefV8Value> dbName, CefRefPtr<CefV8Value> password)
 {
-    if (!Exists(dbName))
-        return false;
-    
     Close();
     
     int retval = sqlite3_open_v2(dbName->GetStringValue().ToString().c_str(), &mDb, SQLITE_OPEN_READWRITE|SQLITE_OPEN_CREATE, NULL);
