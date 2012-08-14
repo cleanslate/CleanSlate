@@ -23,6 +23,8 @@
 
 #include "CSApp.h"
 #include "CSWindow.h"
+#include "CSConfig.h"
+#include "CSUtil.h"
 
 #include "CSSchemeFactory.h"
 
@@ -82,8 +84,13 @@ void CSApp::Init()
 
 void CSApp::Run()
 {
-	CSWindow *window = new CSWindow("local://file/chat/login.html");
-	window->Show(true);
+	//CSWindow *window = new CSWindow("local://file/chat/login.html");
+	//window->Show(true);
+	std::string configPath = CSUtil::GetLocalDir();
+	configPath.append("/config.json");
+
+	CSConfig config;
+	config.LoadConfig(configPath.c_str());
 
 	// create timer
 	SetTimer(NULL, 1, 100, (TIMERPROC)OnTimer);

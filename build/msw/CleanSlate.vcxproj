@@ -55,7 +55,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DEBUG;_CRT_SECURE_NO_WARNINGS;SQLITE_HAS_CODEC;SQLITE_TEMP_STORE=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;../../third-party/libevent;../../third-party/cef/msw;../../third-party/openssl;../../third-party/sqlcipher;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;../../third-party/libevent;../../third-party/cef/msw;../../third-party/openssl;../../third-party/sqlcipher;../../third-party/jansson/src;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderFile>CSPrecomp.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -90,7 +90,7 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d /e</Command>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;SQLITE_HAS_CODEC;SQLITE_TEMP_STORE=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;../../third-party/libevent;../../third-party/cef/msw;../../third-party/openssl;../../third-party/sqlcipher;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../third-party/libevent/include;../../third-party/libevent/compat;../../third-party/libevent/WIN32-Code;../../third-party/libevent;../../third-party/cef/msw;../../third-party/openssl;../../third-party/sqlcipher;../../third-party/jansson/src;../../src/msw;../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeaderFile>CSPrecomp.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -119,6 +119,7 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d /e</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\CSBrowserClient.h" />
+    <ClInclude Include="..\..\src\CSConfig.h" />
     <ClInclude Include="..\..\src\CSJsApp.h" />
     <ClInclude Include="..\..\src\CSJsDb.h" />
     <ClInclude Include="..\..\src\CSJsFile.h" />
@@ -139,6 +140,7 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d /e</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\CSBrowserClient.cpp" />
+    <ClCompile Include="..\..\src\CSConfig.cpp" />
     <ClCompile Include="..\..\src\CSJsApp.cpp" />
     <ClCompile Include="..\..\src\CSJsDb.cpp" />
     <ClCompile Include="..\..\src\CSJsFile.cpp" />

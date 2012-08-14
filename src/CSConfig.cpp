@@ -32,7 +32,7 @@ void CSConfig::LoadConfig(const char *file)
     {
         json_t *windows = json_object_get(config, "windows");
         size_t count = json_array_size(windows);
-        for (int i = 0; i < count; i++)
+        for (size_t i = 0; i < count; i++)
         {
             json_t *winInfo = json_array_get(windows, i);
             json_t *urlVal = json_object_get(winInfo, "url");
