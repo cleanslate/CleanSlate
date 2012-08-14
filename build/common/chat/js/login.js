@@ -25,6 +25,8 @@ function initDb(db)
 
 function onLogin()
 {
+    $("#error").css("display", "none");
+    
     var username = $("#login_username").val();
     var password = $("#login_password").val();
 
@@ -36,6 +38,9 @@ function onLogin()
     if (result)
     {
         window.sys.log("login success!");
+        var path = window.location.href.replace("login.html", "");
+        window.sys.log(path + "index.html");
+        window.ui.createWindow(path + "index.html");
         window.ui.close();
     }
     else
@@ -114,15 +119,10 @@ $(function () {
   window.ui.setSize(width, height);
   
   // center window
-  var size = window.ui.screenSize();
-  var posx = (size.width - width)/2;
-  var posy = (size.height - height)/2;
-  window.sys.log("size:" + String(size.width) + "x" + String(size.height));
-  window.ui.move(posx, posy);
-  $(".close-button").click(function () { window.ui.close(); });
-   
-  // bind the titlebar
-  $(".titlebar").mousedown(function () { window.ui.startMove(); }).mouseup(function () { window.ui.stopMove(); });
+  centerWindow(width, height);
+  
+  // bind toolbar
+  bindTitleBar();
   
   // bind login and regiter button
   $("#login_submit").click(onLogin);

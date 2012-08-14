@@ -130,11 +130,12 @@ bool CSJsUi::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const
     }
     else if (name == "createWindow")
     {
-        if (arguments.size() == 2)
+        if (arguments.size() == 1)
         {
-            int x = arguments[0]->GetIntValue();
-            int y = arguments[1]->GetIntValue();
-            mWindow->SetPos(x, y);
+            std::string url = arguments[0]->GetStringValue().ToString();
+            CSLogDebug("createWindow(%s)", url.c_str());
+            CSWindow *window = new CSWindow(url.c_str());
+            window->Show(false);
             retval = CefV8Value::CreateNull();
             return true;            
         }

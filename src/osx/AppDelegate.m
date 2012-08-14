@@ -52,7 +52,7 @@
     
     // TODO: Make this configurable either through plist or something else
     CSWindow *window = new CSWindow("local://file/chat/login.html");
-    window->Show(true);
+    window->Show(false);
 }
 
 -(void) applicationWillTerminate:(NSNotification *)notification

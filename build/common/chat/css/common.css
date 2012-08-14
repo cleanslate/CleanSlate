@@ -5,7 +5,7 @@
   src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(sanspro.ttf) format('truetype');
 }
 
-* { border: 0; font-family: 'Source Sans Pro', sans-serif; -webkit-user-select: none; cursor:default; }
+* { border: 0; font-family: 'Source Sans Pro', sans-serif; -webkit-user-select: none; }
 input { border: 1px solid black; -webkit-user-select: text; }
 
 input:focus, select:focus, textarea:focus {
@@ -33,13 +33,14 @@ body { background-color: rgba(1, 1, 1, 0); padding: 0px; margin: 0px;}
     bottom:0;
 }
 
-#resize {
+.resize {
     position:absolute;
     bottom:0;
     right:0;
     width: 30px;
     height: 30px;
     cursor: nwse-resize;
+    border: 1 solid black;
 }
 
 .button {
@@ -94,3 +95,35 @@ body { background-color: rgba(1, 1, 1, 0); padding: 0px; margin: 0px;}
 	position:relative;
 	top:1px;  
 }
+
+.logo {
+    position:relative;
+    height:100px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 1px 20px #555, 0px 1px 1px #000;
+    color: #666;
+}
+
+.logo-c {
+    color: #09f;
+}
+
+.logo-s {
+    color: #f90;
+}
+
+.error {
+    color: #f30;
+    height: 20px;
+    line-height: 30px;
+    display: none;
+    top: -10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+}
+
+
