@@ -1,0 +1,286 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D7D069EB15D9FA7A00145E94 /* hashtable.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D069DB15D9FA7A00145E94 /* hashtable.h */; };
+		D7D069EC15D9FA7A00145E94 /* jansson_config.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D069DC15D9FA7A00145E94 /* jansson_config.h */; };
+		D7D069ED15D9FA7A00145E94 /* jansson_private.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D069DD15D9FA7A00145E94 /* jansson_private.h */; };
+		D7D069EE15D9FA7A00145E94 /* jansson.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D069DE15D9FA7A00145E94 /* jansson.h */; };
+		D7D069EF15D9FA7A00145E94 /* strbuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D069DF15D9FA7A00145E94 /* strbuffer.h */; };
+		D7D069F015D9FA7A00145E94 /* utf.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D069E015D9FA7A00145E94 /* utf.h */; };
+		D7D069F115D9FA7A00145E94 /* dump.c in Sources */ = {isa = PBXBuildFile; fileRef = D7D069E115D9FA7A00145E94 /* dump.c */; };
+		D7D069F215D9FA7A00145E94 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = D7D069E215D9FA7A00145E94 /* error.c */; };
+		D7D069F315D9FA7A00145E94 /* hashtable.c in Sources */ = {isa = PBXBuildFile; fileRef = D7D069E315D9FA7A00145E94 /* hashtable.c */; };
+		D7D069F415D9FA7A00145E94 /* load.c in Sources */ = {isa = PBXBuildFile; fileRef = D7D069E415D9FA7A00145E94 /* load.c */; };
+		D7D069F515D9FA7A00145E94 /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = D7D069E515D9FA7A00145E94 /* memory.c */; };
+		D7D069F615D9FA7A00145E94 /* pack_unpack.c in Sources */ = {isa = PBXBuildFile; fileRef = D7D069E615D9FA7A00145E94 /* pack_unpack.c */; };
+		D7D069F715D9FA7A00145E94 /* strbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = D7D069E715D9FA7A00145E94 /* strbuffer.c */; };
+		D7D069F815D9FA7A00145E94 /* strconv.c in Sources */ = {isa = PBXBuildFile; fileRef = D7D069E815D9FA7A00145E94 /* strconv.c */; };
+		D7D069F915D9FA7A00145E94 /* utf.c in Sources */ = {isa = PBXBuildFile; fileRef = D7D069E915D9FA7A00145E94 /* utf.c */; };
+		D7D069FA15D9FA7A00145E94 /* value.c in Sources */ = {isa = PBXBuildFile; fileRef = D7D069EA15D9FA7A00145E94 /* value.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D7D069C315D9F9C600145E94 /* libjansson.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjansson.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7D069DB15D9FA7A00145E94 /* hashtable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hashtable.h; path = "../../third-party/jansson/src/hashtable.h"; sourceTree = "<group>"; };
+		D7D069DC15D9FA7A00145E94 /* jansson_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jansson_config.h; path = "../../third-party/jansson/src/jansson_config.h"; sourceTree = "<group>"; };
+		D7D069DD15D9FA7A00145E94 /* jansson_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jansson_private.h; path = "../../third-party/jansson/src/jansson_private.h"; sourceTree = "<group>"; };
+		D7D069DE15D9FA7A00145E94 /* jansson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jansson.h; path = "../../third-party/jansson/src/jansson.h"; sourceTree = "<group>"; };
+		D7D069DF15D9FA7A00145E94 /* strbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = strbuffer.h; path = "../../third-party/jansson/src/strbuffer.h"; sourceTree = "<group>"; };
+		D7D069E015D9FA7A00145E94 /* utf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utf.h; path = "../../third-party/jansson/src/utf.h"; sourceTree = "<group>"; };
+		D7D069E115D9FA7A00145E94 /* dump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dump.c; path = "../../third-party/jansson/src/dump.c"; sourceTree = "<group>"; };
+		D7D069E215D9FA7A00145E94 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = error.c; path = "../../third-party/jansson/src/error.c"; sourceTree = "<group>"; };
+		D7D069E315D9FA7A00145E94 /* hashtable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hashtable.c; path = "../../third-party/jansson/src/hashtable.c"; sourceTree = "<group>"; };
+		D7D069E415D9FA7A00145E94 /* load.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = load.c; path = "../../third-party/jansson/src/load.c"; sourceTree = "<group>"; };
+		D7D069E515D9FA7A00145E94 /* memory.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = memory.c; path = "../../third-party/jansson/src/memory.c"; sourceTree = "<group>"; };
+		D7D069E615D9FA7A00145E94 /* pack_unpack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pack_unpack.c; path = "../../third-party/jansson/src/pack_unpack.c"; sourceTree = "<group>"; };
+		D7D069E715D9FA7A00145E94 /* strbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = strbuffer.c; path = "../../third-party/jansson/src/strbuffer.c"; sourceTree = "<group>"; };
+		D7D069E815D9FA7A00145E94 /* strconv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = strconv.c; path = "../../third-party/jansson/src/strconv.c"; sourceTree = "<group>"; };
+		D7D069E915D9FA7A00145E94 /* utf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = utf.c; path = "../../third-party/jansson/src/utf.c"; sourceTree = "<group>"; };
+		D7D069EA15D9FA7A00145E94 /* value.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = value.c; path = "../../third-party/jansson/src/value.c"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D7D069C015D9F9C600145E94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D7D069B815D9F9C600145E94 = {
+			isa = PBXGroup;
+			children = (
+				D7D069D915D9FA4500145E94 /* Source */,
+				D7D069C415D9F9C600145E94 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D7D069C415D9F9C600145E94 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7D069C315D9F9C600145E94 /* libjansson.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D7D069D915D9FA4500145E94 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D7D069DB15D9FA7A00145E94 /* hashtable.h */,
+				D7D069DC15D9FA7A00145E94 /* jansson_config.h */,
+				D7D069DD15D9FA7A00145E94 /* jansson_private.h */,
+				D7D069DE15D9FA7A00145E94 /* jansson.h */,
+				D7D069DF15D9FA7A00145E94 /* strbuffer.h */,
+				D7D069E015D9FA7A00145E94 /* utf.h */,
+				D7D069E115D9FA7A00145E94 /* dump.c */,
+				D7D069E215D9FA7A00145E94 /* error.c */,
+				D7D069E315D9FA7A00145E94 /* hashtable.c */,
+				D7D069E415D9FA7A00145E94 /* load.c */,
+				D7D069E515D9FA7A00145E94 /* memory.c */,
+				D7D069E615D9FA7A00145E94 /* pack_unpack.c */,
+				D7D069E715D9FA7A00145E94 /* strbuffer.c */,
+				D7D069E815D9FA7A00145E94 /* strconv.c */,
+				D7D069E915D9FA7A00145E94 /* utf.c */,
+				D7D069EA15D9FA7A00145E94 /* value.c */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D7D069C115D9F9C600145E94 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7D069EB15D9FA7A00145E94 /* hashtable.h in Headers */,
+				D7D069EC15D9FA7A00145E94 /* jansson_config.h in Headers */,
+				D7D069ED15D9FA7A00145E94 /* jansson_private.h in Headers */,
+				D7D069EE15D9FA7A00145E94 /* jansson.h in Headers */,
+				D7D069EF15D9FA7A00145E94 /* strbuffer.h in Headers */,
+				D7D069F015D9FA7A00145E94 /* utf.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D7D069C215D9F9C600145E94 /* jansson */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7D069C715D9F9C600145E94 /* Build configuration list for PBXNativeTarget "jansson" */;
+			buildPhases = (
+				D7D069FB15D9FAF200145E94 /* ShellScript */,
+				D7D069BF15D9F9C600145E94 /* Sources */,
+				D7D069C015D9F9C600145E94 /* Frameworks */,
+				D7D069C115D9F9C600145E94 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jansson;
+			productName = jansson;
+			productReference = D7D069C315D9F9C600145E94 /* libjansson.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D7D069BA15D9F9C600145E94 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = D7D069BD15D9F9C600145E94 /* Build configuration list for PBXProject "jansson" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D7D069B815D9F9C600145E94;
+			productRefGroup = D7D069C415D9F9C600145E94 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D7D069C215D9F9C600145E94 /* jansson */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D7D069FB15D9FAF200145E94 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ../../third-party/jansson\n[ ! -f Makefile ] && ./configure --enable-shared=NO\n[ 1 == 1 ]";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D7D069BF15D9F9C600145E94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7D069F115D9FA7A00145E94 /* dump.c in Sources */,
+				D7D069F215D9FA7A00145E94 /* error.c in Sources */,
+				D7D069F315D9FA7A00145E94 /* hashtable.c in Sources */,
+				D7D069F415D9FA7A00145E94 /* load.c in Sources */,
+				D7D069F515D9FA7A00145E94 /* memory.c in Sources */,
+				D7D069F615D9FA7A00145E94 /* pack_unpack.c in Sources */,
+				D7D069F715D9FA7A00145E94 /* strbuffer.c in Sources */,
+				D7D069F815D9FA7A00145E94 /* strconv.c in Sources */,
+				D7D069F915D9FA7A00145E94 /* utf.c in Sources */,
+				D7D069FA15D9FA7A00145E94 /* value.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D7D069C515D9F9C600145E94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D7D069C615D9F9C600145E94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D7D069C815D9F9C600145E94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D7D069C915D9F9C600145E94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D7D069BD15D9F9C600145E94 /* Build configuration list for PBXProject "jansson" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7D069C515D9F9C600145E94 /* Debug */,
+				D7D069C615D9F9C600145E94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7D069C715D9F9C600145E94 /* Build configuration list for PBXNativeTarget "jansson" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7D069C815D9F9C600145E94 /* Debug */,
+				D7D069C915D9F9C600145E94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D7D069BA15D9F9C600145E94 /* Project object */;
+}

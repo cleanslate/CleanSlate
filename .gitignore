@@ -91,3 +91,19 @@ third-party/openssl/ms/ssleay32.def
 third-party/openssl/ms/version32.rc
 third-party/openssl/out32/
 
+# jansson
+.deps
+third-party/jansson/Makefile
+third-party/jansson/config.h
+third-party/jansson/config.log
+third-party/jansson/config.status
+third-party/jansson/doc/Makefile
+third-party/jansson/jansson.pc
+third-party/jansson/libtool
+third-party/jansson/src/Makefile
+third-party/jansson/stamp-h1
+third-party/jansson/test/Makefile
+third-party/jansson/test/bin/Makefile
+third-party/jansson/test/suites/Makefile
+third-party/jansson/test/suites/api/Makefile
+

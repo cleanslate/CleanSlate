@@ -91,6 +91,7 @@
 		D7AB0B5C15D2873D004B3101 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D7AB0B5B15D2873C004B3101 /* chat */; };
 		D7C00FC315C10D99004CD6D9 /* CSBrowserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */; };
 		D7C00FCA15C11CA1004CD6D9 /* CSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */; };
+		D7D069FC15D9FBE700145E94 /* libjansson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7D069D815D9F9DC00145E94 /* libjansson.a */; };
 		D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7DE834C15C0128900D7B5D8 /* libcef.dylib */; };
 		D7DE835015C0138D00D7B5D8 /* libcef.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7DE834C15C0128900D7B5D8 /* libcef.dylib */; };
 		D7DE835315C013A000D7B5D8 /* ffmpegsumo.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7DE835115C0139A00D7B5D8 /* ffmpegsumo.so */; };
@@ -176,6 +177,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC046055464E500DB518D;
 			remoteInfo = sqlcipher;
+		};
+		D7D069D715D9F9DC00145E94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7D069D015D9F9DB00145E94 /* jansson.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7D069C315D9F9C600145E94;
+			remoteInfo = jansson;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -358,6 +366,7 @@
 		D7C00FC815C11C40004CD6D9 /* CSLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSLog.h; sourceTree = "<group>"; };
 		D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSLog.cpp; sourceTree = "<group>"; };
 		D7C00FCB15C12C13004CD6D9 /* CSRect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSRect.h; sourceTree = "<group>"; };
+		D7D069D015D9F9DB00145E94 /* jansson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = jansson.xcodeproj; sourceTree = "<group>"; };
 		D7DE834C15C0128900D7B5D8 /* libcef.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcef.dylib; path = "../../third-party/cef/osx/Release/libcef.dylib"; sourceTree = "<group>"; };
 		D7DE835115C0139A00D7B5D8 /* ffmpegsumo.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = ffmpegsumo.so; path = "../../third-party/cef/osx/Release/ffmpegsumo.so"; sourceTree = "<group>"; };
 		D7DE83BC15C0172E00D7B5D8 /* chrome.pak */ = {isa = PBXFileReference; lastKnownFileType = file; name = chrome.pak; path = "../../third-party/cef/osx/Resources/chrome.pak"; sourceTree = "<group>"; };
@@ -435,6 +444,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7D069FC15D9FBE700145E94 /* libjansson.a in Frameworks */,
 				D7AB0B5A15D22A0C004B3101 /* libssl.dylib in Frameworks */,
 				D7AB0B5815D22A06004B3101 /* libcrypto.dylib in Frameworks */,
 				D7AB0B5415D228EB004B3101 /* libsqlcipher.a in Frameworks */,
@@ -615,6 +625,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D7D069D115D9F9DB00145E94 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7D069D815D9F9DC00145E94 /* libjansson.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D7DE835815C0154200D7B5D8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,6 +708,7 @@
 		D7E8B48415BA73FD00475680 = {
 			isa = PBXGroup;
 			children = (
+				D7D069D015D9F9DB00145E94 /* jansson.xcodeproj */,
 				D7AB0B4A15D228DC004B3101 /* sqlcipher.xcodeproj */,
 				D7351C7A15C440E000EE3B4F /* libevent.xcodeproj */,
 				D7E8B4D215BA75DD00475680 /* Classes */,
@@ -835,6 +854,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = D7D069D115D9F9DB00145E94 /* Products */;
+					ProjectRef = D7D069D015D9F9DB00145E94 /* jansson.xcodeproj */;
+				},
+				{
 					ProductGroup = D7351C7B15C440E000EE3B4F /* Products */;
 					ProjectRef = D7351C7A15C440E000EE3B4F /* libevent.xcodeproj */;
 				},
@@ -863,6 +886,13 @@
 			fileType = archive.ar;
 			path = libsqlcipher.a;
 			remoteRef = D7AB0B5215D228DD004B3101 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D7D069D815D9F9DC00145E94 /* libjansson.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjansson.a;
+			remoteRef = D7D069D715D9F9DC00145E94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
