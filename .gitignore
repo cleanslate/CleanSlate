@@ -1,3 +1,5 @@
+*.db
+
 # Compiled Object files
 *.slo
 *.lo
@@ -90,6 +92,7 @@ third-party/openssl/ms/ntdll.mak
 third-party/openssl/ms/ssleay32.def
 third-party/openssl/ms/version32.rc
 third-party/openssl/out32/
+third-party/openssl/tmp32/
 
 # jansson
 .deps
@@ -106,4 +109,4 @@ third-party/jansson/test/Makefile
 third-party/jansson/test/bin/Makefile
 third-party/jansson/test/suites/Makefile
 third-party/jansson/test/suites/api/Makefile
-
+third-party/jansson/src/jansson_config.h

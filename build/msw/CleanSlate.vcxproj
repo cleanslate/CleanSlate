@@ -164,6 +164,9 @@ xcopy $(SoultionDir)..\common\* $(OutDir) /y /d /e</Command>
     <ProjectReference Include="..\..\third-party\cef\msw\libcef_dll_wrapper.vcxproj">
       <Project>{a9d6dc71-c0dc-4549-aea0-3b15b44e86a9}</Project>
     </ProjectReference>
+    <ProjectReference Include="jansson.vcxproj">
+      <Project>{6c8f674d-b5d8-4657-9f68-07c00a6cadc6}</Project>
+    </ProjectReference>
     <ProjectReference Include="libevent.vcxproj">
       <Project>{dec85337-d906-425c-803a-77fdf444aa0d}</Project>
     </ProjectReference>
