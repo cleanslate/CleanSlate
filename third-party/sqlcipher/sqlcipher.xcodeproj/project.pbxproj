@@ -6,33 +6,9 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		9069D08B0FCE185A0042E34C /* amalgamation */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 9069D0900FCE18970042E34C /* Build configuration list for PBXAggregateTarget "amalgamation" */;
-			buildPhases = (
-				9069D08A0FCE185A0042E34C /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = amalgamation;
-			productName = amalgamation;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		9069D0A30FCE1A4D0042E34C /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 9069D0A20FCE1A4D0042E34C /* sqlite3.c */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9069D08E0FCE18790042E34C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9069D08B0FCE185A0042E34C;
-			remoteInfo = amalgamation;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9069D0A20FCE1A4D0042E34C /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
@@ -100,6 +76,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "sqlcipher" */;
 			buildPhases = (
+				D7D06A0915DA246D00145E94 /* ShellScript */,
 				D2AAC043055464E500DB518D /* Headers */,
 				D2AAC044055464E500DB518D /* Sources */,
 				D289987405E68DCB004EDB86 /* Frameworks */,
@@ -107,7 +84,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				9069D08F0FCE18790042E34C /* PBXTargetDependency */,
 			);
 			name = sqlcipher;
 			productName = sqlcipher;
@@ -137,26 +113,23 @@
 			projectRoot = "";
 			targets = (
 				D2AAC045055464E500DB518D /* sqlcipher */,
-				9069D08B0FCE185A0042E34C /* amalgamation */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9069D08A0FCE185A0042E34C /* ShellScript */ = {
+		D7D06A0915DA246D00145E94 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/sqlite3.c",
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/libsqlcipher.a",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./configure --enable-tempstore=yes CC=/usr/bin/gcc CFLAGS=\"-DSQLITE_HAS_CODEC -DSQLITE_TEMP_STORE=2\"\nmake sqlite3.c\nexit 0";
+			shellScript = "if [ ! -f sqlite3.c ]; then\n    ./configure --enable-tempstore=yes CC=/usr/bin/gcc CFLAGS=\"-DSQLITE_HAS_CODEC -DSQLITE_TEMP_STORE=2\"\n    make sqlite3.c\nfi\nexit 0";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -170,14 +143,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9069D08F0FCE18790042E34C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9069D08B0FCE185A0042E34C /* amalgamation */;
-			targetProxy = 9069D08E0FCE18790042E34C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB91EC08733DB70010E9CD /* Debug */ = {
@@ -285,26 +250,6 @@
 			};
 			name = Release;
 		};
-		9069D08C0FCE185A0042E34C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = amalgamation;
-			};
-			name = Debug;
-		};
-		9069D08D0FCE185A0042E34C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				PRODUCT_NAME = amalgamation;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -322,15 +267,6 @@
 			buildConfigurations = (
 				1DEB91F008733DB70010E9CD /* Debug */,
 				1DEB91F108733DB70010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9069D0900FCE18970042E34C /* Build configuration list for PBXAggregateTarget "amalgamation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9069D08C0FCE185A0042E34C /* Debug */,
-				9069D08D0FCE185A0042E34C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

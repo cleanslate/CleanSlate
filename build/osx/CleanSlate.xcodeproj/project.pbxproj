@@ -92,6 +92,8 @@
 		D7C00FC315C10D99004CD6D9 /* CSBrowserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */; };
 		D7C00FCA15C11CA1004CD6D9 /* CSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */; };
 		D7D069FC15D9FBE700145E94 /* libjansson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7D069D815D9F9DC00145E94 /* libjansson.a */; };
+		D7D069FF15DA13AC00145E94 /* CSConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7D069FE15DA13AC00145E94 /* CSConfig.cpp */; };
+		D7D06A0515DA1B1700145E94 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = D7D06A0415DA1B1700145E94 /* config.json */; };
 		D7DE834D15C0128900D7B5D8 /* libcef.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7DE834C15C0128900D7B5D8 /* libcef.dylib */; };
 		D7DE835015C0138D00D7B5D8 /* libcef.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7DE834C15C0128900D7B5D8 /* libcef.dylib */; };
 		D7DE835315C013A000D7B5D8 /* ffmpegsumo.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7DE835115C0139A00D7B5D8 /* ffmpegsumo.so */; };
@@ -367,6 +369,9 @@
 		D7C00FC915C11CA1004CD6D9 /* CSLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSLog.cpp; sourceTree = "<group>"; };
 		D7C00FCB15C12C13004CD6D9 /* CSRect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSRect.h; sourceTree = "<group>"; };
 		D7D069D015D9F9DB00145E94 /* jansson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = jansson.xcodeproj; sourceTree = "<group>"; };
+		D7D069FD15DA139D00145E94 /* CSConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSConfig.h; sourceTree = "<group>"; };
+		D7D069FE15DA13AC00145E94 /* CSConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSConfig.cpp; sourceTree = "<group>"; };
+		D7D06A0415DA1B1700145E94 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = config.json; path = ../common/config.json; sourceTree = "<group>"; };
 		D7DE834C15C0128900D7B5D8 /* libcef.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcef.dylib; path = "../../third-party/cef/osx/Release/libcef.dylib"; sourceTree = "<group>"; };
 		D7DE835115C0139A00D7B5D8 /* ffmpegsumo.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = ffmpegsumo.so; path = "../../third-party/cef/osx/Release/ffmpegsumo.so"; sourceTree = "<group>"; };
 		D7DE83BC15C0172E00D7B5D8 /* chrome.pak */ = {isa = PBXFileReference; lastKnownFileType = file; name = chrome.pak; path = "../../third-party/cef/osx/Resources/chrome.pak"; sourceTree = "<group>"; };
@@ -693,6 +698,7 @@
 				D79E444515C703A600DA6612 /* missingImage.png */,
 				D749481915C2A4B100703695 /* index.html */,
 				D749481A15C2A4B100703695 /* style.css */,
+				D7D06A0415DA1B1700145E94 /* config.json */,
 				D7AB0B5B15D2873C004B3101 /* chat */,
 			);
 			name = Resources;
@@ -759,6 +765,8 @@
 				D7E8B4D315BA75DD00475680 /* osx */,
 				D7DE843715C1069E00D7B5D8 /* CSBrowserClient.h */,
 				D7C00FC215C10D99004CD6D9 /* CSBrowserClient.cpp */,
+				D7D069FD15DA139D00145E94 /* CSConfig.h */,
+				D7D069FE15DA13AC00145E94 /* CSConfig.cpp */,
 				D79E445115C846F300DA6612 /* CSJsApp.h */,
 				D79E445215C846FF00DA6612 /* CSJsApp.cpp */,
 				D7AB0B4715D1D57C004B3101 /* CSJsDb.h */,
@@ -960,6 +968,7 @@
 				D749481C15C2A4B100703695 /* style.css in Resources */,
 				D79E444615C703A600DA6612 /* missingImage.png in Resources */,
 				D7AB0B5C15D2873D004B3101 /* chat in Resources */,
+				D7D06A0515DA1B1700145E94 /* config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,6 +1059,7 @@
 				D79E443C15C6E75E00DA6612 /* CSJsMenuItem.m in Sources */,
 				D79E445315C8470000DA6612 /* CSJsApp.cpp in Sources */,
 				D7AB0B4915D1D589004B3101 /* CSJsDb.cpp in Sources */,
+				D7D069FF15DA13AC00145E94 /* CSConfig.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1155,6 +1165,7 @@
 					"../../third-party/libevent/include",
 					"../../third-party/libevent",
 					"../../third-party/sqlcipher",
+					"../../third-party/jansson/src",
 				);
 				INFOPLIST_FILE = "CleanSlate-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1217,6 +1228,7 @@
 					"../../third-party/libevent/include",
 					"../../third-party/libevent",
 					"../../third-party/sqlcipher",
+					"../../third-party/jansson/src",
 				);
 				INFOPLIST_FILE = "CleanSlate-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

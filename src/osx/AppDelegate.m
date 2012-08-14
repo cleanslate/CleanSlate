@@ -23,6 +23,7 @@
 
 #include "CSWindow.h"
 #include "CSSchemeFactory.h"
+#include "CSConfig.h"
 
 @implementation AppDelegate
 
@@ -49,10 +50,14 @@
     // add handler
     CSSchemeFactory::Register();
     
+    NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"config.json"];
+
+    CSConfig config;
+    config.LoadConfig([path UTF8String]);
     
     // TODO: Make this configurable either through plist or something else
-    CSWindow *window = new CSWindow("local://file/chat/login.html");
-    window->Show(false);
+    //CSWindow *window = new CSWindow("local://file/chat/login.html");
+    //window->Show(false);
 }
 
 -(void) applicationWillTerminate:(NSNotification *)notification

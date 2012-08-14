@@ -1,0 +1,9 @@
+{
+	"windows": [
+		{
+			"url": "chat/login.html"
+		}
+	],
+	"osx_icon": "icons/osx.icns",
+	"msw_icon": "icons/msw.ico"
+}

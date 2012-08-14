@@ -169,7 +169,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ../../third-party/jansson\n[ ! -f Makefile ] && ./configure --enable-shared=NO\n[ 1 == 1 ]";
+			shellScript = "cd ../../third-party/jansson\n[ ! -f src/jansson_config.h ] && ./configure --enable-shared=NO\n[ 1 == 1 ]";
 		};
 /* End PBXShellScriptBuildPhase section */
 
