@@ -1,4 +1,88 @@
 #frame {
-    /* background: -webkit-linear-gradient(top, #fff 0%,#aaa 100%); */
-	background-color: grey;
+    background: -webkit-linear-gradient(top, #fff 0%,#aaa 100%);
+    overflow: hidden;
+}
+
+#splitter {
+    width: 500px;
+    height: 400px;
+	border: 5px solid #aaa;
+}
+
+#sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    background-color: #000;
+    border-bottom-left-radius: 8px;
+}
+
+.vsplitbar {
+	width: 5px;
+	background: #cab;    
+	cursor: col-resize;    
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    backround-color: #00f;
+}
+
+#contacts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50;
+    background-color: #999;
+    overflow: auto;
+}
+
+#chats {
+    overflow: auto;
+}
+
+#toolbar {
+    position: absolute;
+    height: 50px;
+    left:0;
+    right:0;
+    bottom:0;
+    border-top: 1px solid #888;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: -webkit-linear-gradient(top, #ccc 0%,#aaa 100%);
+}
+
+#layout {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
+.contact {
+    height: 100px;
+    vertical-align: top;
+    background: -webkit-linear-gradient(top, #eee 0%,#fff 100%);
+} .contact:hover {
+    background: -webkit-linear-gradient(top, #eee 0%,#aaa 100%);
+} .contact img {
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    float: left;
+} .contact .name {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    font-size: 1.5em;
+} .contact .status {
+
 }

@@ -1,7 +1,7 @@
 {
 	"windows": [
 		{
-			"url": "chat/login.html"
+			"url": "chat/index.html"
 		}
 	],
 	"osx_icon": "icons/osx.icns",

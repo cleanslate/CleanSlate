@@ -40,7 +40,7 @@ body { background-color: rgba(1, 1, 1, 0); padding: 0px; margin: 0px;}
     width: 30px;
     height: 30px;
     cursor: nwse-resize;
-    border: 1 solid black;
+    z-index: 100;
 }
 
 .button {
@@ -74,6 +74,8 @@ body { background-color: rgba(1, 1, 1, 0); padding: 0px; margin: 0px;}
     line-height: 30px;
     vertical-align: middle;
     text-shadow: 0px 1px 20px #555, 0px 1px 1px #000;
+} .titlebar .title {
+    text-shadow: 0px 1px 0px #e1e1e8;
 }
 
 .close-button {
