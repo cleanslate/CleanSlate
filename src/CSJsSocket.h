@@ -25,14 +25,20 @@
 class CSJsSocket : public CefV8Handler
 {
 public:
-    CSJsSocket(int socket);
+    CSJsSocket();
     virtual ~CSJsSocket();
     
     static CefRefPtr<CefV8Value> CreateSocket(const CefString &hostname, int port);
     
-    virtual bool Execute(const CefString& name,  CefRefPtr<CefV8Value> object, 
+    bool Execute(const CefString& name,  CefRefPtr<CefV8Value> object, 
                          const CefV8ValueList& arguments,  CefRefPtr<CefV8Value>& retval, CefString& exception);
-private:
+    
+    virtual bool Open(const CefString &hostname, int port);
+    virtual void Close();
+    virtual int Read(void *data, int size);
+    virtual int Write(const void *data, int size);
+    
+protected:
     int mSocket;
     CefV8ValueList mRecvCallback;
     struct event mEventRead;

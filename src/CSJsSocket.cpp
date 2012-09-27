@@ -25,49 +25,35 @@
 
 #include "event.h"
 
-CSJsSocket::CSJsSocket(int socket) :
-    mSocket(socket)
+CSJsSocket::CSJsSocket() :
+    mSocket(0)
 {
-    event_set(&mEventRead, mSocket, EV_READ|EV_PERSIST, &CSJsSocket::OnReadStatic, this);
-    event_add(&mEventRead, NULL);
+
 }
 
 CSJsSocket::~CSJsSocket()
 {
-    close(mSocket);
+    Close();
 }
 
 CefRefPtr<CefV8Value> CSJsSocket::CreateSocket(const CefString &hostname, int port)
 {
-    int s = socket(AF_INET, SOCK_STREAM, 0);
-    struct hostent *he;
-    struct sockaddr_in saddr = {0};
-    
-    saddr.sin_addr.s_addr = inet_addr(hostname.ToString().c_str());
-    if (saddr.sin_addr.s_addr == INADDR_NONE)
+    CSJsSocket *socket = new CSJsSocket();
+    bool result = socket->Open(hostname, port);
+    if (!result)
     {
-        he = gethostbyname(hostname.ToString().c_str());
-        if (he)
-            memcpy(&saddr.sin_addr.s_addr, he->h_addr_list[0], he->h_length);
+        delete socket;
+        return NULL;
     }
     
-    saddr.sin_port = htons(port);
-	saddr.sin_family = AF_INET;
+    // bind functions
+    CefRefPtr<CefV8Value> obj = CefV8Value::CreateObject(socket, NULL);
     
-    if (connect(s, (struct sockaddr *)&saddr, sizeof(saddr)) == 0)
-    {
-        CSJsSocket *socket = new CSJsSocket(s);
-        CefRefPtr<CefV8Value> obj = CefV8Value::CreateObject(socket, NULL);
-        
-        // bind functions
-        obj->SetValue("send", CefV8Value::CreateFunction("send", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-        obj->SetValue("recv", CefV8Value::CreateFunction("recv", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-        obj->SetValue("close", CefV8Value::CreateFunction("close", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-        
-        return obj;
-    }
+    obj->SetValue("send", CefV8Value::CreateFunction("send", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
+    obj->SetValue("recv", CefV8Value::CreateFunction("recv", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
+    obj->SetValue("close", CefV8Value::CreateFunction("close", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
     
-    return NULL;
+    return obj;
 }
 
 bool CSJsSocket::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const CefV8ValueList& arguments,  CefRefPtr<CefV8Value>& retval, CefString& exception)
@@ -77,7 +63,7 @@ bool CSJsSocket::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, c
         if (arguments.size() == 1)
         {
             std::string data = arguments[0]->GetStringValue().ToString();
-            int size = send(mSocket, data.c_str(), data.size(), 0);
+            int size = Write(data.c_str(), data.size());
             retval = CefV8Value::CreateInt(size);
             return true;
         }
@@ -99,17 +85,73 @@ bool CSJsSocket::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, c
         }
         else
         {
-            close(mSocket);
-        }
+            Close();
+        }   
     }
     
     return false;
 }
 
+bool CSJsSocket::Open(const CefString &hostname, int port)
+{
+    int s = socket(AF_INET, SOCK_STREAM, 0);
+    struct hostent *he;
+    struct sockaddr_in saddr = {0};
+    
+    saddr.sin_addr.s_addr = inet_addr(hostname.ToString().c_str());
+    if (saddr.sin_addr.s_addr == INADDR_NONE)
+    {
+        he = gethostbyname(hostname.ToString().c_str());
+        if (he)
+            memcpy(&saddr.sin_addr.s_addr, he->h_addr_list[0], he->h_length);
+    }
+    
+    saddr.sin_port = htons(port);
+	saddr.sin_family = AF_INET;
+    
+    if (connect(s, (struct sockaddr *)&saddr, sizeof(saddr)) == 0)
+    {
+        mSocket = s;
+        
+        event_set(&mEventRead, mSocket, EV_READ|EV_PERSIST, &CSJsSocket::OnReadStatic, this);
+        event_add(&mEventRead, NULL);        
+        
+        /*
+        CSJsSocket *socket = new CSJsSocket(s);
+        CefRefPtr<CefV8Value> obj = CefV8Value::CreateObject(socket, NULL);
+        
+        // bind functions
+        obj->SetValue("send", CefV8Value::CreateFunction("send", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
+        obj->SetValue("recv", CefV8Value::CreateFunction("recv", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
+        obj->SetValue("close", CefV8Value::CreateFunction("close", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
+        */
+        
+        return true;
+    }
+    
+    return false;    
+}
+
+void CSJsSocket::Close()
+{
+    if (mSocket != 0)
+        close(mSocket);
+}
+
+int CSJsSocket::Read(void *data, int size)
+{
+    return recv(mSocket, data, size, 0);
+}
+
+int CSJsSocket::Write(const void *data, int size)
+{
+    return send(mSocket, data, size, 0);
+}
+
 void CSJsSocket::OnRead(int fd, short ev)
 {
     char buffer[1024];
-    int len = recv(fd, buffer, sizeof(buffer), 0);
+    int len = Read(buffer, sizeof(buffer));
     if (len == 0 || len == -1)
     {
         close(fd);

@@ -24,6 +24,7 @@
 #include "CSWindow.h"
 #include "CSSchemeFactory.h"
 #include "CSConfig.h"
+#include "CSJsSSLSocket.h"
 
 @implementation AppDelegate
 
@@ -31,7 +32,7 @@
 {
     if (self = [super init])
     {
-
+        CSJsSSLSocket::Init();
     }
     return self;
 }

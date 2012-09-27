@@ -23,6 +23,7 @@
 
 #include "CSJsNet.h"
 #include "CSJsSocket.h"
+#include "CSJsSSLSocket.h"
 
 CSJsNet::CSJsNet(CSWindow *window) : CSJsModule(window)
 {
@@ -34,6 +35,7 @@ void CSJsNet::Register(CefRefPtr<CefV8Value> windowObject)
     CefRefPtr<CefV8Value> obj = CefV8Value::CreateObject(NULL, NULL);
 	
     RegFunc(obj, "socket");
+    RegFunc(obj, "sslsocket");
     
 	// bind window.ui object
 	windowObject->SetValue("net", obj, V8_PROPERTY_ATTRIBUTE_READONLY);    
@@ -49,12 +51,18 @@ bool CSJsNet::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, cons
             CefString hostname = arguments[0]->GetStringValue();
             int port = arguments[1]->GetIntValue();
             retval = CSJsSocket::CreateSocket(hostname, port);
+            return true;
 		}
-        else
-        {
-            retval = CefV8Value::CreateNull();
-        }
-		return true;
+    }
+    else if (name == "sslsocket")
+    {
+        if (arguments.size() == 2)
+		{
+            CefString hostname = arguments[0]->GetStringValue();
+            int port = arguments[1]->GetIntValue();
+            retval = CSJsSSLSocket::CreateSocket(hostname, port);
+            return true;
+		}
     }
     
     return false;

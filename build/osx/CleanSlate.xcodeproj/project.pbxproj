@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D724D68B15E4772B00E7E1D1 /* CSJsSSLSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D724D68A15E4772B00E7E1D1 /* CSJsSSLSocket.cpp */; };
 		D7351BE915C360F900EE3B4F /* CSJsSys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351BE815C360F900EE3B4F /* CSJsSys.cpp */; };
 		D7351BEC15C366E300EE3B4F /* CSJsModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351BEB15C366E200EE3B4F /* CSJsModule.cpp */; };
 		D7351D0C15C44BE000EE3B4F /* CSJsNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7351D0B15C44BE000EE3B4F /* CSJsNet.cpp */; };
@@ -230,6 +231,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D724D68915E4771D00E7E1D1 /* CSJsSSLSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsSSLSocket.h; sourceTree = "<group>"; };
+		D724D68A15E4772B00E7E1D1 /* CSJsSSLSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsSSLSocket.cpp; sourceTree = "<group>"; };
 		D7351BE615C360D400EE3B4F /* CSJsSys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsSys.h; sourceTree = "<group>"; };
 		D7351BE815C360F900EE3B4F /* CSJsSys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsSys.cpp; sourceTree = "<group>"; };
 		D7351BEA15C366D400EE3B4F /* CSJsModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSJsModule.h; sourceTree = "<group>"; };
@@ -857,6 +860,8 @@
 				D7351D0B15C44BE000EE3B4F /* CSJsNet.cpp */,
 				D7351D0D15C44E0E00EE3B4F /* CSJsSocket.h */,
 				D7351D0E15C44E1D00EE3B4F /* CSJsSocket.cpp */,
+				D724D68915E4771D00E7E1D1 /* CSJsSSLSocket.h */,
+				D724D68A15E4772B00E7E1D1 /* CSJsSSLSocket.cpp */,
 				D7351BE615C360D400EE3B4F /* CSJsSys.h */,
 				D7351BE815C360F900EE3B4F /* CSJsSys.cpp */,
 				D749482015C2AA4100703695 /* CSJsUi.h */,
@@ -1164,6 +1169,7 @@
 				D79E445315C8470000DA6612 /* CSJsApp.cpp in Sources */,
 				D7AB0B4915D1D589004B3101 /* CSJsDb.cpp in Sources */,
 				D7D069FF15DA13AC00145E94 /* CSConfig.cpp in Sources */,
+				D724D68B15E4772B00E7E1D1 /* CSJsSSLSocket.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
