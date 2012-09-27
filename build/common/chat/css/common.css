@@ -6,7 +6,7 @@
 }
 
 * { border: 0; font-family: 'Source Sans Pro', sans-serif; -webkit-user-select: none; }
-input { border: 1px solid black; -webkit-user-select: text; }
+input, textarea { border: 1px solid black; -webkit-user-select: text; }
 
 input:focus, select:focus, textarea:focus {
     outline: none;

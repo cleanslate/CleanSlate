@@ -35,9 +35,9 @@ public:
     static void Init();
     static void Cleanup();
     
-    static CefRefPtr<CefV8Value> CreateSocket(const CefString &hostname, int port);
+    static CefRefPtr<CefV8Value> CreateSocket();
     
-    virtual bool Open(const CefString &hostname, int port);
+    virtual bool Connect(const CefString &hostname, int port);
     virtual void Close();
     virtual int Read(void *data, int size);
     virtual int Write(const void *data, int size);

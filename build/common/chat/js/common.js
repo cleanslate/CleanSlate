@@ -16,3 +16,17 @@ function bindTitleBar()
     $(".resize").mousedown(function () { window.ui.startResize(); }).mouseup(function () { window.ui.stopResize(); });
 }
 
+String.prototype.format = function() {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function(match, number) { 
+                        return typeof args[number] != 'undefined'
+                        ? args[number]
+                        : match
+                        ;
+                        });
+};
+
+String.prototype.startsWith = function (str){
+    return this.indexOf(str) == 0;
+};
+

@@ -36,29 +36,26 @@ CSJsSocket::~CSJsSocket()
     Close();
 }
 
-CefRefPtr<CefV8Value> CSJsSocket::CreateSocket(const CefString &hostname, int port)
+CefRefPtr<CefV8Value> CSJsSocket::CreateSocket()
 {
     CSJsSocket *socket = new CSJsSocket();
-    bool result = socket->Open(hostname, port);
-    if (!result)
-    {
-        delete socket;
-        return NULL;
-    }
-    
-    // bind functions
-    CefRefPtr<CefV8Value> obj = CefV8Value::CreateObject(socket, NULL);
-    
-    obj->SetValue("send", CefV8Value::CreateFunction("send", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-    obj->SetValue("recv", CefV8Value::CreateFunction("recv", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-    obj->SetValue("close", CefV8Value::CreateFunction("close", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-    
-    return obj;
+
+    // create js object
+    return socket->CreateJSObject();    
 }
 
 bool CSJsSocket::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const CefV8ValueList& arguments,  CefRefPtr<CefV8Value>& retval, CefString& exception)
 {
-    if (name == "send")
+    if (name == "connect")
+    {
+        if (arguments.size() == 2)
+        {
+            bool result = Connect(arguments[0]->GetStringValue(), arguments[1]->GetIntValue());
+            retval = CefV8Value::CreateBool(result);
+            return true;
+        }        
+    }
+    else if (name == "send")
     {
         if (arguments.size() == 1)
         {
@@ -68,31 +65,47 @@ bool CSJsSocket::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, c
             return true;
         }
     }
-    else if (name == "recv")
+    else if (name == "close")
+    {
+        Close();
+    }
+    else if (name == "onopen")
+    {
+        if (arguments.size() == 1)
+        {
+            mOpenCallback = arguments[0];
+            mOpenContext = CefV8Context::GetCurrentContext();
+        }
+    }
+    else if (name == "onmessage")
     {
         if (arguments.size() == 1)
         {
             mReadCallback = arguments[0];
-            mContext = CefV8Context::GetCurrentContext();
+            mReadContext = CefV8Context::GetCurrentContext();
         }
     }
-    else if (name == "close")
+    else if (name == "onclose")
     {
         if (arguments.size() == 1)
         {
             mCloseCallback = arguments[0];
-            mContext = CefV8Context::GetCurrentContext();
-        }
-        else
+            mCloseContext = CefV8Context::GetCurrentContext();
+        }        
+    }
+    else if (name == "onerror")
+    {
+        if (arguments.size() == 1)
         {
-            Close();
-        }   
+            mErrorCallback = arguments[0];
+            mErrorContext = CefV8Context::GetCurrentContext();
+        }        
     }
     
     return false;
 }
 
-bool CSJsSocket::Open(const CefString &hostname, int port)
+bool CSJsSocket::Connect(const CefString &hostname, int port)
 {
     int s = socket(AF_INET, SOCK_STREAM, 0);
     struct hostent *he;
@@ -113,18 +126,17 @@ bool CSJsSocket::Open(const CefString &hostname, int port)
     {
         mSocket = s;
         
+        if (mOpenCallback)
+        {
+            CefV8ValueList args;
+            CefRefPtr<CefV8Value> retval;
+            CefRefPtr<CefV8Exception> exception;     
+            
+            mOpenCallback->ExecuteFunctionWithContext(mOpenContext, NULL, args, retval, exception, false);                        
+        }
+        
         event_set(&mEventRead, mSocket, EV_READ|EV_PERSIST, &CSJsSocket::OnReadStatic, this);
         event_add(&mEventRead, NULL);        
-        
-        /*
-        CSJsSocket *socket = new CSJsSocket(s);
-        CefRefPtr<CefV8Value> obj = CefV8Value::CreateObject(socket, NULL);
-        
-        // bind functions
-        obj->SetValue("send", CefV8Value::CreateFunction("send", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-        obj->SetValue("recv", CefV8Value::CreateFunction("recv", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-        obj->SetValue("close", CefV8Value::CreateFunction("close", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-        */
         
         return true;
     }
@@ -135,7 +147,21 @@ bool CSJsSocket::Open(const CefString &hostname, int port)
 void CSJsSocket::Close()
 {
     if (mSocket != 0)
+    {
         close(mSocket);
+
+        /*
+        // we call the close callback
+        if (mCloseCallback)
+        {
+            CefV8ValueList args;
+            CefRefPtr<CefV8Value> retval;
+            CefRefPtr<CefV8Exception> exception;     
+            
+            mCloseCallback->ExecuteFunctionWithContext(mCloseContext, NULL, args, retval, exception, false);
+        }
+         */
+    }
 }
 
 int CSJsSocket::Read(void *data, int size)
@@ -154,21 +180,19 @@ void CSJsSocket::OnRead(int fd, short ev)
     int len = Read(buffer, sizeof(buffer));
     if (len == 0 || len == -1)
     {
-        close(fd);
-		event_del(&mEventRead);
-        
-        // we call the close callback
-        if (mCloseCallback)
+        if (len == -1 && mErrorCallback)
         {
             CefV8ValueList args;
             CefRefPtr<CefV8Value> retval;
             CefRefPtr<CefV8Exception> exception;     
             
-            args.push_back(CefV8Value::CreateInt(len));
-            
-            mCloseCallback->ExecuteFunctionWithContext(mContext, NULL, args, retval, exception, false);
+            mErrorCallback->ExecuteFunctionWithContext(mErrorContext, NULL, args, retval, exception, false);            
         }
         
+        Close();
+
+		event_del(&mEventRead);
+                
 		return;
 	}
     else
@@ -179,20 +203,33 @@ void CSJsSocket::OnRead(int fd, short ev)
             CefV8ValueList args;
             CefRefPtr<CefV8Value> retval;
             CefRefPtr<CefV8Exception> exception;     
-            
-            
+                        
             std::string data(buffer, len);
             args.push_back(CefV8Value::CreateString(data));
-            args.push_back(CefV8Value::CreateInt(len));
             
-            mReadCallback->ExecuteFunctionWithContext(mContext, NULL, args, retval, exception, false);
+            mReadCallback->ExecuteFunctionWithContext(mReadContext, NULL, args, retval, exception, false);
         }
     }
 }
-
 
 void CSJsSocket::OnReadStatic(int fd, short ev, void *arg)
 {
     CSJsSocket *s = (CSJsSocket *)arg;
     s->OnRead(fd, ev);
 }
+
+CefRefPtr<CefV8Value> CSJsSocket::CreateJSObject()
+{
+    CefRefPtr<CefV8Value> obj = CefV8Value::CreateObject(this, NULL);
+    
+    obj->SetValue("connect", CefV8Value::CreateFunction("connect", this), V8_PROPERTY_ATTRIBUTE_READONLY);
+    obj->SetValue("send", CefV8Value::CreateFunction("send", this), V8_PROPERTY_ATTRIBUTE_READONLY);
+    obj->SetValue("close", CefV8Value::CreateFunction("close", this), V8_PROPERTY_ATTRIBUTE_READONLY);
+    obj->SetValue("onopen", CefV8Value::CreateFunction("onopen", this), V8_PROPERTY_ATTRIBUTE_READONLY);
+    obj->SetValue("onmessage", CefV8Value::CreateFunction("onmessage", this), V8_PROPERTY_ATTRIBUTE_READONLY);
+    obj->SetValue("onclose", CefV8Value::CreateFunction("onclose", this), V8_PROPERTY_ATTRIBUTE_READONLY);
+    obj->SetValue("onerror", CefV8Value::CreateFunction("onerror", this), V8_PROPERTY_ATTRIBUTE_READONLY);
+    
+    return obj;    
+}
+

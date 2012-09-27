@@ -1,7 +1,7 @@
 {
 	"windows": [
 		{
-			"url": "chat/index.html"
+			"url": "chat/simplesocket.html"
 		}
 	],
 	"osx_icon": "icons/osx.icns",

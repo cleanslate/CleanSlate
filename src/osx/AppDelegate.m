@@ -70,7 +70,7 @@
 
 -(void) onTimer:(NSTimer *)timer
 {
-    event_loop(EVLOOP_ONCE);
+    event_loop(EVLOOP_NONBLOCK);
 }
 
 @end

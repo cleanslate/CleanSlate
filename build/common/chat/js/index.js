@@ -5,5 +5,5 @@ $(function () {
   centerWindow();
   bindTitleBar();
   
-  window.ui.setSize(300, 600);
+  window.ui.setSize(300, 500);
 });

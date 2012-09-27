@@ -28,12 +28,12 @@ public:
     CSJsSocket();
     virtual ~CSJsSocket();
     
-    static CefRefPtr<CefV8Value> CreateSocket(const CefString &hostname, int port);
+    static CefRefPtr<CefV8Value> CreateSocket();
     
     bool Execute(const CefString& name,  CefRefPtr<CefV8Value> object, 
                          const CefV8ValueList& arguments,  CefRefPtr<CefV8Value>& retval, CefString& exception);
     
-    virtual bool Open(const CefString &hostname, int port);
+    virtual bool Connect(const CefString &hostname, int port);
     virtual void Close();
     virtual int Read(void *data, int size);
     virtual int Write(const void *data, int size);
@@ -42,12 +42,18 @@ protected:
     int mSocket;
     CefV8ValueList mRecvCallback;
     struct event mEventRead;
+    CefRefPtr<CefV8Value> mOpenCallback;
+    CefRefPtr<CefV8Context> mOpenContext;
     CefRefPtr<CefV8Value> mReadCallback;
+    CefRefPtr<CefV8Context> mReadContext;
     CefRefPtr<CefV8Value> mCloseCallback;
-    CefRefPtr<CefV8Context> mContext;
+    CefRefPtr<CefV8Context> mCloseContext;
+    CefRefPtr<CefV8Value> mErrorCallback;
+    CefRefPtr<CefV8Context> mErrorContext;
     
     void OnRead(int fd, short ev);
     static void OnReadStatic(int fd, short ev, void *arg);
+    CefRefPtr<CefV8Value> CreateJSObject();
     
     IMPLEMENT_REFCOUNTING(CSJsSocket);
 };

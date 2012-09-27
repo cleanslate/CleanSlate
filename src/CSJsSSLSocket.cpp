@@ -52,31 +52,24 @@ void CSJsSSLSocket::Cleanup()
     
 }
 
-CefRefPtr<CefV8Value> CSJsSSLSocket::CreateSocket(const CefString &hostname, int port)
+CefRefPtr<CefV8Value> CSJsSSLSocket::CreateSocket()
 {
     CSJsSSLSocket *socket = new CSJsSSLSocket();
-    bool result = socket->Open(hostname, port);
-    if (!result)
-    {
-        delete socket;
-        return NULL;
-    }
     
-    // bind functions
-    CefRefPtr<CefV8Value> obj = CefV8Value::CreateObject(socket, NULL);
-    
-    obj->SetValue("send", CefV8Value::CreateFunction("send", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-    obj->SetValue("recv", CefV8Value::CreateFunction("recv", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-    obj->SetValue("close", CefV8Value::CreateFunction("close", socket), V8_PROPERTY_ATTRIBUTE_READONLY);
-    
-    return obj;
+    // create js object
+    return socket->CreateJSObject();    
 }
 
-bool CSJsSSLSocket::Open(const CefString &hostname, int port)
+bool CSJsSSLSocket::Connect(const CefString &hostname, int port)
 {
     Close();
     
-    bool result = CSJsSocket::Open(hostname, port);
+    // don't call the open callback yet
+    CefRefPtr<CefV8Value> tmpCb = mOpenCallback;
+    mOpenCallback = NULL;
+    bool result = CSJsSocket::Connect(hostname, port);
+    mOpenCallback = tmpCb;
+    
     if (!result)
         return false;
 
@@ -93,6 +86,17 @@ bool CSJsSSLSocket::Open(const CefString &hostname, int port)
     int ret = SSL_connect(mSSL);
     if (ret <= 0)
         return false;
+    
+    if (mOpenCallback)
+    {
+        CefV8ValueList args;
+        CefRefPtr<CefV8Value> retval;
+        CefRefPtr<CefV8Exception> exception;     
+        
+        args.push_back(CefV8Value::CreateObject(NULL, NULL));
+        
+        mOpenCallback->ExecuteFunctionWithContext(mOpenContext, NULL, args, retval, exception, false);                        
+    }    
 
     return true;
 }
@@ -111,11 +115,14 @@ void CSJsSSLSocket::Close()
 
 int CSJsSSLSocket::Read(void *data, int size)
 {
-    return SSL_read(mSSL, data, size);
+    int result = SSL_read(mSSL, data, size);
+    CSLogDebug("read = %s", data);
+    return result;
 }
 
 int CSJsSSLSocket::Write(const void *data, int size)
 {
+    CSLogDebug("write = %s", data);
     return SSL_write(mSSL, data, size);
 }
 

@@ -46,23 +46,13 @@ bool CSJsNet::Execute(const CefString& name,  CefRefPtr<CefV8Value> object, cons
 {
     if (name == "socket")
 	{
-        if (arguments.size() == 2)
-		{
-            CefString hostname = arguments[0]->GetStringValue();
-            int port = arguments[1]->GetIntValue();
-            retval = CSJsSocket::CreateSocket(hostname, port);
-            return true;
-		}
+        retval = CSJsSocket::CreateSocket();
+        return true;
     }
     else if (name == "sslsocket")
     {
-        if (arguments.size() == 2)
-		{
-            CefString hostname = arguments[0]->GetStringValue();
-            int port = arguments[1]->GetIntValue();
-            retval = CSJsSSLSocket::CreateSocket(hostname, port);
-            return true;
-		}
+        retval = CSJsSSLSocket::CreateSocket();
+        return true;
     }
     
     return false;

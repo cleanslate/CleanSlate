@@ -20,6 +20,7 @@
 		D749481C15C2A4B100703695 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = D749481A15C2A4B100703695 /* style.css */; };
 		D749481F15C2A65700703695 /* CSUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749481E15C2A65600703695 /* CSUtil.cpp */; };
 		D749482215C2AA7300703695 /* CSJsUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D749482115C2AA7300703695 /* CSJsUi.cpp */; };
+		D76B5A7B16144AFE0055B425 /* textAreaResizeCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = D76B5A7A16144AFE0055B425 /* textAreaResizeCorner.png */; };
 		D78C9D1515BC678000DCF697 /* CSView.m in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D1415BC678000DCF697 /* CSView.m */; };
 		D78C9D9A15BCB7F500DCF697 /* app_cpptoc.cc in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D2115BCB7F500DCF697 /* app_cpptoc.cc */; };
 		D78C9D9B15BCB7F500DCF697 /* client_cpptoc.cc in Sources */ = {isa = PBXBuildFile; fileRef = D78C9D2415BCB7F500DCF697 /* client_cpptoc.cc */; };
@@ -256,6 +257,7 @@
 		D749482115C2AA7300703695 /* CSJsUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSJsUi.cpp; sourceTree = "<group>"; };
 		D749482315C2ADBB00703695 /* CSPrecomp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSPrecomp.cpp; sourceTree = "<group>"; };
 		D749482415C2ADBC00703695 /* CSPrecomp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSPrecomp.h; sourceTree = "<group>"; };
+		D76B5A7A16144AFE0055B425 /* textAreaResizeCorner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = textAreaResizeCorner.png; path = "../../third-party/cef/osx/Resources/textAreaResizeCorner.png"; sourceTree = "<group>"; };
 		D78C9D1315BC678000DCF697 /* CSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSView.h; sourceTree = "<group>"; };
 		D78C9D1415BC678000DCF697 /* CSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSView.m; sourceTree = "<group>"; };
 		D78C9D1F15BCB7F500DCF697 /* cef_logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cef_logging.h; sourceTree = "<group>"; };
@@ -772,6 +774,7 @@
 				D7D06A1D15DAA6C100145E94 /* southEastResizeCursor.png */,
 				D7D06A1E15DAA6C100145E94 /* southResizeCursor.png */,
 				D7D06A1F15DAA6C100145E94 /* southWestResizeCursor.png */,
+				D76B5A7A16144AFE0055B425 /* textAreaResizeCorner.png */,
 				D7D06A2015DAA6C100145E94 /* verticalTextCursor.png */,
 				D7D06A2115DAA6C100145E94 /* westResizeCursor.png */,
 				D7D06A2215DAA6C100145E94 /* zoomInCursor.png */,
@@ -1078,6 +1081,7 @@
 				D7D06A3B15DAA6C100145E94 /* westResizeCursor.png in Resources */,
 				D7D06A3C15DAA6C100145E94 /* zoomInCursor.png in Resources */,
 				D7D06A3D15DAA6C100145E94 /* zoomOutCursor.png in Resources */,
+				D76B5A7B16144AFE0055B425 /* textAreaResizeCorner.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
