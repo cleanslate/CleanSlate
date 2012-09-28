@@ -27,7 +27,7 @@
 
 CSJsApp::CSJsApp(CSWindow *window) : CSJsModule(window)
 {
-    
+    mState = CefV8Value::CreateObject(NULL, NULL);
 }	
 
 void CSJsApp::Register(CefRefPtr<CefV8Value> windowObject)
@@ -37,7 +37,7 @@ void CSJsApp::Register(CefRefPtr<CefV8Value> windowObject)
     RegFunc(obj, "db");
     
     // temporary state object to keep the state of the app
-    obj->SetValue("state", CefV8Value::CreateObject(NULL, NULL), V8_PROPERTY_ATTRIBUTE_NONE);
+    obj->SetValue("state", mState, V8_PROPERTY_ATTRIBUTE_NONE);
 	
 	// bind window.ui object
 	windowObject->SetValue("app", obj, V8_PROPERTY_ATTRIBUTE_READONLY);    

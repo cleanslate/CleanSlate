@@ -23,6 +23,7 @@
 #define __CSBROWSERCLIENT_H__
 
 class CSWindow;
+class CSJsModule;
 
 class CSBrowserClient : public CefClient,
                         public CefLifeSpanHandler,
@@ -77,6 +78,9 @@ public:
 private:
     CefRefPtr<CefBrowser> mBrowser;
     CefRefPtr<CefV8Context> mJS;
+    
+    typedef std::map<std::string, CSJsModule *> JSModules;
+    JSModules mJSModules;
     CSWindow *mWindow;
 
     IMPLEMENT_REFCOUNTING(CSBrowserClient);

@@ -112,7 +112,7 @@ function doLogin(oForm) {
   try {
       window.oDbg = new JSJaCConsoleLogger(4);
       con = new JSJaCSocketConnection({ssl:oForm.ssl.value, oDbg: window.oDbg, allow_plain:1});
-      window.connection = con;
+      app.state.con = con;
 
     setupCon(con);
 
@@ -182,7 +182,17 @@ function quit() {
 }
 
 function init() {
-
+    sys.log("XML Document = " + XmlDocument);
+    if (app.state.con)
+    {
+        con = new JSJaCSocketConnection({ssl:1, oDbg: window.oDbg, allow_plain:1});
+        con._socket = app.state.con._socket;
+        con._connected = true;
+        con.resume();
+        setupCon(con);
+        
+        handleConnected();
+    }
 }
 onload = init;
 
@@ -285,7 +295,7 @@ color: red;
       </form>
     </div>
           </div>
-          <div class="resize" style="border: 1px solid black"></div>
+          <div class="resize"></div>
       </div>
   </body>
 </html>

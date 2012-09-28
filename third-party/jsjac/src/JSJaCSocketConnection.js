@@ -165,7 +165,7 @@ JSJaCSocketConnection.prototype._onerror = function() {
  */
 JSJaCSocketConnection.prototype._onmessage = function(data) {
   var stanza, node, packet;
-
+    sys.log("_onmessage = " + data);
   stanza = data;
   this._setStatus('processing');
   if (!stanza || stanza === '') {

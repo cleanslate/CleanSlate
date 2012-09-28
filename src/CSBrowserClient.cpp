@@ -45,7 +45,11 @@ CSBrowserClient::CSBrowserClient(CSWindow *window) :
 
 CSBrowserClient::~CSBrowserClient()
 {
-    
+    JSModules::iterator iter;
+    for (iter = mJSModules.begin(); iter != mJSModules.end(); iter++)
+    {
+        delete (*iter).second;
+    }
 }
 
 void CSBrowserClient::OnAfterCreated(CefRefPtr<CefBrowser> browser)
@@ -159,27 +163,68 @@ void CSBrowserClient::OnCursorChange(CefRefPtr<CefBrowser> browser, CefCursorHan
 void CSBrowserClient::OnContextCreated(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, CefRefPtr<CefV8Context> context)
 {
 	mJS = context;
+    JSModules::iterator iter;
     
     // register any javascript plugins
     CefRefPtr<CefV8Value> windowObject = context->GetGlobal();
 	{
-		CSJsUi *js = new CSJsUi(mWindow);
-		js->Register(windowObject);
+        iter = mJSModules.find("ui");
+        if (iter == mJSModules.end())
+        {
+            CSJsUi *js = new CSJsUi(mWindow);
+            js->Register(windowObject);
+            mJSModules["ui"] = js;
+        }
+        else
+        {
+            CSJsUi *js = (CSJsUi *)(*iter).second;
+            js->Register(windowObject);
+        }
 	}
     
     {
-        CSJsSys *js = new CSJsSys(mWindow);
-        js->Register(windowObject);
+        iter = mJSModules.find("sys");
+        if (iter == mJSModules.end())
+        {
+            CSJsSys *js = new CSJsSys(mWindow);
+            js->Register(windowObject);
+            mJSModules["sys"] = js;
+        }
+        else
+        {
+            CSJsSys *js = (CSJsSys *)(*iter).second;
+            js->Register(windowObject);
+        }
     }
     
     {
-        CSJsNet *js = new CSJsNet(mWindow);
-        js->Register(windowObject);
+        iter = mJSModules.find("net");
+        if (iter == mJSModules.end())
+        {
+            CSJsNet *js = new CSJsNet(mWindow);
+            js->Register(windowObject);
+            mJSModules["net"] = js;
+        }
+        else
+        {
+            CSJsNet *js = (CSJsNet *)(*iter).second;
+            js->Register(windowObject);            
+        }
     }
     
     {
-        CSJsApp *js = new CSJsApp(mWindow);
-        js->Register(windowObject);
+        iter = mJSModules.find("app");
+        if (iter == mJSModules.end())
+        {
+            CSJsApp *js = new CSJsApp(mWindow);
+            js->Register(windowObject);
+            mJSModules["app"] = js;
+        }
+        else
+        {
+            CSJsApp *js = (CSJsApp *)(*iter).second;
+            js->Register(windowObject);            
+        }
     }
     
 }

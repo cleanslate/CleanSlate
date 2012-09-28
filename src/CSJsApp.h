@@ -34,6 +34,9 @@ public:
     void Register(CefRefPtr<CefV8Value> windowObject);
     
     virtual bool Execute(const CefString& name,  CefRefPtr<CefV8Value> object, const CefV8ValueList& arguments,  CefRefPtr<CefV8Value>& retval, CefString& exception);
+    
+private:
+    CefRefPtr<CefV8Value> mState;
 };
 
 #endif

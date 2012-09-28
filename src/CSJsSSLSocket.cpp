@@ -115,6 +115,7 @@ void CSJsSSLSocket::Close()
 
 int CSJsSSLSocket::Read(void *data, int size)
 {
+    memset(data, 0, size);
     int result = SSL_read(mSSL, data, size);
     CSLogDebug("read = %s", data);
     return result;
